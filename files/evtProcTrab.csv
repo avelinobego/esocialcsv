@@ -1,0 +1,359 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtProcTrab";"eSocial";"G";"-";"1";"-";"-";"Evento Processo Trabalhista.
+Regras de validação:
+REGRA_BASES_PROC_TRAB
+REGRA_BLOQUEIA_USO_CPF_EMPREGADOR
+REGRA_COMPATIBILIDADE_CATEGORIA_CLASSTRIB
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_MESMO_PROCEMI
+REGRA_MUDANCA_CATEG_NAT_ATIV
+REGRA_UNICIDADE_CONTRATUAL
+REGRA_VALIDA_EMPREGADOR
+REGRA_VALIDA_MATRICULA
+REGRA_VALIDA_PROC_TRAB
+REGRA_VALIDA_TRABALHADOR_BASE_CPF"
+"3";"Id";"evtProcTrab";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do empregador ou do contribuinte que está prestando a informação."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição do empregador ou contribuinte que está prestando a informação, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do empregador ou contribuinte que está prestando a informação, de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideResp";"ideEmpregador";"G";"-";"0-1";"-";"-";" Informações de identificação do contribuinte (responsável direto), caso tenha havido imposição de responsabilidade indireta."
+"14";"tpInsc";"ideResp";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"15";"nrInsc";"ideResp";"E";"C";"1";"11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideResp/tpInsc.
+Validação: Deve ser um identificador válido e:
+a) Se ideResp/tpInsc = [1], deve ser informado com 14 (catorze) algarismos. Se o empregador for pessoa jurídica, a raiz do CNPJ informado deve ser diferente de ideEmpregador/nrInsc, exceto se ideEmpregador/nrInsc tiver 14 (catorze) algarismos.
+b) Se ideResp/tpInsc = [2], deve ser diferente do CPF do trabalhador. Se o empregador for pessoa física, também deve ser diferente do CPF do empregador."
+"16";"infoProcesso";"evtProcTrab";"G";"-";"1";"-";"-";" Informações do processo judicial ou de demanda submetida à Comissão de Conciliação Prévia (CCP) ou ao Núcleo Intersindical de Conciliação Trabalhista (NINTER)."
+"17";"origem";"infoProcesso";"E";"N";"1";"1";"-";"Informar a origem do processo/demanda.
+Valores válidos:
+1 - Processo judicial
+2 - Demanda submetida à CCP ou ao NINTER"
+"18";"nrProcTrab";"infoProcesso";"E";"C";"1";"15 ou 20";"-";"Número do processo trabalhista, da ata ou número de identificação da conciliação.
+Validação: Se origem = [1], deve ser um processo judicial válido, com 20 (vinte) algarismos. Se origem = [2], deve possuir 15 (quinze) algarismos."
+"19";"obsProcTrab";"infoProcesso";"E";"C";"0-1";"1-999";"-";"Observações relacionadas ao processo judicial ou à demanda submetida à CCP ou ao NINTER."
+"20";"dadosCompl";"infoProcesso";"CG";"-";"1";"-";"-";"Informações complementares do processo ou da demanda."
+"21";"infoProcJud";"dadosCompl";"G";"-";"0-1";"-";"-";"Informações complementares do processo judicial."
+"22";"dtSent";"infoProcJud";"E";"D";"1";"-";"-";"Informar a data do(a):
+a) Trânsito em julgado da decisão líquida proferida no processo trabalhista;
+b) Homologação de acordo judicial; ou
+c) Trânsito em julgado da decisão homologatória dos cálculos de liquidação da sentença.
+Validação: Deve ser igual ou anterior à data atual."
+"23";"ufVara";"infoProcJud";"E";"C";"1";"2";"-";"Preencher com a sigla da Unidade da Federação onde está localizada a Vara em que o processo tramitou.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO"
+"24";"codMunic";"infoProcJud";"E";"N";"1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Deve ser um código válido e existente na tabela do IBGE."
+"25";"idVara";"infoProcJud";"E";"N";"1";"1-4";"-";"Código de identificação da Vara em que o processo tramitou."
+"26";"infoCCP";"dadosCompl";"G";"-";"0-1";"-";"-";"Informações complementares da demanda submetida à CCP ou ao NINTER."
+"27";"dtCCP";"infoCCP";"E";"D";"1";"-";"-";"Data da celebração do acordo celebrado perante CCP ou Ninter.
+Validação: Deve ser igual ou anterior à data atual."
+"28";"tpCCP";"infoCCP";"E";"N";"1";"1";"-";"Indicar o âmbito de celebração do acordo.
+Valores válidos:
+1 - CCP no âmbito de empresa
+2 - CCP no âmbito de sindicato
+3 - NINTER"
+"29";"cnpjCCP";"infoCCP";"E";"C";"0-1";"14";"-";"Identificar o CNPJ do sindicato representativo do trabalhador, no âmbito da CCP ou NINTER.
+Validação: O preenchimento é obrigatório e exclusivo se tpCCP for igual a [2] ou [3]. Deve ser um número de CNPJ válido."
+"30";"ideTrab";"evtProcTrab";"G";"-";"1";"-";"-";"Informações do trabalhador."
+"31";"cpfTrab";"ideTrab";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"32";"nmTrab";"ideTrab";"E";"C";"0-1";"2-70";"-";"Informar o nome do trabalhador.
+Validação: Preenchimento obrigatório se não existir contrato com indContr = [S]."
+"33";"dtNascto";"ideTrab";"E";"D";"0-1";"-";"-";"Preencher com a data de nascimento.
+Validação: Preenchimento obrigatório se não existir contrato com indContr = [S]. Deve ser maior ou igual que 01/01/1890 e menor ou igual à data atual."
+"34";"dependente";"ideTrab";"G";"-";"0-99";"-";"-";"Informações dos dependentes."
+"35";"cpfDep";"dependente";"E";"C";"1";"11";"-";"Número de inscrição no CPF.
+Validação: Deve ser um número de CPF válido e diferente do CPF do trabalhador. Em arquivo de empregador Pessoa Física, também deve ser diferente do CPF informado em ideEmpregador/nrInsc."
+"36";"tpDep";"dependente";"E";"C";"1";"2";"-";"Tipo de dependente.
+Validação: Deve ser um código válido e existente na Tabela 07."
+"37";"descDep";"dependente";"E";"C";"0-1";"1-30";"-";"Informar a descrição da dependência.
+Validação: Informação obrigatória e exclusiva se tpDep = [99]."
+"38";"infoContr";"ideTrab";"G";"-";"1-99";"-";"-";"Informações do contrato de trabalho."
+"39";"tpContr";"infoContr";"E";"N";"1";"1";"-";"Tipo de contrato a que se refere o processo judicial ou a demanda submetida à CCP ou ao NINTER.
+Valores válidos:
+1 - Trabalhador com vínculo formalizado, sem alteração nas datas de admissão e de desligamento
+2 - Trabalhador com vínculo formalizado, com alteração na data de admissão
+3 - Trabalhador com vínculo formalizado, com inclusão ou alteração de data de desligamento
+4 - Trabalhador com vínculo formalizado, com alteração nas datas de admissão e de desligamento
+5 - Empregado com reconhecimento de vínculo
+6 - Trabalhador sem vínculo de emprego/estatutário (TSVE), sem reconhecimento de vínculo empregatício"
+"40";"indContr";"infoContr";"E";"C";"1";"1";"-";"Indicativo se o contrato possui informação no evento S-2190, S-2200 ou S-2300 no declarante.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Deve ser igual a [N] se o grupo ideResp for informado."
+"41";"dtAdmOrig";"infoContr";"E";"D";"0-1";"-";"-";"Preencher com a data de admissão original do vínculo (data de admissão antes da alteração).
+Validação: Preenchimento obrigatório e exclusivo se infoContr/tpContr = [2, 4] e se indContr = [N]. Deve ser posterior à data de nascimento do trabalhador."
+"42";"indReint";"infoContr";"E";"C";"0-1";"1";"-";"Indicativo de reintegração do empregado.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Preenchimento obrigatório e exclusivo se infoContr/tpContr for diferente de [6] e indContr = [S]. Caso seja informado [S], deve existir evento de reintegração (S-2298) para a matrícula abaixo informada, com o número de processo nesse evento igual a nrProcTrab."
+"43";"indCateg";"infoContr";"E";"C";"1";"1";"-";"Indicativo se houve reconhecimento de categoria do trabalhador diferente da informada (no eSocial ou na GFIP) pelo declarante.
+Valores válidos:
+S - Sim
+N - Não"
+"44";"indNatAtiv";"infoContr";"E";"C";"1";"1";"-";"Indicativo se houve reconhecimento de natureza da atividade diferente da cadastrada pelo declarante.
+Valores válidos:
+S - Sim
+N - Não"
+"45";"indMotDeslig";"infoContr";"E";"C";"1";"1";"-";"Indicativo se houve reconhecimento de motivo de desligamento diferente do informado pelo declarante.
+Valores válidos:
+S - Sim
+N - Não"
+"46";"indUnic";"infoContr";"E";"C";"0-1";"1";"-";"Indicativo se houve reconhecimento de unicidade contratual (declaração da continuidade do contrato de trabalho, considerando como único dois ou mais vínculos sucessivos informados no eSocial).
+Valores válidos:
+S - Sim
+N - Não
+Validação: Deve ser igual a [N] se o grupo ideResp for informado."
+"47";"matricula";"infoContr";"E";"C";"0-1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.
+Se indContr = [N], deve ser criada uma matrícula para o trabalhador.
+Se indContr = [S], deve corresponder à matrícula informada pelo empregador no evento S-2190, S-2200 ou S-2300 do respectivo contrato. O campo não deve ser informado somente no caso de TSVE cadastrado em versão do leiaute anterior a S-1.0.
+Se indUnic = [S], deve ser preenchida a matrícula que incorporará as demais (informadas no grupo unicContr).
+Validação: Se indContr = [N], deve ser aplicada a regra de validação abaixo. Além disso, o valor informado neste campo não pode conter a expressão 'eSocial' nas 7 (sete) primeiras posições. Se indContr = [S], deve corresponder a uma matrícula existente no Registro de Eventos Trabalhistas - RET para o respectivo trabalhador.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"48";"codCateg";"infoContr";"E";"N";"0-1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Validação: Informação obrigatória e exclusiva se indContr = [N] ou se o campo matricula não estiver preenchido. Deve ser um código válido e existente na Tabela 01 e obedecer ao que segue:
+a) Se o campo matricula não estiver preenchido, deve ser igual ao código de categoria informado no evento S-2300;
+b) Se indContr = [N] e infoContr/tpContr for diferente de [6], deve ser um código de categoria compatível com o evento S-2200 (conforme regra de validação abaixo);
+c) Se indContr = [N] e infoContr/tpContr = [6], deve ser um código de categoria compatível com o evento S-2300 (conforme regra de validação abaixo).
+Regra de validação:
+REGRA_COMPATIB_CATEG_EVENTO"
+"49";"dtInicio";"infoContr";"E";"D";"0-1";"-";"-";"Data de início de TSVE, que pode ser:
+a) Para o cooperado, a data de ingresso na cooperativa;
+b) Para o diretor não empregado, a data de posse no cargo;
+c) Para o dirigente sindical, a data de início do mandato no sindicato;
+d) Para o estagiário, a data de início do estágio;
+e) Para o trabalhador avulso, a data de ingresso no Órgão Gestor de Mão de Obra - OGMO ou no sindicato;
+f) Para o servidor público exercente de cargo eletivo, a data de início do mandato;
+g) Para os demais trabalhadores, a data de início das atividades.
+Validação: Informação obrigatória e exclusiva se (infoContr/tpContr = [6] e indContr = [N]) ou se o campo matricula não estiver preenchido. Deve ser posterior à data de nascimento do trabalhador. Se o campo matricula não estiver preenchido, deve ser igual à data de início informada no evento S-2300."
+"50";"infoCompl";"infoContr";"G";"-";"0-1";"-";"-";"Informações complementares do contrato de trabalho."
+"51";"codCBO";"infoCompl";"E";"C";"0-1";"6";"-";"Classificação Brasileira de Ocupações - CBO.
+Validação: Preenchimento obrigatório se infoContr/codCateg for diferente de [901, 903, 904]). Se informado, deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições."
+"52";"natAtividade";"infoCompl";"E";"N";"0-1";"1";"-";"Natureza da atividade.
+Valores válidos:
+1 - Trabalho urbano
+2 - Trabalho rural
+Validação: Preenchimento obrigatório se infoContr/codCateg for relativo a "Empregado", "Agente Público", "Avulso" ou igual a [401, 731, 734, 738]. Não deve ser preenchido se infoContr/codCateg = [721, 722, 771, 901].
+Se infoContr/codCateg = [104], deve ser preenchido com [1]. Se infoContr/codCateg = [102], deve ser preenchido com [2]."
+"53";"remuneracao";"infoCompl";"G";"-";"0-99";"-";"-";"Informações da remuneração e periodicidade de pagamento."
+"54";"dtRemun";"remuneracao";"E";"D";"1";"-";"-";"Data a partir da qual as informações de remuneração e periodicidade de pagamento estão vigentes.
+Validação: Deve ser igual ou posterior à data de admissão (ou de início) e igual ou anterior à data de desligamento (ou de término), se informada."
+"55";"vrSalFx";"remuneracao";"E";"N";"1";"1-14";"2";"Salário base do trabalhador, correspondente à parte fixa da remuneração em dtRemun.
+Validação: Se undSalFixo for igual a [7], preencher com 0 (zero)."
+"56";"undSalFixo";"remuneracao";"E";"N";"1";"1";"-";"Unidade de pagamento da parte fixa da remuneração.
+Valores válidos:
+1 - Por hora
+2 - Por dia
+3 - Por semana
+4 - Por quinzena
+5 - Por mês
+6 - Por tarefa
+7 - Não aplicável - Salário exclusivamente variável"
+"57";"dscSalVar";"remuneracao";"E";"C";"0-1";"1-999";"-";"Descrição do salário por tarefa ou variável e como este é calculado. Ex.: Comissões pagas no percentual de 10% sobre as vendas.
+Validação: Preenchimento obrigatório se undSalFixo for igual a [6, 7]."
+"58";"infoVinc";"infoCompl";"G";"-";"0-1";"-";"-";"Informações sobre o vínculo trabalhista."
+"59";"tpRegTrab";"infoVinc";"E";"N";"1";"1";"-";"Tipo de regime trabalhista.
+Valores válidos:
+1 - CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas
+2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)
+Validação: Se infoContr/codCateg = [104], deve ser preenchido com [1]."
+"60";"tpRegPrev";"infoVinc";"E";"N";"1";"1";"-";"Tipo de regime previdenciário.
+Valores válidos:
+1 - Regime Geral de Previdência Social - RGPS
+2 - Regime Próprio de Previdência Social - RPPS
+3 - Regime de Previdência Social no exterior
+Validação: Se infoContr/codCateg = [104], deve ser preenchido com [1]. Se infoContr/codCateg = [101, 102, 103, 105, 106, 107, 108, 111], não pode ser preenchido com [2]."
+"61";"dtAdm";"infoVinc";"E";"D";"1";"-";"-";"Preencher com a data de admissão do trabalhador.
+Validação: Deve ser posterior à data de nascimento do trabalhador."
+"62";"tmpParc";"infoVinc";"E";"N";"0-1";"1";"-";"Preencher com o código relativo ao tipo de contrato em tempo parcial.
+Informar este campo apenas no caso de empregado submetido a horário de trabalho (Capítulo II do Título II da CLT).
+Valores válidos:
+0 - Não é contrato em tempo parcial
+1 - Limitado a 25 horas semanais
+2 - Limitado a 30 horas semanais
+3 - Limitado a 26 horas semanais
+Validação: Informação obrigatória e exclusiva se tpRegTrab = [1]. O código [1] só é válido se infoContr/codCateg = [104]. Os códigos [2, 3] não são válidos se infoContr/codCateg = [104]."
+"63";"duracao";"infoVinc";"G";"-";"0-1";"-";"-";"Duração do contrato de trabalho."
+"64";"tpContr";"duracao";"E";"N";"1";"1";"-";"Tipo de contrato de trabalho.
+Valores válidos:
+1 - Prazo indeterminado
+2 - Prazo determinado, definido em dias
+3 - Prazo determinado, vinculado à ocorrência de um fato"
+"65";"dtTerm";"duracao";"E";"D";"0-1";"-";"-";"Data do término do contrato por prazo determinado.
+Validação: O preenchimento é obrigatório se duracao/tpContr = [2]. Não informar se duracao/tpContr = [1]. Se preenchido, deve ser igual ou posterior à data de admissão (no caso de transferência, igual ou posterior a sucessaoVinc/dtTransf)."
+"66";"clauAssec";"duracao";"E";"C";"0-1";"1";"-";"Indicar se o contrato por prazo determinado contém cláusula assecuratória do direito recíproco de rescisão antes da data de seu término.
+Valores válidos:
+S - Sim
+N - Não
+Validação: O preenchimento é obrigatório se duracao/tpContr = [2, 3]. Não preencher se duracao/tpContr = [1]."
+"67";"objDet";"duracao";"E";"C";"0-1";"1-255";"-";"Indicação do objeto determinante da contratação por prazo determinado (obra, serviço, safra, etc.).
+Validação: O preenchimento é obrigatório e exclusivo se duracao/tpContr = [3]."
+"68";"observacoes";"infoVinc";"G";"-";"0-99";"-";"-";"Observações do contrato de trabalho."
+"69";"observacao";"observacoes";"E";"C";"1";"1-255";"-";"Observação relacionada ao contrato de trabalho."
+"70";"sucessaoVinc";"infoVinc";"G";"-";"0-1";"-";"-";"Grupo de informações da sucessão de vínculo trabalhista/estatutário."
+"71";"tpInsc";"sucessaoVinc";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+5 - CGC
+6 - CEI
+Validação: Somente é possível informar [5] se dtTransf for igual ou anterior a [1999-06-30].
+Somente é possível informar [6] se dtTransf for igual ou anterior a [2011-12-31]."
+"72";"nrInsc";"sucessaoVinc";"E";"C";"1";"8-14";"-";"Informar o número de inscrição do empregador anterior, de acordo com o tipo de inscrição indicado no campo sucessaoVinc/tpInsc.
+Validação: Deve ser um número de inscrição válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.
+Se sucessaoVinc/tpInsc = [1], deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do empregador (exceto se ideEmpregador/nrInsc tiver 14 (catorze) algarismos).
+Se sucessaoVinc/tpInsc = [2], deve possuir 11 (onze) algarismos.
+Se sucessaoVinc/tpInsc = [5], deve possuir somente algarismos.
+Se sucessaoVinc/tpInsc = [6], deve possuir 12 (doze) algarismos."
+"73";"matricAnt";"sucessaoVinc";"E";"C";"0-1";"1-30";"-";"Matrícula do trabalhador no empregador anterior."
+"74";"dtTransf";"sucessaoVinc";"E";"D";"1";"-";"-";"Preencher com a data da transferência do empregado para o empregador declarante.
+Validação: Deve ser posterior à data de admissão do trabalhador."
+"75";"infoDeslig";"infoVinc";"G";"-";"1";"-";"-";"Informações do desligamento."
+"76";"dtDeslig";"infoDeslig";"E";"D";"1";"-";"-";"Preencher com a data de desligamento do vínculo (último dia trabalhado).
+Validação: Deve ser igual ou posterior a dtAdm e não superior à data atual (data do envio do evento) acrescida de 10 dias corridos."
+"77";"mtvDeslig";"infoDeslig";"E";"C";"1";"2";"-";"Código de motivo do desligamento.
+Validação: Deve ser um código válido e existente na Tabela 19."
+"78";"dtProjFimAPI";"infoDeslig";"E";"D";"0-1";"-";"-";"Data projetada para o término do aviso prévio indenizado.
+Validação: Se informada, deve ser igual ou posterior a dtDeslig."
+"79";"infoTerm";"infoCompl";"G";"-";"0-1";"-";"-";"Informações de término de TSVE."
+"80";"dtTerm";"infoTerm";"E";"D";"1";"-";"-";"Data do término.
+Validação: Deve ser igual ou posterior a dtInicio e igual ou anterior à data atual acrescida de 10 (dez) dias."
+"81";"mtvDesligTSV";"infoTerm";"E";"C";"0-1";"2";"-";"Motivo do término do diretor não empregado, com FGTS.
+Valores válidos:
+01 - Exoneração do diretor não empregado sem justa causa, por deliberação da assembleia, dos sócios cotistas ou da autoridade competente
+02 - Término de mandato do diretor não empregado que não tenha sido reconduzido ao cargo
+03 - Exoneração a pedido de diretor não empregado
+04 - Exoneração do diretor não empregado por culpa recíproca ou força maior
+05 - Morte do diretor não empregado
+06 - Exoneração do diretor não empregado por falência, encerramento ou supressão de parte da empresa
+99 - Outros
+Validação: Informação obrigatória e exclusiva se infoContr/codCateg = [721]."
+"82";"mudCategAtiv";"infoContr";"G";"-";"0-99";"-";"-";"Informação do novo código de categoria e/ou da nova natureza da atividade, no caso de reconhecimento judicial nesse sentido."
+"83";"codCateg";"mudCategAtiv";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Validação: Deve ser um código válido e existente na Tabela 01."
+"84";"natAtividade";"mudCategAtiv";"E";"N";"0-1";"1";"-";"Natureza da atividade.
+Valores válidos:
+1 - Trabalho urbano
+2 - Trabalho rural
+Validação: Não informar se mudCategAtiv/codCateg = [721, 722, 771, 901].
+Se mudCategAtiv/codCateg = [104], não pode ser preenchido com [2]. Se mudCategAtiv/codCateg = [102], não pode ser preenchido com [1]."
+"85";"dtMudCategAtiv";"mudCategAtiv";"E";"D";"1";"-";"-";"Data a partir da qual foi reconhecida a nova categoria e/ou a nova natureza da atividade.
+Validação: Deve ser igual ou posterior à data de admissão (ou de início) e igual ou anterior à data de desligamento, se informada."
+"86";"unicContr";"infoContr";"G";"-";"0-99";"-";"-";"Informações dos vínculos/contratos incorporados, no caso de reconhecimento de unicidade contratual."
+"87";"matUnic";"unicContr";"E";"C";"0-1";"1-30";"-";"Informar a matrícula incorporada (matrícula cujo vínculo/contrato passou a integrar período de unicidade contratual reconhecido judicialmente). O campo não deve ser informado somente no caso de TSVE cadastrado em versão do leiaute anterior a S-1.0.
+Validação: Deve corresponder a uma matrícula existente no RET para o respectivo trabalhador e diferente do vínculo/contrato informado em infoContr."
+"88";"codCateg";"unicContr";"E";"N";"0-1";"3";"-";"Preencher com o código da categoria do trabalhador (código de categoria cujo contrato passou a integrar período de unicidade contratual reconhecido judicialmente).
+Validação: Informação obrigatória e exclusiva se o campo matUnic não estiver preenchido. Deve ser igual a um código de categoria de contrato cadastrado no evento S-2300 e diferente do contrato informado em infoContr."
+"89";"dtInicio";"unicContr";"E";"D";"0-1";"-";"-";"Data de início de TSVE (data de início cujo contrato passou a integrar período de unicidade contratual reconhecido judicialmente).
+Validação: Informação obrigatória e exclusiva se o campo matUnic não estiver preenchido. Deve ser igual a uma data de início de contrato cadastrado no evento S-2300 e diferente do contrato informado em infoContr."
+"90";"ideEstab";"infoContr";"G";"-";"1";"-";"-";"Identificação do estabelecimento responsável pelo pagamento ao trabalhador dos valores informados neste evento."
+"91";"tpInsc";"ideEstab";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição do estabelecimento, de acordo com as opções da Tabela 05.
+No caso de empregador doméstico, informar [3] (CAEPF).
+Valores válidos:
+1 - CNPJ
+3 - CAEPF
+4 - CNO
+Validação: Se ideEmpregador/tpInsc = [1], deve ser igual a [1, 4]. Se ideEmpregador/tpInsc = [2], deve ser igual a [3, 4]."
+"92";"nrInsc";"ideEstab";"E";"C";"1";"12 ou 14";"-";"Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo acima.
+No caso de empregador doméstico, informar os 9 (nove) primeiros dígitos do CPF do empregador, seguidos de 5 (cinco) dígitos 0 (zero). Por exemplo, se o CPF do empregador doméstico for 111111111-99, informar 11111111100000.
+Validação: A inscrição informada deve ser compatível com ideEstab/tpInsc e o número deve constar na base da RFB e pertencer a ideEmpregador/nrInsc.
+Se o processo for referente a empregado doméstico, a inscrição informada deve ser igual aos 9 (nove) primeiros dígitos do CPF do empregador, seguidos de 5 (cinco) dígitos 0 (zero)."
+"93";"infoVlr";"ideEstab";"G";"-";"1";"-";"-";"Informações dos períodos e valores decorrentes de processo trabalhista e ainda não declarados no eSocial."
+"94";"compIni";"infoVlr";"E";"C";"1";"7";"-";"Competência inicial a que se refere o processo ou conciliação, no formato AAAA-MM.
+Validação: Devem ser obedecidas as seguintes regras:
+a) Se infoContr/tpContr = [1, 3], deve ser igual ou posterior ao mês/ano da data de admissão;
+b) Se infoContr/tpContr = [2, 4, 5], deve ser igual ao mês/ano da data de admissão;
+c) Se infoContr/tpContr = [6], deve ser igual ou posterior ao mês/ano da data de início do TSVE."
+"95";"compFim";"infoVlr";"E";"C";"1";"7";"-";"Competência final a que se refere o processo ou conciliação, no formato AAAA-MM.
+Validação: Deve ser igual ou posterior a compIni, igual ou anterior ao mês/ano de dtSent ou dtCCP e:
+a) Se infoContr/tpContr = [1, 2], deve ser igual ou anterior ao mês/ano da data de desligamento, se informada;
+b) Se infoContr/tpContr = [3, 4, 5], deve ser igual ao mês/ano da data de desligamento, se informada;
+c) Se infoContr/tpContr = [6], deve ser igual ou anterior ao mês/ano da data de término do TSVE, se informada."
+"96";"repercProc";"infoVlr";"E";"N";"1";"1";"-";"Repercussão do processo trabalhista ou de demanda submetida à CCP ou ao NINTER.
+Valores válidos:
+1 - Decisão com pagamento de verbas de natureza remuneratória
+2 - Decisão sem pagamento de verbas de natureza remuneratória"
+"97";"vrRemun";"infoVlr";"E";"N";"1";"1-14";"2";"Valor total das verbas remuneratórias a serem pagas ao trabalhador.
+Validação: Se repercProc = [1], deve ser maior que 0 (zero). Se repercProc = [2], deve ser igual a 0 (zero)."
+"98";"vrAPI";"infoVlr";"E";"N";"1";"1-14";"2";"Valor do aviso prévio indenizado pago ao empregado.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"99";"vr13API";"infoVlr";"E";"N";"1";"1-14";"2";"Valor da projeção do aviso prévio indenizado sobre o 13º salário.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"100";"vrInden";"infoVlr";"E";"N";"1";"1-14";"2";"Valor total das demais verbas indenizatórias a serem pagas ao trabalhador.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"101";"vrBaseIndenFGTS";"infoVlr";"E";"N";"0-1";"1-14";"2";"Valor da base de cálculo para recolhimento da indenização compensatória (multa rescisória) do FGTS, para geração de guia.
+Preencher este campo somente quando o valor da indenização compensatória (multa rescisória) do FGTS for objeto de transação.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"102";"pagDiretoResc";"infoVlr";"E";"C";"0-1";"1";"-";"A indenização compensatória (multa rescisória) do FGTS transacionada foi paga diretamente ao trabalhador mediante decisão/autorização judicial?
+Valores válidos:
+S - Sim
+N - Não
+Validação: Informação obrigatória e exclusiva se vrBaseIndenFGTS estiver preenchido."
+"103";"idePeriodo";"infoVlr";"G";"-";"0-360";"-";"-";"Identificação do período ao qual se referem as bases de cálculo."
+"104";"perRef";"idePeriodo";"E";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações.
+Validação: Deve ser um período compreendido entre compIni e compFim, informado no formato AAAA-MM."
+"105";"baseCalculo";"idePeriodo";"G";"-";"1";"-";"-";"Bases de cálculo de contribuição previdenciária e FGTS decorrentes de processo trabalhista e ainda não declaradas."
+"106";"vrBcCpMensal";"baseCalculo";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração mensal do trabalhador.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"107";"vrBcCp13";"baseCalculo";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração do trabalhador referente ao 13º salário.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"108";"vrBcFgts";"baseCalculo";"E";"N";"1";"1-14";"2";"Valor da base de cálculo do FGTS sobre a remuneração do trabalhador (sem 13° salário).
+Validação: Deve ser maior ou igual a 0 (zero)."
+"109";"vrBcFgts13";"baseCalculo";"E";"N";"1";"1-14";"2";"Valor da base de cálculo do FGTS sobre a remuneração do trabalhador sobre o 13º salário.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"110";"infoAgNocivo";"baseCalculo";"G";"-";"0-1";"-";"-";"Grupo referente ao detalhamento do grau de exposição do trabalhador aos agentes nocivos que ensejam a cobrança da contribuição adicional para financiamento dos benefícios de aposentadoria especial."
+"111";"grauExp";"infoAgNocivo";"E";"N";"1";"1";"-";"Preencher com o código que representa o grau de exposição a agentes nocivos, conforme Tabela 02.
+Valores válidos:
+1 - Não ensejador de aposentadoria especial
+2 - Ensejador de aposentadoria especial - FAE15_12% (15 anos de contribuição e alíquota de 12%)
+3 - Ensejador de aposentadoria especial - FAE20_09% (20 anos de contribuição e alíquota de 9%)
+4 - Ensejador de aposentadoria especial - FAE25_06% (25 anos de contribuição e alíquota de 6%)"
+"112";"infoFGTS";"idePeriodo";"G";"-";"0-1";"-";"-";"Informações referentes a bases de cálculo de FGTS para geração de guia para competências anteriores ao início do FGTS Digital.
+Informar apenas bases que ainda não foram recolhidas via SEFIP/Conectividade Social."
+"113";"vrBcFgtsGuia";"infoFGTS";"E";"N";"1";"1-14";"2";"Valor da base de cálculo do FGTS sobre a remuneração do trabalhador (sem 13° salário).
+Validação: Deve ser maior ou igual a 0 (zero)."
+"114";"vrBcFgts13Guia";"infoFGTS";"E";"N";"1";"1-14";"2";"Valor da base de cálculo do FGTS sobre a remuneração do trabalhador sobre o 13º salário.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"115";"pagDireto";"infoFGTS";"E";"C";"1";"1";"-";"O FGTS transacionado referente a perRef foi pago diretamente ao trabalhador mediante decisão/autorização judicial?
+Valores válidos:
+S - Sim
+N - Não"
+"116";"baseMudCateg";"idePeriodo";"G";"-";"0-1";"-";"-";"Bases de cálculo de contribuição previdenciária já declaradas anteriormente em GFIP ou no evento S-1200 (exclusivamente para remuneração de trabalhador sem cadastro no S-2300), no caso de reconhecimento de mudança de código de categoria."
+"117";"codCateg";"baseMudCateg";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador declarado no período de referência.
+Validação: Deve ser um código válido e existente na Tabela 01."
+"118";"vrBcCPrev";"baseMudCateg";"E";"N";"1";"1-14";"2";"Valor da remuneração do trabalhador a ser considerada para fins previdenciários declarada em GFIP ou em S-1200 de trabalhador sem cadastro no S-2300.
+Validação: Deve ser maior que 0 (zero)."

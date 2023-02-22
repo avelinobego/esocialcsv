@@ -1,0 +1,66 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtContratAvNP";"eSocial";"G";"-";"1";"-";"-";"Evento Contratação de Trabalhadores Avulsos Não Portuários.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVE_FOPAG_IND_RETIFICACAO
+REGRA_EVE_FOPAG_PERMITE_EXCLUSAO
+REGRA_EVE_FOPAG_SIMPLIFICADO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_MESMO_PROCEMI
+REGRA_VALIDA_EMPREGADOR"
+"3";"Id";"evtContratAvNP";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtContratAvNP";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"perApur";"ideEvento";"E";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações.
+Validação: Deve ser um mês/ano válido, igual ou posterior ao início da obrigatoriedade dos eventos periódicos para o empregador."
+"8";"indGuia";"ideEvento";"E";"N";"0-1";"1";"-";"Indicativo do tipo de guia.
+Valores válidos:
+1 - Documento de Arrecadação do eSocial - DAE"
+"9";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"10";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"11";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"12";"ideEmpregador";"evtContratAvNP";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"13";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"14";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"15";"remunAvNP";"evtContratAvNP";"G";"-";"1-999";"-";"-";"Grupo que apresenta a remuneração dos trabalhadores avulsos não portuários, de forma totalizada por estabelecimento contratante."
+"16";"tpInsc";"remunAvNP";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+3 - CAEPF
+4 - CNO"
+"17";"nrInsc";"remunAvNP";"E";"C";"1";"12 ou 14";"-";"Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo remunAvNP/tpInsc.
+Validação: Deve ser um número de inscrição válido e existente na Tabela de Estabelecimentos (S-1005)."
+"18";"codLotacao";"remunAvNP";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária.
+Validação: Deve ser um código válido e existente na Tabela de Lotações Tributárias (S-1020)."
+"19";"vrBcCp00";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração dos trabalhadores avulsos não portuários."
+"20";"vrBcCp15";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 15 anos de contribuição."
+"21";"vrBcCp20";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 20 anos de contribuição."
+"22";"vrBcCp25";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 25 anos de contribuição."
+"23";"vrBcCp13";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre o 13° salário dos trabalhadores avulsos não portuários contratados."
+"24";"vrBcFgts";"remunAvNP";"E";"N";"1";"1-14";"2";"Valor da base de cálculo do FGTS sobre a remuneração dos trabalhadores avulsos não portuários contratados."
+"25";"vrDescCP";"remunAvNP";"E";"N";"1";"1-14";"2";"Preencher com o valor total da contribuição descontada dos trabalhadores avulsos não portuários."

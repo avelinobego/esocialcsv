@@ -1,0 +1,122 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtCdBenIn";"eSocial";"G";"-";"1";"-";"-";"Evento Cadastro de Benefício - Entes Públicos - Início.
+Regras de validação:
+REGRA_BENEFICIO_VALIDA_NUMERO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXTEMP_REATIVACAO
+REGRA_MUDANCA_CPF
+REGRA_RETIFICA_MESMO_BENEFICIO
+REGRA_VALIDA_CNPJ"
+"3";"Id";"evtCdBenIn";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtCdBenIn";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtCdBenIn";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"beneficiario";"evtCdBenIn";"G";"-";"1";"-";"-";"Informações do beneficiário."
+"14";"cpfBenef";"beneficiario";"E";"C";"1";"11";"-";"Informar o CPF do beneficiário.
+Validação: Deve observar o que segue:
+a) Se cadIni = [S], deve estar cadastrado no evento S-2400 com data de início igual à data de obrigatoriedade dos eventos não periódicos para o ente público no eSocial;
+b) Se indSitBenef = [1], deve estar cadastrado no evento S-2400 com data de início igual ou anterior a dtIniBeneficio (ou a dtPublic, caso este campo tenha sido informado);
+c) Se indSitBenef = [2, 3], deve estar cadastrado no evento S-2400 com data de início igual ou anterior a dtTransf ou dtAltCPF, respectivamente."
+"15";"matricula";"beneficiario";"E";"C";"0-1";"1-30";"-";"Matrícula do servidor/militar constante no Sistema de Administração de Recursos Humanos do órgão cujo vínculo deu ensejo ao benefício. No caso de pensão por morte, informar a matrícula do instituidor da pensão.
+Validação: Informação obrigatória se cadIni = [N] e tpBeneficio pertencer ao grupo [01, 02, 03, 04, 05, 06, 11] da Tabela 25.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"16";"cnpjOrigem";"beneficiario";"E";"C";"0-1";"14";"-";"Preencher com o CNPJ do órgão público responsável pela matrícula do servidor/militar. Informação obrigatória se cadIni = [N], desde que haja informação de matrícula.
+Validação: Preenchimento obrigatório se cadIni = [N] e houver informação de matricula, exceto se existir vínculo (evento S-2200) no órgão declarante para o beneficiário (indicado em cpfBenef e matricula) ou, se tpBeneficio pertencer ao grupo [06] da Tabela 25, para o instituidor da pensão por morte (indicado em cpfInst e matricula).
+Se informado, deve ser um CNPJ válido, com 14 (catorze) algarismos."
+"17";"infoBenInicio";"evtCdBenIn";"G";"-";"1";"-";"-";"Informações do benefício - Início."
+"18";"cadIni";"infoBenInicio";"E";"C";"1";"1";"-";"Indicar se a data de início do benefício é anterior à obrigatoriedade dos eventos não periódicos para o ente público no eSocial.
+Valores válidos:
+S - Sim
+N - Não"
+"19";"indSitBenef";"infoBenInicio";"E";"N";"0-1";"1";"-";"Indicar a situação do benefício no órgão declarante.
+Valores válidos:
+1 - Benefício concedido pelo próprio órgão declarante
+2 - Benefício transferido de outro órgão
+3 - Mudança de CPF do beneficiário
+Validação: Preenchimento obrigatório e exclusivo se cadIni = [N]."
+"20";"nrBeneficio";"infoBenInicio";"E";"C";"1";"1-20";"-";"Número do benefício.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"21";"dtIniBeneficio";"infoBenInicio";"E";"D";"1";"-";"-";"Data de início do benefício.
+Validação: Deve observar o que segue:
+a) Se cadIni = [S], deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial;
+b) Se cadIni = [N], deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial e igual ou anterior à data atual."
+"22";"dtPublic";"infoBenInicio";"E";"D";"0-1";"-";"-";"Informar a data de publicação da concessão do benefício, somente quando o ato concessório tiver vigência retroativa.
+Validação: Deve ser posterior a dtIniBeneficio."
+"23";"dadosBeneficio";"infoBenInicio";"G";"-";"1";"-";"-";"Dados relativos ao benefício."
+"24";"tpBeneficio";"dadosBeneficio";"E";"C";"1";"4";"-";"Tipo de benefício.
+Validação: Deve ser um código válido e existente na Tabela 25. Se cadIni = [N], não é permitido utilizar código do grupo [08] dessa tabela."
+"25";"tpPlanRP";"dadosBeneficio";"E";"N";"1";"1";"-";"Tipo de plano de segregação da massa.
+Valores válidos:
+0 - Sem segregação da massa
+1 - Fundo em capitalização
+2 - Fundo em repartição
+3 - Mantido pelo Tesouro"
+"26";"dsc";"dadosBeneficio";"E";"C";"0-1";"1-255";"-";"Descrição do instrumento ou situação que originou o pagamento do benefício.
+Validação: Preenchimento obrigatório se tpBeneficio = [0909, 1001, 1009]."
+"27";"indDecJud";"dadosBeneficio";"E";"C";"0-1";"1";"-";"Informar se o benefício foi concedido por determinação judicial.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Preenchimento obrigatório se cadIni = [N]."
+"28";"infoPenMorte";"dadosBeneficio";"G";"-";"0-1";"-";"-";"Informações relativas à pensão por morte."
+"29";"tpPenMorte";"infoPenMorte";"E";"N";"1";"1";"-";"Tipo de pensão por morte.
+Valores válidos:
+1 - Vitalícia
+2 - Temporária"
+"30";"instPenMorte";"infoPenMorte";"G";"-";"0-1";"-";"-";"Informações do instituidor da pensão por morte."
+"31";"cpfInst";"instPenMorte";"E";"C";"1";"11";"-";"Preencher com o CPF do instituidor da pensão por morte.
+Validação: Deve ser um CPF válido e diferente do CPF do beneficiário."
+"32";"dtInst";"instPenMorte";"E";"D";"1";"-";"-";"Data de óbito do instituidor da pensão por morte."
+"33";"sucessaoBenef";"infoBenInicio";"G";"-";"0-1";"-";"-";"Grupo de informações de transferência de benefício."
+"34";"cnpjOrgaoAnt";"sucessaoBenef";"E";"C";"1";"14";"-";"Informar o CNPJ do órgão público anterior.
+Validação: Deve ser um CNPJ válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000. Além disso, deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do órgão público declarante (exceto se ideEmpregador/nrInsc tiver 14 (catorze) algarismos) e dos estabelecimentos informados através do evento S-1005."
+"35";"nrBeneficioAnt";"sucessaoBenef";"E";"C";"1";"1-20";"-";"Número do benefício no ente público anterior."
+"36";"dtTransf";"sucessaoBenef";"E";"D";"1";"-";"-";"Preencher com a data da transferência do benefício para o órgão público declarante.
+Validação: Devem ser observadas as seguintes regras:
+a) Deve ser posterior à data de início do benefício;
+b) Deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial e igual ou anterior à data atual."
+"37";"observacao";"sucessaoBenef";"E";"C";"0-1";"1-255";"-";"Observação."
+"38";"mudancaCPF";"infoBenInicio";"G";"-";"0-1";"-";"-";"Informações de mudança de CPF do beneficiário."
+"39";"cpfAnt";"mudancaCPF";"E";"C";"1";"11";"-";"Preencher com o número do CPF antigo do beneficiário."
+"40";"nrBeneficioAnt";"mudancaCPF";"E";"C";"1";"1-20";"-";"Preencher com o número do benefício anterior."
+"41";"dtAltCPF";"mudancaCPF";"E";"D";"1";"-";"-";"Data de alteração do CPF."
+"42";"observacao";"mudancaCPF";"E";"C";"0-1";"1-255";"-";"Observação."
+"43";"infoBenTermino";"infoBenInicio";"G";"-";"0-1";"-";"-";"Informações da cessação do benefício.
+Grupo preenchido exclusivamente caso seja necessário enviar evento de reativação de benefício cessado antes do início dos eventos não periódicos para o ente público no eSocial ou para informação de diferenças de proventos e pensões devidos sob a vigência dos eventos periódicos para o ente público no eSocial."
+"44";"dtTermBeneficio";"infoBenTermino";"E";"D";"1";"-";"-";"Data de cessação do benefício.
+Validação: Devem ser observadas as seguintes regras:
+a) Deve ser igual ou posterior à data de início do benefício;
+b) Se cadIni = [S], deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial;
+c) Se indSitBenef = [2], deve ser anterior a dtTransf."
+"45";"mtvTermino";"infoBenTermino";"E";"C";"1";"2";"-";"Motivo da cessação do benefício.
+Validação: Deve ser um código válido e existente na Tabela 26, com exceção dos códigos [09, 10]."

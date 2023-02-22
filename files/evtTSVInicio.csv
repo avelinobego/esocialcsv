@@ -1,0 +1,384 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTSVInicio";"eSocial";"G";"-";"1";"-";"-";"Evento Trabalhador Sem Vínculo de Emprego/Estatutário - Início.
+Regras de validação:
+REGRA_COMPATIBILIDADE_CATEGORIA_CLASSTRIB
+REGRA_COMPATIB_CATEG_EVENTO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVETRAB_VALIDA_OPCAO_FGTS
+REGRA_EXCLUSAO_ADMISSAO_TSVE_INICIO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_GERAL_VALIDA_DADOS_TABCONTRIB
+REGRA_MESMO_PROCEMI
+REGRA_MUDANCA_CPF
+REGRA_REGISTRO_PRELIMINAR
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_TSV_VERIFICA_DUPLICIDADE
+REGRA_VALIDA_EMPREGADOR
+REGRA_VALIDA_MATRICULA
+REGRA_VALIDA_TRABALHADOR_BASE_CPF"
+"3";"Id";"evtTSVInicio";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtTSVInicio";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtTSVInicio";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"trabalhador";"evtTSVInicio";"G";"-";"1";"-";"-";"Grupo de informações do trabalhador."
+"14";"cpfTrab";"trabalhador";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"nmTrab";"trabalhador";"E";"C";"1";"2-70";"-";"Informar o nome do trabalhador."
+"16";"sexo";"trabalhador";"E";"C";"1";"1";"-";"Sexo do trabalhador.
+Valores válidos:
+M - Masculino
+F - Feminino"
+"17";"racaCor";"trabalhador";"E";"N";"1";"1";"-";"Raça e cor do trabalhador.
+Valores válidos:
+1 - Branca
+2 - Preta
+3 - Parda
+4 - Amarela
+5 - Indígena
+6 - Não informado"
+"18";"estCiv";"trabalhador";"E";"N";"0-1";"1";"-";"Estado civil do trabalhador.
+Valores válidos:
+1 - Solteiro
+2 - Casado
+3 - Divorciado
+4 - Separado
+5 - Viúvo"
+"19";"grauInstr";"trabalhador";"E";"C";"1";"2";"-";"Grau de instrução do trabalhador.
+Valores válidos:
+01 - Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou
+02 - Até o 5º ano incompleto do ensino fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular
+03 - 5º ano completo do ensino fundamental
+04 - Do 6º ao 9º ano do ensino fundamental incompleto (antiga 5ª a 8ª série)
+05 - Ensino fundamental completo
+06 - Ensino médio incompleto
+07 - Ensino médio completo
+08 - Educação superior incompleta
+09 - Educação superior completa
+10 - Pós-graduação completa
+11 - Mestrado completo
+12 - Doutorado completo"
+"20";"nmSoc";"trabalhador";"E";"C";"0-1";"2-70";"-";"Nome social para travesti ou transexual."
+"21";"nascimento";"trabalhador";"G";"-";"1";"-";"-";"Grupo de informações do nascimento do trabalhador."
+"22";"dtNascto";"nascimento";"E";"D";"1";"-";"-";"Preencher com a data de nascimento."
+"23";"paisNascto";"nascimento";"E";"C";"1";"3";"-";"Preencher com o código do país de nascimento do trabalhador.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"24";"paisNac";"nascimento";"E";"C";"1";"3";"-";"Preencher com o código do país de nacionalidade do trabalhador.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"25";"endereco";"trabalhador";"CG";"-";"0-1";"-";"-";"Grupo de informações do endereço do trabalhador."
+"26";"brasil";"endereco";"G";"-";"0-1";"-";"-";"Endereço no Brasil."
+"27";"tpLograd";"brasil";"E";"C";"0-1";"1-4";"-";"Tipo de logradouro.
+Validação: Se informado, deve ser um código válido e existente na Tabela 20."
+"28";"dscLograd";"brasil";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"29";"nrLograd";"brasil";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"30";"complemento";"brasil";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"31";"bairro";"brasil";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"32";"cep";"brasil";"E";"C";"1";"8";"-";"Código de Endereçamento Postal - CEP.
+Validação: Deve ser preenchido apenas com números, com 8 (oito) posições."
+"33";"codMunic";"brasil";"E";"N";"1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Deve ser um código válido e existente na tabela do IBGE."
+"34";"uf";"brasil";"E";"C";"1";"2";"-";"Preencher com a sigla da Unidade da Federação - UF.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO"
+"35";"exterior";"endereco";"G";"-";"0-1";"-";"-";"Endereço no exterior."
+"36";"paisResid";"exterior";"E";"C";"1";"3";"-";"Preencher com o código do país.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"37";"dscLograd";"exterior";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"38";"nrLograd";"exterior";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"39";"complemento";"exterior";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"40";"bairro";"exterior";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"41";"nmCid";"exterior";"E";"C";"1";"2-50";"-";"Nome da cidade."
+"42";"codPostal";"exterior";"E";"C";"0-1";"4-12";"-";"Código de Endereçamento Postal."
+"43";"trabImig";"trabalhador";"G";"-";"0-1";"-";"-";"Informações do trabalhador imigrante."
+"44";"tmpResid";"trabImig";"E";"N";"0-1";"1";"-";"Tempo de residência do trabalhador imigrante.
+Valores válidos:
+1 - Prazo indeterminado
+2 - Prazo determinado
+Validação: Preenchimento obrigatório se dtInicio >= [2021-07-19]."
+"45";"condIng";"trabImig";"E";"N";"1";"1";"-";"Condição de ingresso do trabalhador imigrante.
+Valores válidos:
+1 - Refugiado
+2 - Solicitante de refúgio
+3 - Permanência no Brasil em razão de reunião familiar
+4 - Beneficiado pelo acordo entre países do Mercosul
+5 - Dependente de agente diplomático e/ou consular de países que mantêm acordo de reciprocidade para o exercício de atividade remunerada no Brasil
+6 - Beneficiado pelo Tratado de Amizade, Cooperação e Consulta entre a República Federativa do Brasil e a República Portuguesa
+7 - Outra condição
+Validação: Se tmpResid = [1], não pode ser informado [2, 5]. Se tmpResid = [2], não pode ser informado [1]."
+"46";"infoDeficiencia";"trabalhador";"G";"-";"0-1";"-";"-";"Pessoa com deficiência."
+"47";"defFisica";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência física.
+Valores válidos:
+S - Sim
+N - Não"
+"48";"defVisual";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência visual.
+Valores válidos:
+S - Sim
+N - Não"
+"49";"defAuditiva";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência auditiva.
+Valores válidos:
+S - Sim
+N - Não"
+"50";"defMental";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência mental.
+Valores válidos:
+S - Sim
+N - Não"
+"51";"defIntelectual";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência intelectual.
+Valores válidos:
+S - Sim
+N - Não"
+"52";"reabReadap";"infoDeficiencia";"E";"C";"1";"1";"-";"Informar se o trabalhador é reabilitado (empregado) ou readaptado (servidor público/militar).
+Reabilitado: estando o empregado incapacitado parcial ou totalmente para o trabalho, cumpriu programa de reabilitação profissional no INSS, recebendo certificado e sendo proporcionados os meios indicados para participar do mercado de trabalho.
+Readaptado: o servidor está investido em cargo de atribuições e responsabilidades compatíveis com a limitação que tenha sofrido em sua capacidade física ou mental verificada em inspeção médica.
+Valores válidos:
+S - Sim
+N - Não"
+"53";"observacao";"infoDeficiencia";"E";"C";"0-1";"1-255";"-";"Observação."
+"54";"dependente";"trabalhador";"G";"-";"0-99";"-";"-";"Informações dos dependentes."
+"55";"tpDep";"dependente";"E";"C";"1";"2";"-";"Tipo de dependente.
+Validação: Deve ser um código válido e existente na Tabela 07."
+"56";"nmDep";"dependente";"E";"C";"1";"2-70";"-";"Nome do dependente."
+"57";"dtNascto";"dependente";"E";"D";"1";"-";"-";"Preencher com a data de nascimento.
+Validação: Deve ser maior ou igual que 01/01/1890 e menor ou igual à data atual."
+"58";"cpfDep";"dependente";"E";"C";"0-1";"11";"-";"Número de inscrição no CPF.
+Validação: Deve ser um número de CPF válido, observando o que segue:
+a) O preenchimento é obrigatório se depIRRF = [S];
+b) Em arquivo de empregador Pessoa Física, deve ser diferente do CPF informado em ideEmpregador;
+c) Não pode haver mais de um dependente com o mesmo número de CPF."
+"59";"depIRRF";"dependente";"E";"C";"1";"1";"-";"Informar se é dependente do trabalhador para fins de dedução de seu rendimento tributável pelo Imposto de Renda.
+Valores válidos:
+S - Sim
+N - Não"
+"60";"depSF";"dependente";"E";"C";"1";"1";"-";"Informar se é dependente para fins de recebimento do benefício de salário-família.
+Valores válidos:
+S - Sim
+N - Não"
+"61";"incTrab";"dependente";"E";"C";"1";"1";"-";"Informar se o dependente tem incapacidade física ou mental para o trabalho.
+Valores válidos:
+S - Sim
+N - Não"
+"62";"contato";"trabalhador";"G";"-";"0-1";"-";"-";"Informações de contato."
+"63";"fonePrinc";"contato";"E";"C";"0-1";"8-13";"-";"Número de telefone do trabalhador, com DDD.
+Validação: Se preenchido, deve conter apenas números, com o mínimo de dez dígitos."
+"64";"emailPrinc";"contato";"E";"C";"0-1";"6-60";"-";"Endereço eletrônico.
+Validação: O e-mail deve ser possuir o caractere "@" e este não pode estar no início e no fim do e-mail. Deve possuir no mínimo um caractere "." depois do @ e não pode estar no início ou no final do e-mail."
+"65";"infoTSVInicio";"evtTSVInicio";"G";"-";"1";"-";"-";"Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE - Início."
+"66";"cadIni";"infoTSVInicio";"E";"C";"1";"1";"-";"Indicar se o evento se refere a cadastramento inicial (o ingresso do trabalhador no empregador declarante é anterior à data de início da obrigatoriedade de envio de seus eventos não periódicos) ou se refere a início de TSVE (o ingresso do trabalhador no empregador declarante é igual ou posterior à data de início da obrigatoriedade de envio de seus eventos não periódicos).
+Valores válidos:
+S - Sim (Cadastramento Inicial)
+N - Não (Início de TSVE)"
+"67";"matricula";"infoTSVInicio";"E";"C";"0-1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa.
+Validação: Preenchimento obrigatório se indRetif = [1]. No caso de retificação (indRetif = [2]), a matrícula deve ser preenchida caso tenha sido informada no evento original.
+O valor informado não pode conter a expressão 'eSocial' nas 7 (sete) primeiras posições.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"68";"codCateg";"infoTSVInicio";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Validação: Deve ser um código válido e existente na Tabela 01."
+"69";"dtInicio";"infoTSVInicio";"E";"D";"1";"-";"-";"Data de início, que pode ser:
+a) Para o cooperado, a data de ingresso na cooperativa;
+b) Para o diretor não empregado, a data de posse no cargo;
+c) Para o dirigente sindical, a data de início do mandato no sindicato;
+d) Para o estagiário, a data de início do estágio;
+e) Para o trabalhador avulso, a data de ingresso no Órgão Gestor de Mão de Obra - OGMO ou no sindicato;
+f) Para o servidor público exercente de cargo eletivo, a data de início do mandato;
+g) Para os demais trabalhadores, a data de início das atividades.
+Validação: Devem ser observadas as seguintes regras:
+a) Deve ser posterior à data de nascimento do trabalhador e não pode ser posterior a 30 (trinta) dias da data atual;
+b) Se cadIni = [S], deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador no eSocial;
+c) Se cadIni = [N], deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador no eSocial."
+"70";"nrProcTrab";"infoTSVInicio";"E";"C";"0-1";"20";"-";"Número que identifica o processo trabalhista, quando o início de TSVE se der por decisão judicial.
+Validação: Se preenchido, deve ser um processo judicial válido, com 20 (vinte) algarismos."
+"71";"natAtividade";"infoTSVInicio";"E";"N";"0-1";"1";"-";"Natureza da atividade.
+Valores válidos:
+1 - Trabalho urbano
+2 - Trabalho rural
+Validação: Preenchimento obrigatório se codCateg = [201, 202, 401, 731, 734, 738]. Não deve ser preenchido se codCateg = [721, 722, 771, 901]."
+"72";"infoComplementares";"infoTSVInicio";"G";"-";"0-1";"-";"-";"Grupo onde são fornecidas informações complementares, preenchidas conforme a categoria do TSVE."
+"73";"cargoFuncao";"infoComplementares";"G";"-";"0-1";"-";"-";"Grupo que apresenta o cargo e/ou função ocupada pelo TSVE."
+"74";"nmCargo";"cargoFuncao";"E";"C";"0-1";"1-100";"-";"Informar o nome do cargo.
+Validação: Preenchimento obrigatório se codCateg for diferente de [410]."
+"75";"CBOCargo";"cargoFuncao";"E";"C";"0-1";"6";"-";"Informar a Classificação Brasileira de Ocupações - CBO relativa ao cargo.
+Validação: Informação obrigatória e exclusiva se nmCargo for preenchido. Se informado, deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições."
+"76";"nmFuncao";"cargoFuncao";"E";"C";"0-1";"1-100";"-";"Informar o nome da função de confiança.
+Validação: Preenchimento obrigatório se codCateg = [410] e não houver informação de nmCargo."
+"77";"CBOFuncao";"cargoFuncao";"E";"C";"0-1";"6";"-";"Informar a CBO relativa à função de confiança/cargo em comissão.
+Validação: Informação obrigatória e exclusiva se nmFuncao for preenchido. Se informado, deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições."
+"78";"remuneracao";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações da remuneração e periodicidade de pagamento."
+"79";"vrSalFx";"remuneracao";"E";"N";"1";"1-14";"2";"Salário base do trabalhador, correspondente à parte fixa da remuneração.
+Validação: Se undSalFixo for igual a [7], preencher com 0 (zero)."
+"80";"undSalFixo";"remuneracao";"E";"N";"1";"1";"-";"Unidade de pagamento da parte fixa da remuneração.
+Valores válidos:
+1 - Por hora
+2 - Por dia
+3 - Por semana
+4 - Por quinzena
+5 - Por mês
+6 - Por tarefa
+7 - Não aplicável - Salário exclusivamente variável"
+"81";"dscSalVar";"remuneracao";"E";"C";"0-1";"1-999";"-";"Descrição do salário por tarefa ou variável e como este é calculado. Ex.: Comissões pagas no percentual de 10% sobre as vendas.
+Validação: Preenchimento obrigatório se undSalFixo for igual a [6, 7]."
+"82";"FGTS";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações do Fundo de Garantia do Tempo de Serviço - FGTS."
+"83";"dtOpcFGTS";"FGTS";"E";"D";"1";"-";"-";"Informar a data de opção do trabalhador pelo FGTS."
+"84";"infoDirigenteSindical";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações relativas ao dirigente sindical."
+"85";"categOrig";"infoDirigenteSindical";"E";"N";"1";"3";"-";"Preencher com o código correspondente à categoria de origem do dirigente sindical.
+Validação: Deve ser um código válido e existente na Tabela 01, diferente de [401]."
+"86";"tpInsc";"infoDirigenteSindical";"E";"N";"0-1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+Validação: O preenchimento é obrigatório e exclusivo se infoDirigenteSindical/categOrig corresponder a "Empregado", "Agente Público", "Avulso" ou for igual a [721]."
+"87";"nrInsc";"infoDirigenteSindical";"E";"C";"0-1";"11 ou 14";"-";"Informar o número de inscrição do empregador de origem do dirigente sindical, de acordo com o tipo de inscrição indicado no campo infoDirigenteSindical/tpInsc.
+Validação: Preenchimento obrigatório e exclusivo se infoDirigenteSindical/tpInsc for informado. Se preenchido, deve ser um número de inscrição válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.
+Se infoDirigenteSindical/tpInsc = [1], deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do empregador e dos estabelecimentos informados através do evento S-1005.
+Se infoDirigenteSindical/tpInsc = [2], deve possuir 11 (onze) algarismos."
+"88";"dtAdmOrig";"infoDirigenteSindical";"E";"D";"0-1";"-";"-";"Preencher com a data de admissão (ou de início) do dirigente sindical na empresa de origem.
+Validação: O preenchimento é obrigatório se infoDirigenteSindical/categOrig corresponder a "Empregado", "Agente Público", "Avulso" ou for igual a [721]."
+"89";"matricOrig";"infoDirigenteSindical";"E";"C";"0-1";"1-30";"-";"Preencher com a matrícula do trabalhador na empresa de origem.
+Validação: Preenchimento obrigatório se infoDirigenteSindical/categOrig corresponder a "Empregado" ou "Agente Público"."
+"90";"tpRegTrab";"infoDirigenteSindical";"E";"N";"0-1";"1";"-";"Tipo de regime trabalhista.
+Valores válidos:
+1 - CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas
+2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)
+Validação: O preenchimento é obrigatório e exclusivo se infoDirigenteSindical/categOrig corresponder a "Empregado" ou "Agente Público"."
+"91";"tpRegPrev";"infoDirigenteSindical";"E";"N";"1";"1";"-";"Tipo de regime previdenciário.
+Valores válidos:
+1 - Regime Geral de Previdência Social - RGPS
+2 - Regime Próprio de Previdência Social - RPPS
+3 - Regime de Previdência Social no exterior
+Validação: Se infoDirigenteSindical/categOrig for relativa a "Empregado", não pode ser preenchido com [2]."
+"92";"infoTrabCedido";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações relativas ao trabalhador cedido/em exercício em outro órgão ou servidor público indicado para conselho, preenchidas exclusivamente pelo cessionário/órgão de destino."
+"93";"categOrig";"infoTrabCedido";"E";"N";"1";"3";"-";"Preencher com o código correspondente à categoria de origem do trabalhador cedido ou do servidor público indicado para conselho.
+Validação: Deve ser um código válido e existente na Tabela 01, diferente de [305, 410]."
+"94";"cnpjCednt";"infoTrabCedido";"E";"C";"1";"14";"-";"Informar o CNPJ do empregador/órgão público cedente/de origem.
+Validação: Deve ser um CNPJ diferente do CNPJ do empregador/órgão público e diferente dos estabelecimentos informados através do evento S-1005.
+Regra de validação:
+REGRA_VALIDA_CNPJ"
+"95";"matricCed";"infoTrabCedido";"E";"C";"1";"1-30";"-";"Preencher com a matrícula do trabalhador no empregador/órgão público cedente/de origem."
+"96";"dtAdmCed";"infoTrabCedido";"E";"D";"1";"-";"-";"Preencher com a data de admissão (ou de exercício) do trabalhador no empregador/órgão público cedente/de origem.
+Validação: Deve ser uma data igual ou anterior a dtInicio e igual ou posterior a 01/01/1890."
+"97";"tpRegTrab";"infoTrabCedido";"E";"N";"1";"1";"-";"Tipo de regime trabalhista.
+Valores válidos:
+1 - CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas
+2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)"
+"98";"tpRegPrev";"infoTrabCedido";"E";"N";"1";"1";"-";"Tipo de regime previdenciário (ou Sistema de Proteção Social dos Militares das Forças Armadas).
+Valores válidos:
+1 - Regime Geral de Previdência Social - RGPS
+2 - Regime Próprio de Previdência Social - RPPS
+3 - Regime de Previdência Social no exterior
+4 - Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA
+Validação: Se infoTrabCedido/categOrig for relativa a "Empregado", não pode ser preenchido com [2, 4]. Se codCateg = [305], deve ser preenchido com [2]."
+"99";"infoMandElet";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações relativas a servidor público exercente de mandato eletivo."
+"100";"categOrig";"infoMandElet";"E";"N";"1";"3";"-";"Preencher com o código correspondente à categoria de origem do servidor.
+Validação: Deve ser um código válido e existente na Tabela 01, diferente de [304]."
+"101";"cnpjOrig";"infoMandElet";"E";"C";"1";"14";"-";"Informar o CNPJ do órgão público de origem.
+Regra de validação:
+REGRA_VALIDA_CNPJ"
+"102";"matricOrig";"infoMandElet";"E";"C";"1";"1-30";"-";"Preencher com a matrícula do servidor no órgão público de origem."
+"103";"dtExercOrig";"infoMandElet";"E";"D";"1";"-";"-";"Preencher com a data de exercício do servidor no órgão público de origem.
+Validação: Deve ser uma data anterior a dtInicio e igual ou posterior a 01/01/1890."
+"104";"indRemunCargo";"infoMandElet";"E";"C";"0-1";"1";"-";"Indicar se o servidor optou pela remuneração do cargo efetivo.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Informação obrigatória e exclusiva se CBOCargo = [111120, 111250, 111255])."
+"105";"tpRegTrab";"infoMandElet";"E";"N";"1";"1";"-";"Tipo de regime trabalhista.
+Valores válidos:
+1 - CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas
+2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)"
+"106";"tpRegPrev";"infoMandElet";"E";"N";"1";"1";"-";"Tipo de regime previdenciário.
+Valores válidos:
+1 - Regime Geral de Previdência Social - RGPS
+2 - Regime Próprio de Previdência Social - RPPS
+3 - Regime de Previdência Social no exterior"
+"107";"infoEstagiario";"infoComplementares";"G";"-";"0-1";"-";"-";"Informações relativas ao estagiário ou ao beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário."
+"108";"natEstagio";"infoEstagiario";"E";"C";"1";"1";"-";"Natureza do estágio ou da prestação de serviço civil voluntário.
+Valores válidos:
+O - Obrigatório
+N - Não obrigatório
+Validação: Se o código de categoria for igual a [906], deve ser preenchido com [N]."
+"109";"nivEstagio";"infoEstagiario";"E";"N";"0-1";"1";"-";"Informar o nível do estágio ou da prestação de serviço civil voluntário.
+Valores válidos:
+1 - Fundamental
+2 - Médio
+3 - Formação profissional
+4 - Superior
+8 - Especial
+9 - Mãe social (Lei 7.644/1987)
+Validação: Preenchimento obrigatório se o código de categoria for igual a [901]. Se o código de categoria for igual a [906], não pode ser informado [9]."
+"110";"areaAtuacao";"infoEstagiario";"E";"C";"0-1";"1-100";"-";"Área de atuação do estagiário ou, no caso de prestação de serviço civil voluntário, jornada semanal do desempenho de atividades em formato decimal."
+"111";"nrApol";"infoEstagiario";"E";"C";"0-1";"1-30";"-";"Número da apólice de seguro."
+"112";"dtPrevTerm";"infoEstagiario";"E";"D";"1";"-";"-";"Data prevista para o término do estágio ou da prestação de serviço civil voluntário.
+Validação: Deve ser uma data posterior à data de início do estágio ou da prestação de serviço civil voluntário."
+"113";"instEnsino";"infoEstagiario";"G";"-";"1";"-";"-";"Instituição de ensino ou entidade de formação/qualificação."
+"114";"cnpjInstEnsino";"instEnsino";"E";"C";"0-1";"14";"-";"Preencher com o CNPJ da instituição de ensino, no caso de estágio, ou da entidade de formação/qualificação, no caso de prestação de serviço civil voluntário. Deve ser preenchido apenas se a instituição/entidade for brasileira.
+Validação: Se informado, deve ser um CNPJ válido, com 14 (catorze) algarismos."
+"115";"nmRazao";"instEnsino";"E";"C";"0-1";"1-100";"-";"Informar a razão social.
+Validação: Preenchimento obrigatório e exclusivo se o campo cnpjInstEnsino não estiver preenchido."
+"116";"dscLograd";"instEnsino";"E";"C";"0-1";"1-100";"-";"Descrição do logradouro.
+Validação: Preenchimento obrigatório e exclusivo se o campo cnpjInstEnsino não estiver preenchido."
+"117";"nrLograd";"instEnsino";"E";"C";"0-1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N".
+Validação: Preenchimento obrigatório e exclusivo se o campo cnpjInstEnsino não estiver preenchido."
+"118";"bairro";"instEnsino";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito.
+Validação: Preenchimento obrigatório e exclusivo se o campo cnpjInstEnsino não estiver preenchido."
+"119";"cep";"instEnsino";"E";"C";"0-1";"8";"-";"Código de Endereçamento Postal - CEP.
+Validação: Não informar se o campo cnpjInstEnsino estiver preenchido. Se informado, deve ser preenchido apenas com números, com 8 (oito) posições."
+"120";"codMunic";"instEnsino";"E";"N";"0-1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Não informar se o campo cnpjInstEnsino estiver preenchido. Se informado, deve ser um código válido e existente na tabela do IBGE."
+"121";"uf";"instEnsino";"E";"C";"0-1";"2";"-";"Preencher com a sigla da Unidade da Federação - UF.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Validação: Não informar se o campo cnpjInstEnsino estiver preenchido."
+"122";"ageIntegracao";"infoEstagiario";"G";"-";"0-1";"-";"-";"Agente de integração."
+"123";"cnpjAgntInteg";"ageIntegracao";"E";"C";"1";"14";"-";"CNPJ do agente de integração.
+Validação: Deve ser um CNPJ válido, com 14 (catorze) algarismos."
+"124";"supervisorEstagio";"infoEstagiario";"G";"-";"0-1";"-";"-";"Supervisor do estágio."
+"125";"cpfSupervisor";"supervisorEstagio";"E";"C";"1";"11";"-";"CPF do responsável pela supervisão do estagiário.
+Validação: Deve ser um CPF válido."
+"126";"mudancaCPF";"infoTSVInicio";"G";"-";"0-1";"-";"-";"Informações de mudança de CPF do trabalhador."
+"127";"cpfAnt";"mudancaCPF";"E";"C";"1";"11";"-";"Preencher com o número do CPF antigo do trabalhador."
+"128";"matricAnt";"mudancaCPF";"E";"C";"0-1";"1-30";"-";"Preencher com a matrícula anterior do trabalhador."
+"129";"dtAltCPF";"mudancaCPF";"E";"D";"1";"-";"-";"Data de alteração do CPF."
+"130";"observacao";"mudancaCPF";"E";"C";"0-1";"1-255";"-";"Observação."
+"131";"afastamento";"infoTSVInicio";"G";"-";"0-1";"-";"-";"Informações de afastamento do TSVE.
+Preenchimento exclusivo em caso de trabalhador que permaneça afastado na data de início da obrigatoriedade dos eventos não periódicos para o empregador no eSocial ou na data de alteração do CPF."
+"132";"dtIniAfast";"afastamento";"E";"D";"1";"-";"-";"Data de início do afastamento.
+Validação: Devem ser observadas as seguintes regras:
+a) Deve ser igual ou posterior à data de início do TSVE;
+b) Se cadIni = [S], deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador;
+c) Se cadIni = [N], deve ser anterior à data de alteração do CPF do trabalhador (dtAltCPF)."
+"133";"codMotAfast";"afastamento";"E";"C";"1";"2";"-";"Preencher com o código do motivo de afastamento temporário.
+Validação: Deve ser um código válido e existente na Tabela 18, bem como compatível com o código de categoria do trabalhador, conforme Tabela 18."
+"134";"termino";"infoTSVInicio";"G";"-";"0-1";"-";"-";"Informação do término do TSVE.
+Grupo preenchido exclusivamente caso seja necessário enviar cadastramento inicial referente a trabalhador com data de término anterior ao início dos eventos não periódicos para o empregador no eSocial (por exemplo, envio para pagamento de retiradas em meses posteriores à data de término e sob vigência dos eventos periódicos para o empregador no eSocial)."
+"135";"dtTerm";"termino";"E";"D";"1";"-";"-";"Preencher com a data do término.
+Validação: Devem ser observadas as seguintes regras:
+a) Deve ser igual ou posterior à data de início do TSVE;
+b) Deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador."

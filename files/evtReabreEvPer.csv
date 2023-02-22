@@ -1,0 +1,43 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtReabreEvPer";"eSocial";"G";"-";"1";"-";"-";"Evento Reabertura dos Eventos Periódicos.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVE_FOPAG_SIMPLIFICADO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_REABERTURA_VALIDA_PERIODO_APURACAO
+REGRA_VALIDA_EMPREGADOR"
+"3";"Id";"evtReabreEvPer";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtReabreEvPer";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indApuracao";"ideEvento";"E";"N";"1";"1";"-";"Indicativo de período de apuração.
+Valores válidos:
+1 - Mensal
+2 - Anual (13° salário)"
+"6";"perApur";"ideEvento";"E";"C";"1";"4 ou 7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações, se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2].
+Validação: Deve ser um mês/ano ou ano válido, igual ou posterior ao início da obrigatoriedade dos eventos periódicos para o empregador."
+"7";"indGuia";"ideEvento";"E";"N";"0-1";"1";"-";"Indicativo do tipo de guia.
+Valores válidos:
+1 - Documento de Arrecadação do eSocial - DAE"
+"8";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"9";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"10";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"11";"ideEmpregador";"evtReabreEvPer";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"12";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"13";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."

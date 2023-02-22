@@ -1,0 +1,268 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtIrrfBenef";"eSocial";"G";"-";"1";"-";"-";"Evento Imposto de Renda Retido na Fonte por Trabalhador."
+"3";"Id";"evtIrrfBenef";"A";"C";"1";"36";"-";"Identificação única do evento."
+"4";"ideEvento";"evtIrrfBenef";"G";"-";"1";"-";"-";"Identificação do evento de retorno."
+"5";"nrRecArqBase";"ideEvento";"E";"C";"1";"23";"-";"Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno ao empregador.
+Validação: Deve corresponder ao recibo de um arquivo com informações de rendimentos sujeitos a Imposto de Renda Retido na Fonte - IRRF (S-1210 ou S-3000)."
+"6";"perApur";"ideEvento";"E";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações."
+"7";"ideEmpregador";"evtIrrfBenef";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"8";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"9";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"10";"ideTrabalhador";"evtIrrfBenef";"G";"-";"1";"-";"-";"Identificação do beneficiário do pagamento."
+"11";"cpfBenef";"ideTrabalhador";"E";"C";"1";"11";"-";"Número de inscrição no Cadastro de Pessoas Físicas - CPF do beneficiário do pagamento.
+Origem: campo cpfBenef de S-1210."
+"12";"dmDev";"ideTrabalhador";"G";"-";"1-N";"-";"-";"Informações do demonstrativo de valores devidos."
+"13";"perRef";"dmDev";"E";"C";"1";"4 ou 7";"-";"Período de referência das informações, no formato AAAA-MM (ou AAAA, se for relativo a 13° salário).
+Origem: campo perRef de S-1210."
+"14";"ideDmDev";"dmDev";"E";"C";"1";"1-30";"-";"Identificador atribuído pela fonte pagadora para o demonstrativo de valores devidos ao trabalhador.
+Origem: campo ideDmDev de S-1210."
+"15";"tpPgto";"dmDev";"E";"N";"1";"1";"-";"Informar o evento de origem do pagamento.
+Valores válidos:
+1 - S-1200
+2 - S-2299
+3 - S-2399
+4 - S-1202
+5 - S-1207
+Origem: campo tpPgto de S-1210."
+"16";"dtPgto";"dmDev";"E";"D";"1";"-";"-";"Informar a data de pagamento.
+Origem: campo dtPgto de S-1210."
+"17";"codCateg";"dmDev";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador, conforme Tabela 01.
+Validação: a) Se tpPgto = [1, 4], retornar o código de categoria informado no evento de origem;
+b) Se tpPgto = [2, 3], retornar o código de categoria existente no Registro de Eventos Trabalhistas - RET;
+c) Se tpPgto = [5], retornar [000]."
+"18";"infoIR";"dmDev";"G";"-";"1-999";"-";"-";"Rendimentos tributáveis, deduções, isenções e retenções do IRRF."
+"19";"tpInfoIR";"infoIR";"E";"N";"1";"2-4";"-";"Consolidação dos tipos de valores relativos ao IRRF.
+Valores válidos:
+Rendimentos tributáveis:
+11 - Remuneração mensal
+12 - 13º salário
+14 - PLR
+
+Retenções do IRRF efetuadas sobre:
+31 - Remuneração mensal
+32 - 13º salário
+34 - PLR
+
+Deduções da base de cálculo do IRRF:
+41 - Previdência Social Oficial - PSO - Remuneração mensal
+42 - PSO - 13º salário
+46 - Previdência complementar - Salário mensal
+47 - Previdência complementar - 13º salário
+51 - Pensão alimentícia - Remuneração mensal
+52 - Pensão alimentícia - 13º salário
+54 - Pensão alimentícia - PLR
+61 - Fundo de Aposentadoria Programada Individual - FAPI - Remuneração mensal
+62 - Fundo de Aposentadoria Programada Individual - FAPI - 13º salário
+63 - Fundação de previdência complementar do servidor público - Remuneração mensal
+64 - Fundação de previdência complementar do servidor público - 13º salário
+67 - Plano privado coletivo de assistência à saúde
+
+Rendimento não tributável ou isento do IRRF:
+70 - Parcela isenta 65 anos - Remuneração mensal
+71 - Parcela isenta 65 anos - 13º salário
+72 - Diárias
+73 - Ajuda de custo
+74 - Indenização e rescisão de contrato, inclusive a título de PDV e acidentes de trabalho
+75 - Abono pecuniário
+76 - Rendimento de beneficiário com moléstia grave ou acidente em serviço - Remuneração mensal
+77 - Rendimento de beneficiário com moléstia grave ou acidente em serviço - 13º salário
+700 - Auxílio moradia
+701 - Parte não tributável do valor de serviço de transporte de passageiros ou cargas
+79 - Outras isenções
+7900 - Verba transitada pela folha de pagamento de natureza diversa de rendimento ou retenção/isenção/dedução de IR (exemplo: desconto de convênio farmácia, desconto de consignações, etc.)
+
+Códigos para compatibilidade de versões anteriores:
+7950 - Rendimento não tributável
+7951 - Rendimento não tributável em função de acordos internacionais de bitributação
+7952 - Rendimento tributável - RRA
+7953 - Retenção de IR - RRA
+7954 - Previdência Social Oficial - RRA
+7955 - Pensão alimentícia - RRA
+7956 - Valores pagos a titular ou sócio de microempresa ou empresa de pequeno porte, exceto pró-labore e aluguéis
+7957 - Depósito judicial
+7958 - Compensação judicial do ano-calendário
+7959 - Compensação judicial de anos anteriores
+7960 - Exigibilidade suspensa - Remuneração mensal
+7961 - Exigibilidade suspensa - 13º salário
+7962 - Exigibilidade suspensa - Férias
+7963 - Exigibilidade suspensa - PLR
+7964 - Exigibilidade suspensa - RRA
+
+Exigibilidade suspensa - Rendimento tributável (base de cálculo do IR):
+9011 - Remuneração mensal
+9012 - 13º salário
+9014 - PLR
+
+Exigibilidade suspensa - Retenção do IRRF efetuada sobre:
+9031 - Remuneração mensal
+9032 - 13º salário
+9034 - PLR
+9831 - Depósito judicial - Mensal
+9832 - Depósito judicial - 13º salário
+9834 - Depósito judicial - PLR
+
+Exigibilidade suspensa - Dedução da base de cálculo do IRRF:
+9041 - Previdência Social Oficial - PSO - Remuneração mensal
+9042 - PSO - 13º salário
+9046 - Previdência complementar - Salário mensal
+9047 - Previdência complementar - 13º salário
+9051 - Pensão alimentícia - Remuneração mensal
+9052 - Pensão alimentícia - 13º salário
+9054 - Pensão alimentícia - PLR
+9061 - Fundo de Aposentadoria Programada Individual - FAPI - Remuneração mensal
+9062 - Fundo de Aposentadoria Programada Individual - FAPI - 13º salário
+9063 - Fundação de previdência complementar do servidor público - Remuneração mensal
+9064 - Fundação de previdência complementar do servidor público - 13º salário
+9067 - Plano privado coletivo de assistência à saúde
+
+Compensação judicial:
+9082 - Compensação judicial do ano-calendário
+9083 - Compensação judicial de anos anteriores"
+"20";"valor";"infoIR";"E";"N";"1";"1-14";"2";"Composição do valor do rendimento tributável, não tributável, retenção, dedução ou isenção do IRRF, de acordo com a classificação apresentada no campo tpInfoIR.
+Validação: Deve corresponder ao somatório dos valores informados nas rubricas (campo {vrRubr}) dos eventos que deram origem ao S-1210 (grupos {infoPerApur} e {infoPerAnt} do S-1200, S-1202, S-1207 e S-2299, e grupo {verbasResc} do S-2399), desde que o campo {indApurIR} vinculado às respectivas rubricas seja igual a [0] ou não informado, obedecendo ao que segue:
+a) Somar os valores das rubricas cujo tpRubr em S-1010 seja igual a [1, 3] e subtrair os valores das rubricas cujo tpRubr em S-1010 seja igual a [2, 4], observando a tabela de relacionamento abaixo:
+tpInfoIR = [11], codIncIRRF em S-1010 = [11, 13];
+tpInfoIR = [12], codIncIRRF em S-1010 = [12];
+tpInfoIR = [14], codIncIRRF em S-1010 = [14];
+tpInfoIR = [70], codIncIRRF em S-1010 = [70];
+tpInfoIR = [71], codIncIRRF em S-1010 = [71];
+tpInfoIR = [72], codIncIRRF em S-1010 = [72];
+tpInfoIR = [73], codIncIRRF em S-1010 = [73];
+tpInfoIR = [74], codIncIRRF em S-1010 = [74];
+tpInfoIR = [75], codIncIRRF em S-1010 = [75];
+tpInfoIR = [76], codIncIRRF em S-1010 = [76];
+tpInfoIR = [77], codIncIRRF em S-1010 = [77];
+tpInfoIR = [700], codIncIRRF em S-1010 = [700];
+tpInfoIR = [701], codIncIRRF em S-1010 = [701];
+tpInfoIR = [79], codIncIRRF em S-1010 = [79];
+tpInfoIR = [7900], codIncIRRF em S-1010 = [9];
+tpInfoIR = [7950], codIncIRRF em S-1010 = [0];
+tpInfoIR = [7951], codIncIRRF em S-1010 = [1];
+tpInfoIR = [7952], codIncIRRF em S-1010 = [15];
+tpInfoIR = [7956], codIncIRRF em S-1010 = [78];
+tpInfoIR = [7960], codIncIRRF em S-1010 = [91];
+tpInfoIR = [7961], codIncIRRF em S-1010 = [92];
+tpInfoIR = [7962], codIncIRRF em S-1010 = [93];
+tpInfoIR = [7963], codIncIRRF em S-1010 = [94];
+tpInfoIR = [7964], codIncIRRF em S-1010 = [95];
+tpInfoIR = [9011], codIncIRRF em S-1010 = [9011, 9013];
+tpInfoIR = [9012], codIncIRRF em S-1010 = [9012];
+tpInfoIR = [9014], codIncIRRF em S-1010 = [9014].
+ 
+b) Somar os valores das rubricas cujo tpRubr em S-1010 seja igual a [2, 4] e subtrair os valores das rubricas cujo tpRubr em S-1010 seja igual a [1, 3], observando a tabela de relacionamento abaixo:
+tpInfoIR = [31], codIncIRRF em S-1010 = [31, 33];
+tpInfoIR = [32], codIncIRRF em S-1010 = [32];
+tpInfoIR = [34], codIncIRRF em S-1010 = [34];
+tpInfoIR = [41], codIncIRRF em S-1010 = [41, 43];
+tpInfoIR = [42], codIncIRRF em S-1010 = [42];
+tpInfoIR = [46], codIncIRRF em S-1010 = [46, 48];
+tpInfoIR = [47], codIncIRRF em S-1010 = [47];
+tpInfoIR = [51], codIncIRRF em S-1010 = [51, 53];
+tpInfoIR = [52], codIncIRRF em S-1010 = [52];
+tpInfoIR = [54], codIncIRRF em S-1010 = [54];
+tpInfoIR = [61], codIncIRRF em S-1010 = [61, 66];
+tpInfoIR = [62], codIncIRRF em S-1010 = [62];
+tpInfoIR = [63], codIncIRRF em S-1010 = [63, 65];
+tpInfoIR = [64], codIncIRRF em S-1010 = [64];
+tpInfoIR = [67], codIncIRRF em S-1010 = [67];
+tpInfoIR = [7953], codIncIRRF em S-1010 = [35];
+tpInfoIR = [7954], codIncIRRF em S-1010 = [44];
+tpInfoIR = [7955], codIncIRRF em S-1010 = [55];
+tpInfoIR = [7957], codIncIRRF em S-1010 = [81];
+tpInfoIR = [7958], codIncIRRF em S-1010 = [82];
+tpInfoIR = [7959], codIncIRRF em S-1010 = [83];
+tpInfoIR = [9031], codIncIRRF em S-1010 = [9031, 9033];
+tpInfoIR = [9032], codIncIRRF em S-1010 = [9032];
+tpInfoIR = [9034], codIncIRRF em S-1010 = [9034];
+tpInfoIR = [9831], codIncIRRF em S-1010 = [9831, 9833];
+tpInfoIR = [9832], codIncIRRF em S-1010 = [9832];
+tpInfoIR = [9834], codIncIRRF em S-1010 = [9834];
+tpInfoIR = [9041], codIncIRRF em S-1010 = [9041, 9043];
+tpInfoIR = [9042], codIncIRRF em S-1010 = [9042];
+tpInfoIR = [9046], codIncIRRF em S-1010 = [9046, 9048];
+tpInfoIR = [9047], codIncIRRF em S-1010 = [9047];
+tpInfoIR = [9051], codIncIRRF em S-1010 = [9051, 9053];
+tpInfoIR = [9052], codIncIRRF em S-1010 = [9052];
+tpInfoIR = [9054], codIncIRRF em S-1010 = [9054];
+tpInfoIR = [9061], codIncIRRF em S-1010 = [9061, 9066];
+tpInfoIR = [9062], codIncIRRF em S-1010 = [9062];
+tpInfoIR = [9063], codIncIRRF em S-1010 = [9063, 9065];
+tpInfoIR = [9064], codIncIRRF em S-1010 = [9064];
+tpInfoIR = [9067], codIncIRRF em S-1010 = [9067];
+tpInfoIR = [9082], codIncIRRF em S-1010 = [9082];
+tpInfoIR = [9083], codIncIRRF em S-1010 = [9083].
+ 
+OBS.: Se o campo {indApurIR} vinculado à rubrica for igual a [1], considerar {vrRubr} = [0]."
+"21";"totApurMen";"dmDev";"G";"-";"0-50";"-";"-";"Totalizador de tributos com período de apuração mensal."
+"22";"CRMen";"totApurMen";"E";"C";"1";"6";"-";"Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho.
+Valores válidos:
+056107 - IRRF mensal, 13° salário e férias sobre trabalho assalariado no país ou ausente no exterior a serviço do país, exceto se contratado por empregador doméstico ou por segurado especial sujeito a recolhimento unificado
+056108 - IRRF mensal e férias - Empregado doméstico
+056109 - IRRF 13° salário na rescisão de contrato de trabalho - Empregado doméstico
+056110 - IRRF - Empregado doméstico 13º salário
+056111 - IRRF - Empregado/Trabalhador rural - Segurado especial
+056112 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário
+056113 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário rescisório
+058806 - IRRF sobre rendimento do trabalho sem vínculo empregatício
+061001 - IRRF sobre rendimentos relativos a prestação de serviços de transporte rodoviário internacional de carga, pagos a transportador autônomo PF residente no Paraguai
+353301 - Proventos de aposentadoria, reserva, reforma ou pensão pagos por previdência pública
+356201 - IRRF sobre participação dos trabalhadores em lucros ou resultados - PLR
+188901 - Rendimentos Recebidos Acumuladamente - RRA"
+"23";"vlrCRMen";"totApurMen";"E";"N";"1";"1-14";"2";"Valor relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho.
+Validação: Deve ser maior que 0 (zero) e agrupado conforme segue:
+a) Quando o evento de origem for S-1200, S-1202, S-2299, S-2399 e respectivo S-1210:
+CRMen = [056107]: se codCateg = [101, 103, 105, 106, 107, 108, 111, 201, 202, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 401, 410, 501, 721, 722, 723, 901, 902, 903, 904], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 for diferente de [22], efetuar o somatório de valor cujo tpInfoIR = [31, 32];
+CRMen = [056108]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [31];
+CRMen = [056109]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [32], apenas se origem for S-2299;
+CRMen = [056110]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [32], exceto se origem for S-2299;
+CRMen = [056111]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [31];
+CRMen = [056112]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [32], exceto se origem for S-2299/S-2399;
+CRMen = [056113]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [32], apenas se origem for S-2299/S-2399;
+CRMen = [058806]: se codCateg = [701, 711, 712, 731, 734, 738, 741, 751, 761, 771, 781], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [31, 32, 34];
+CRMen = [061001]: se codCateg = [712], {indApurIR} = [0] e paisResidExt = [586], efetuar o somatório de valor cujo tpInfoIR = [31];
+CRMen = [356201]: se codCateg = [1XX], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [34];
+CRMen = [188901]: se paisResidExt não for informado, {indApurIR} = [0] e {indRRA} = [S], efetuar o somatório de valor cujo tpInfoIR = [31, 32, 34].
+ 
+b) Quando o evento de origem for S-1207 e respectivo S-1210:
+CRMen = [353301]: se {indApurIR} = [0] e os campos paisResidExt e {indRRA} não forem informados, efetuar o somatório de valor cujo tpInfoIR = [31, 32, 34];
+CRMen = [188901]: se paisResidExt não for informado, {indApurIR} = [0] e {indRRA} = [S], efetuar o somatório de valor cujo tpInfoIR = [31, 32, 34]."
+"24";"vlrCRMenSusp";"totApurMen";"E";"N";"0-1";"1-14";"2";"Valor que deixou de ser descontado relativo ao Imposto de Renda sobre rendimentos do trabalho em decorrência de processos.
+Validação: Deve ser maior ou igual a 0 (zero) e agrupado conforme segue:
+a) Quando o evento de origem for S-1200, S-1202, S-2299, S-2399 e respectivo S-1210:
+CRMen = [056107]: se codCateg = [101, 103, 105, 106, 107, 108, 111, 201, 202, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 401, 410, 501, 721, 722, 723, 901, 902, 903, 904], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 for diferente de [22], efetuar o somatório de valor cujo tpInfoIR = [9031, 9032, 9831, 9832];
+CRMen = [056108]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9031, 9831];
+CRMen = [056109]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9032, 9832], apenas se origem for S-2299;
+CRMen = [056110]: se codCateg = [104], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9032, 9832], exceto se origem for S-2299;
+CRMen = [056111]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [9031, 9831];
+CRMen = [056112]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [9032, 9832], exceto se origem for S-2299/S-2399;
+CRMen = [056113]: se codCateg = [101, 102, 103, 105, 106, 107, 108, 111, 201, 202], {indApurIR} = [0], os campos {indRRA} e paisResidExt não forem informados e classTrib em S-1000 = [22], efetuar o somatório de valor cujo tpInfoIR = [9032, 9832], apenas se origem for S-2299/S-2399;
+CRMen = [058806]: se codCateg = [701, 711, 712, 731, 734, 738, 741, 751, 761, 771, 781], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9031,  9032, 9034, 9831, 9832, 9834];
+CRMen = [061001]: se codCateg = [712], {indApurIR} = [0] e paisResidExt = [586], efetuar o somatório de valor cujo tpInfoIR = [9031, 9831];
+CRMen = [356201]: se codCateg = [1XX], {indApurIR} = [0] e os campos {indRRA} e paisResidExt não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9034, 9834];
+CRMen = [188901]: se paisResidExt não for informado, {indApurIR} = [0] e {indRRA} = [S], efetuar o somatório de valor cujo tpInfoIR = [9031, 9032, 9034, 9831, 9832, 9834].
+ 
+b) Quando o evento de origem for S-1207 e respectivo S-1210:
+CRMen = [353301]: se {indApurIR} = [0] e os campos paisResidExt e {indRRA} não forem informados, efetuar o somatório de valor cujo tpInfoIR = [9031, 9032, 9034, 9831, 9832, 9834];
+CRMen = [188901]: se paisResidExt não for informado, {indApurIR} = [0] e {indRRA} = [S], efetuar o somatório de valor cujo tpInfoIR = [9031, 9032, 9034, 9831, 9832, 9834]."
+"25";"totApurDia";"dmDev";"G";"-";"0-350";"-";"-";"Totalizador de tributos com período de apuração diário."
+"26";"perApurDia";"totApurDia";"E";"N";"1";"1-2";"-";"Período de apuração diário do Código de Receita - CR.
+Validação: Deve ser igual ao dia ("DD") da data informada em dtPgto."
+"27";"CRDia";"totApurDia";"E";"C";"1";"6";"-";"Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente no exterior para fins fiscais.
+Valores válidos:
+047301 - IRRF - Residentes no exterior, para fins fiscais"
+"28";"vlrCRDia";"totApurDia";"E";"N";"1";"1-14";"2";"Valor relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente, para fins fiscais, no exterior.
+Evento de origem: S-1200, S-1202, S-2299, S-2399 e respectivo S-1210.
+Validação: Deve ser maior que 0 (zero).
+Efetuar o somatório de valor cujo tpInfoIR = [31, 32, 34], se {indApurIR} = [0] e:
+a) codCateg for diferente de [712] e paisResidExt for informado com qualquer valor; ou
+b) codCateg = [712] e paisResidExt for informado com valor diferente de [586]."
+"29";"vlrCRDiaSusp";"totApurDia";"E";"N";"0-1";"1-14";"2";"Valor que deixou de ser descontado do trabalhador relativo ao Imposto de Renda sobre rendimentos do trabalho pagos a residente, para fins fiscais, no exterior.
+Evento de origem: S-1200, S-1202, S-2299, S-2399 e respectivo S-1210.
+Validação: Deve ser maior ou igual a 0 (zero).
+Efetuar o somatório de valor cujo tpInfoIR = [9031, 9032, 9034, 9831, 9832, 9834], se {indApurIR} = [0] e:
+a) codCateg for diferente de [712] e paisResidExt for informado com qualquer valor; ou
+b) codCateg = [712] e paisResidExt for informado com valor diferente de [586]."

@@ -1,0 +1,129 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTabEstab";"eSocial";"G";"-";"1";"-";"-";"Evento Tabela de Estabelecimentos, Obras ou Unidades de Órgãos Públicos.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_TABESTAB_VALIDA_ESTABELECIMENTO
+REGRA_TABESTAB_VALIDA_INFO_CNO
+REGRA_TABGERAL_ALTERACAO_PERIODO_CONFLITANTE
+REGRA_TABGERAL_EXISTE_REGISTRO_ALTERADO
+REGRA_TABGERAL_EXISTE_REGISTRO_EXCLUIDO
+REGRA_TABGERAL_INCLUSAO_PERIODO_CONFLITANTE
+REGRA_TAB_PERMITE_EXCLUSAO
+REGRA_VALIDA_DT_FUTURA"
+"3";"Id";"evtTabEstab";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtTabEstab";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"6";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+9 - Aplicativo governamental - Integração com a Junta Comercial
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"7";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"8";"ideEmpregador";"evtTabEstab";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"9";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"10";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"11";"infoEstab";"evtTabEstab";"CG";"-";"1";"-";"-";"Informações do estabelecimento."
+"12";"inclusao";"infoEstab";"G";"-";"0-1";"-";"-";"Inclusão de novas informações."
+"13";"ideEstab";"inclusao";"G";"-";"1";"-";"-";"Identificação do estabelecimento, obra de construção civil ou unidade de órgão público e período de validade das informações."
+"14";"tpInsc";"ideEstab";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+3 - CAEPF
+4 - CNO
+Validação: Se classTrib em S-1000 = [04], deve ser igual a [1]."
+"15";"nrInsc";"ideEstab";"E";"C";"1";"12 ou 14";"-";"Informar o número de inscrição do estabelecimento (inclusive Sociedade em Conta de Participação - SCP), obra de construção civil ou órgão público de acordo com o tipo de inscrição indicado no campo ideEstab/tpInsc.
+Validação: Deve ser compatível com o conteúdo do campo ideEstab/tpInsc. Deve ser um identificador válido, constante das bases da RFB, vinculado ao empregador."
+"16";"iniValid";"ideEstab";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"17";"fimValid";"ideEstab";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"18";"dadosEstab";"inclusao";"G";"-";"1";"-";"-";"Detalhamento das informações do estabelecimento, obra de construção civil ou unidade de órgão público."
+"19";"cnaePrep";"dadosEstab";"E";"N";"1";"7";"-";"Preencher com o código CNAE conforme legislação vigente, referente à atividade econômica preponderante do estabelecimento.
+Validação: Deve ser um número existente na tabela CNAE, com 7 (sete) algarismos."
+"20";"cnpjResp";"dadosEstab";"E";"C";"0-1";"14";"-";"Preencher com o CNPJ responsável pela inscrição no cadastro de obras da RFB.
+Validação: Preenchimento obrigatório e exclusivo por Pessoa Jurídica e se ideEstab/tpInsc = [4]. Informação obrigatória se iniValid >= [2022-04].
+Deve ser um identificador válido, constante das bases da RFB, vinculado ao empregador."
+"21";"aliqGilrat";"dadosEstab";"G";"-";"0-1";"-";"-";"Informações de apuração da alíquota GILRAT do estabelecimento."
+"22";"aliqRat";"aliqGilrat";"E";"N";"0-1";"1";"-";"Informar a alíquota RAT, quando divergente da legislação vigente para a atividade (CNAE) preponderante. A divergência só é permitida se existir o grupo com informações sobre o processo administrativo/judicial que permite a aplicação de alíquota diferente.
+Valores válidos: 1, 2, 3
+Validação: Preenchimento obrigatório e exclusivo se a alíquota informada for diferente da definida na legislação vigente para o código CNAE informado (neste caso, deverá haver informações de processo em procAdmJudRat).
+Se informada, deve ser diferente da alíquota definida na legislação vigente para a atividade (CNAE) preponderante."
+"23";"fap";"aliqGilrat";"E";"N";"0-1";"1-5";"4";"Fator Acidentário de Prevenção - FAP.
+Validação: Preenchimento obrigatório e exclusivo por Pessoa Jurídica e:
+a) ideEstab/tpInsc = [4] e o campo cnpjResp não estiver informado; ou
+b) ideEstab/tpInsc = [1, 4] e o fator informado for diferente do definido pelo órgão governamental competente para o estabelecimento ou para o CNPJ responsável pela inscrição no CNO (neste caso, deverá haver informações de processo em procAdmJudFap); ou
+c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ responsável pela inscrição no CNO não for encontrado na tabela FAP.
+Se informado, deve ser um número maior ou igual a 0,5000 e menor ou igual a 2,0000 e, no caso da alínea "b", deve ser diferente do valor definido pelo órgão governamental competente."
+"24";"procAdmJudRat";"aliqGilrat";"G";"-";"0-1";"-";"-";"Grupo que identifica, em caso de existência, o processo administrativo ou judicial em que houve decisão/sentença favorável ao contribuinte modificando a alíquota RAT da empresa."
+"25";"tpProc";"procAdmJudRat";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial"
+"26";"nrProc";"procAdmJudRat";"E";"C";"1";"17, 20 ou 21";"-";"Informar um número de processo cadastrado através do evento S-1070, cujo indMatProc seja igual a [1].
+Validação: Deve ser um número de processo administrativo ou judicial válido e existente na Tabela de Processos (S-1070), com indMatProc = [1]."
+"27";"codSusp";"procAdmJudRat";"E";"N";"1";"1-14";"-";"Código do indicativo da suspensão, atribuído pelo empregador em S-1070.
+Validação: A informação prestada deve estar de acordo com o que foi informado em S-1070."
+"28";"procAdmJudFap";"aliqGilrat";"G";"-";"0-1";"-";"-";"Grupo que identifica, em caso de existência, o processo administrativo/judicial em que houve decisão ou sentença favorável ao contribuinte suspendendo ou alterando a alíquota FAP aplicável ao contribuinte."
+"29";"tpProc";"procAdmJudFap";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial
+4 - Processo FAP de exercício anterior a 2019"
+"30";"nrProc";"procAdmJudFap";"E";"C";"1";"16, 17, 20 ou 21";"-";"Informar um número de processo cadastrado através do evento S-1070, cujo indMatProc seja igual a [1].
+Validação: Deve ser um número de processo administrativo ou judicial válido e existente na Tabela de Processos (S-1070), com indMatProc = [1]."
+"31";"codSusp";"procAdmJudFap";"E";"N";"1";"1-14";"-";"Código do indicativo da suspensão, atribuído pelo empregador em S-1070.
+Validação: A informação prestada deve estar de acordo com o que foi informado em S-1070."
+"32";"infoCaepf";"dadosEstab";"G";"-";"0-1";"-";"-";"Informações relativas ao Cadastro de Atividade Econômica da Pessoa Física - CAEPF."
+"33";"tpCaepf";"infoCaepf";"E";"N";"1";"1";"-";"Tipo de CAEPF.
+Valores válidos:
+1 - Contribuinte individual
+2 - Produtor rural
+3 - Segurado especial
+Validação: Deve ser compatível com o cadastro da RFB."
+"34";"infoObra";"dadosEstab";"G";"-";"0-1";"-";"-";"Grupo preenchido obrigatória e exclusivamente por empresa construtora, relacionando os estabelecimentos inscritos no Cadastro Nacional de Obras - CNO, para indicar a substituição ou não da contribuição patronal incidente sobre a remuneração dos trabalhadores de obra de construção civil."
+"35";"indSubstPatrObra";"infoObra";"E";"N";"1";"1";"-";"Indicativo de substituição da contribuição patronal de obra de construção civil.
+Valores válidos:
+1 - Contribuição patronal substituída
+2 - Contribuição patronal não substituída"
+"36";"infoTrab";"dadosEstab";"G";"-";"0-1";"-";"-";"Informações trabalhistas relativas ao estabelecimento."
+"37";"infoApr";"infoTrab";"G";"-";"0-1";"-";"-";"Informações relacionadas à contratação de aprendiz.
+Preenchimento obrigatório somente no caso de dispensa, ainda que parcial, de contratação de aprendiz em virtude de processo judicial ou quando houver contratação de aprendiz por meio de entidade educativa ou de prática desportiva."
+"38";"nrProcJud";"infoApr";"E";"C";"0-1";"20";"-";"Preencher com o número do processo judicial.
+Validação: Se informado, deve ser um número de processo judicial válido."
+"39";"infoEntEduc";"infoApr";"G";"-";"0-99";"-";"-";"Identificação da(s) entidade(s) educativa(s) ou de prática desportiva."
+"40";"nrInsc";"infoEntEduc";"E";"C";"1";"14";"-";"Informar o número de inscrição da entidade educativa ou de prática desportiva.
+Validação: Deve ser um número de CNPJ válido, com 14 (catorze) algarismos. Se o empregador for pessoa jurídica, a raiz do CNPJ informado deve ser diferente de ideEmpregador/nrInsc."
+"41";"infoPCD";"infoTrab";"G";"-";"0-1";"-";"-";"Informações sobre a contratação de pessoa com deficiência (PCD).
+Essa informação deve ser prestada apenas no estabelecimento matriz.
+Preenchimento obrigatório somente no caso de dispensa, ainda que parcial, de contratação de PCD em virtude de processo judicial."
+"42";"nrProcJud";"infoPCD";"E";"C";"1";"20";"-";"Preencher com o número do processo judicial.
+Validação: Deve ser um número de processo judicial válido."
+"43";"alteracao";"infoEstab";"G";"-";"0-1";"-";"-";"Alteração das informações."
+"44";"ideEstab";"alteracao";"G";"-";"1";"-";"-";"Identificação do estabelecimento, obra de construção civil ou unidade de órgão público e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideEstab"
+"45";"dadosEstab";"alteracao";"G";"-";"1";"-";"-";"Detalhamento das informações do estabelecimento, obra de construção civil ou unidade de órgão público."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > dadosEstab"
+"46";"novaValidade";"alteracao";"G";"-";"0-1";"-";"-";"Informação preenchida exclusivamente em caso de alteração do período de validade das informações, apresentando o novo período de validade."
+"47";"iniValid";"novaValidade";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"48";"fimValid";"novaValidade";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"49";"exclusao";"infoEstab";"G";"-";"0-1";"-";"-";"Exclusão das informações."
+"50";"ideEstab";"exclusao";"G";"-";"1";"-";"-";"Identificação do estabelecimento, obra de construção civil ou unidade de órgão público e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideEstab"

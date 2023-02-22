@@ -1,0 +1,137 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtFGTS";"eSocial";"G";"-";"1";"-";"-";"Evento Informações do FGTS Consolidadas por Contribuinte."
+"3";"Id";"evtFGTS";"A";"C";"1";"36";"-";"Identificação única do evento."
+"4";"ideEvento";"evtFGTS";"G";"-";"1";"-";"-";"Identificação do evento de retorno.
+Evento de origem: S-1299."
+"5";"indApuracao";"ideEvento";"E";"N";"1";"1";"-";"Indicativo de período de apuração.
+Valores válidos:
+1 - Mensal
+2 - Anual (13° salário)"
+"6";"perApur";"ideEvento";"E";"C";"1";"4 ou 7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações, se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2]."
+"7";"ideEmpregador";"evtFGTS";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"8";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"9";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"10";"infoFGTS";"evtFGTS";"G";"-";"1";"-";"-";"Informações relativas ao Fundo de Garantia do Tempo de Serviço - FGTS."
+"11";"nrRecArqBase";"infoFGTS";"E";"C";"1";"23";"-";"Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno ao empregador.
+Validação: Deve ser um recibo de entrega válido, correspondente ao arquivo que deu origem ao presente arquivo de retorno (S-1299)."
+"12";"indExistInfo";"infoFGTS";"E";"N";"1";"1";"-";"Indicativo de existência de FGTS.
+Valores válidos:
+1 - Há informações de FGTS
+2 - Há movimento, porém não há informações de FGTS
+3 - Não há movimento no período informado em perApur"
+"13";"ideEstab";"infoFGTS";"G";"-";"0-N";"-";"-";"Identificação do estabelecimento ou obra de construção civil."
+"14";"tpInsc";"ideEstab";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+3 - CAEPF
+4 - CNO"
+"15";"nrInsc";"ideEstab";"E";"C";"1";"11, 12 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstab/tpInsc.
+Evento de origem: S-1270 ou S-5003."
+"16";"ideLotacao";"ideEstab";"G";"-";"1-N";"-";"-";"Identificação da lotação tributária."
+"17";"codLotacao";"ideLotacao";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária.
+Evento de origem: S-1270 ou S-5003."
+"18";"tpLotacao";"ideLotacao";"E";"C";"1";"2";"-";"Preencher com o código correspondente ao tipo de lotação, conforme Tabela 10.
+Evento de origem: S-1020 ou S-5003."
+"19";"tpInsc";"ideLotacao";"E";"N";"0-1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+4 - CNO
+Evento de origem: S-1020 ou S-5003."
+"20";"nrInsc";"ideLotacao";"E";"C";"0-1";"11, 12 ou 14";"-";"Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária, conforme indicado na Tabela 10.
+Evento de origem: S-1020 ou S-5003."
+"21";"infoBaseFGTS";"ideLotacao";"G";"-";"0-1";"-";"-";"Informações referentes a bases de cálculo e valores do FGTS no estabelecimento/lotação."
+"22";"basePerApur";"infoBaseFGTS";"G";"-";"0-99";"-";"-";"Informações consolidadas das bases de cálculo e valores do FGTS do período de apuração e de períodos anteriores, exceto se {tpAcConv} = [E, H].
+Evento de origem: S-1270 ou S-5003."
+"23";"tpValor";"basePerApur";"E";"N";"1";"2";"-";"Tipo de valor que influi na apuração do FGTS.
+Valores válidos:
+11 - FGTS mensal
+12 - FGTS 13° salário
+13 - FGTS (período anterior) mensal
+14 - FGTS (período anterior) 13º salário
+15 - FGTS mensal - Aprendiz/Contrato Verde e Amarelo
+16 - FGTS 13° salário - Aprendiz/Contrato Verde e Amarelo
+17 - FGTS (período anterior) mensal - Aprendiz/Contrato Verde e Amarelo
+18 - FGTS (período anterior) 13º salário - Aprendiz/Contrato Verde e Amarelo
+19 - FGTS - Avulsos não portuários
+21 - FGTS mês da rescisão
+22 - FGTS 13° salário rescisório
+23 - FGTS aviso prévio indenizado
+24 - FGTS (período anterior) mês da rescisão
+25 - FGTS (período anterior) 13º salário rescisório
+26 - FGTS (período anterior) aviso prévio indenizado
+27 - FGTS mês da rescisão - Aprendiz/Contrato Verde e Amarelo
+28 - FGTS 13° salário rescisório - Aprendiz/Contrato Verde e Amarelo
+29 - FGTS aviso prévio indenizado - Aprendiz/Contrato Verde e Amarelo
+30 - FGTS (período anterior) mês da rescisão - Aprendiz/Contrato Verde e Amarelo
+31 - FGTS (período anterior) 13° salário rescisório - Aprendiz/Contrato Verde e Amarelo
+32 - FGTS (período anterior) aviso prévio indenizado - Aprendiz/Contrato Verde e Amarelo
+41 - FGTS mensal - Indenização compensatória do empregado doméstico
+42 - FGTS 13° salário - Indenização compensatória do empregado doméstico
+43 - FGTS (período anterior) mensal - Indenização compensatória do empregado doméstico
+44 - FGTS (período anterior) 13º salário - Indenização compensatória do empregado doméstico
+45 - FGTS mês da rescisão - Indenização compensatória do empregado doméstico
+46 - FGTS 13° salário rescisório - Indenização compensatória do empregado doméstico
+47 - FGTS aviso prévio indenizado - Indenização compensatória do empregado doméstico
+48 - FGTS (período anterior) mês da rescisão - Indenização compensatória do empregado doméstico
+49 - FGTS (período anterior) 13º salário rescisório - Indenização compensatória do empregado doméstico
+50 - FGTS (período anterior) aviso prévio indenizado - Indenização compensatória do empregado doméstico
+Validação: Se o evento de origem for S-5003, deve corresponder ao valor informado no campo tpValor desse evento.
+Se o evento de origem for S-1270, deve ser retornado [19]."
+"24";"indIncid";"basePerApur";"E";"N";"1";"1";"-";"Indicativo de incidência de FGTS.
+Valores válidos:
+1 - Normal (incidência de FGTS)
+9 - Incidência de FGTS suspensa em decorrência de decisão judicial
+Validação: Se tpValor for diferente de [19], deve corresponder ao valor informado no campo indIncid do evento S-5003.
+Se tpValor = [19], deve ser retornado [1]."
+"25";"baseFGTS";"basePerApur";"E";"N";"1";"1-14";"2";"Remuneração (valor da base de cálculo) do FGTS.
+Validação: Deve ser maior que 0 (zero).
+Se tpValor for diferente de [19], deve corresponder ao somatório dos valores informados no campo remFGTS do evento S-5003, agrupados por tpValor e indIncid.
+Se tpValor = [19], deve corresponder à remuneração dos trabalhadores avulsos não portuários contratados, conforme informado no campo vrBcFGTS do evento S-1270."
+"26";"vrFGTS";"basePerApur";"E";"N";"0-1";"1-14";"2";"Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+Validação: Deve ser maior que 0 (zero).
+Se tpValor for diferente de [19], deve corresponder ao somatório dos valores informados no campo dpsFGTS do evento S-5003, agrupados por tpValor.
+Se tpValor = [19], deve corresponder ao somatório dos valores informados no campo baseFGTS, e aplicar a alíquota de 8%."
+"27";"infoBasePerAntE";"infoBaseFGTS";"G";"-";"0-180";"-";"-";"Informações referentes a bases de cálculo e valores do FGTS de períodos anteriores quando tpAcConv = [E, H].
+Evento de origem: S-5003."
+"28";"perRef";"infoBasePerAntE";"E";"C";"1";"7";"-";"Informar o período ao qual se refere a remuneração no formato AAAA-MM.
+Validação: Deve corresponder ao período informado no evento de origem."
+"29";"tpAcConv";"infoBasePerAntE";"E";"C";"1";"1";"-";"Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.
+Valores válidos:
+E - Conversão de licença saúde em acidente de trabalho
+H - Recolhimento mensal de FGTS anterior ao início de obrigatoriedade dos eventos periódicos"
+"30";"basePerAntE";"infoBasePerAntE";"G";"-";"1-99";"-";"-";"Informações consolidadas das bases de cálculo e valores do FGTS de períodos anteriores quando tpAcConv = [E, H]."
+"31";"tpValorE";"basePerAntE";"E";"N";"1";"2";"-";"Tipo de valor que influi na apuração do FGTS.
+Valores válidos:
+13 - FGTS (período anterior) mensal
+14 - FGTS (período anterior) 13º salário
+17 - FGTS (período anterior) mensal - Aprendiz/Contrato Verde e Amarelo
+18 - FGTS (período anterior) 13º salário - Aprendiz/Contrato Verde e Amarelo
+24 - FGTS (período anterior) mês da rescisão
+25 - FGTS (período anterior) 13º salário rescisório
+26 - FGTS (período anterior) aviso prévio indenizado
+30 - FGTS (período anterior) mês da rescisão - Aprendiz/Contrato Verde e Amarelo
+31 - FGTS (período anterior) 13° salário rescisório - Aprendiz/Contrato Verde e Amarelo
+32 - FGTS (período anterior) aviso prévio indenizado - Aprendiz/Contrato Verde e Amarelo
+43 - FGTS (período anterior) mensal - Indenização compensatória do empregado doméstico
+44 - FGTS (período anterior) 13º salário - Indenização compensatória do empregado doméstico
+48 - FGTS (período anterior) mês da rescisão - Indenização compensatória do empregado doméstico
+49 - FGTS (período anterior) 13º salário rescisório - Indenização compensatória do empregado doméstico
+50 - FGTS (período anterior) aviso prévio indenizado - Indenização compensatória do empregado doméstico
+Validação: Deve corresponder ao valor informado no campo tpValorE do evento de origem."
+"32";"indIncidE";"basePerAntE";"E";"N";"1";"1";"-";"Indicativo de incidência de FGTS.
+Valores válidos:
+1 - Normal (incidência de FGTS)
+9 - Incidência de FGTS suspensa em decorrência de decisão judicial
+Validação: Deve corresponder ao valor informado no campo indIncidE do evento de origem."
+"33";"baseFGTSE";"basePerAntE";"E";"N";"1";"1-14";"2";"Remuneração (valor da base de cálculo) do FGTS.
+Validação: Deve ser maior que 0 (zero).
+Deve corresponder ao somatório dos valores informados no campo remFGTSE do evento de origem, agrupados por tpValorE e indIncidE."
+"34";"vrFGTSE";"basePerAntE";"E";"N";"0-1";"1-14";"2";"Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+Validação: Deve ser maior que 0 (zero).
+Deve corresponder ao somatório dos valores informados no campo dpsFGTSE do evento de origem, agrupados por tpValorE."

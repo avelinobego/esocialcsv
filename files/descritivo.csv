@@ -1,0 +1,47 @@
+Descricao;Arquivo
+"S-1000 - Informações do Empregador/Contribuinte/Órgão Público";evtInfoEmpregador.csv
+"S-1005 - Tabela de Estabelecimentos, Obras ou Unidades de Órgãos Públicos";evtTabEstab.csv
+"S-1010 - Tabela de Rubricas";evtTabRubrica.csv
+"S-1020 - Tabela de Lotações Tributárias";evtTabLotacao.csv
+"S-1070 - Tabela de Processos Administrativos/Judiciais";evtTabProcesso.csv
+"S-1200 - Remuneração de Trabalhador vinculado ao Regime Geral de Previd. Social";evtRemun.csv
+"S-1202 - Remuneração de Servidor vinculado ao Regime Próprio de Previd. Social";evtRmnRPPS.csv
+"S-1207 - Benefícios - Entes Públicos";evtBenPrRP.csv
+"S-1210 - Pagamentos de Rendimentos do Trabalho";evtPgtos.csv
+"S-1260 - Comercialização da Produção Rural Pessoa Física";evtComProd.csv
+"S-1270 - Contratação de Trabalhadores Avulsos Não Portuários";evtContratAvNP.csv
+"S-1280 - Informações Complementares aos Eventos Periódicos";evtInfoComplPer.csv
+"S-1298 - Reabertura dos Eventos Periódicos";evtReabreEvPer.csv
+"S-1299 - Fechamento dos Eventos Periódicos";evtFechaEvPer.csv
+"S-2190 - Registro Preliminar de Trabalhador";evtAdmPrelim.csv
+"S-2200 - Cadastramento Inicial do Vínculo e Admissão/Ingresso de Trabalhador";evtAdmissao.csv
+"S-2205 - Alteração de Dados Cadastrais do Trabalhador";evtAltCadastral.csv
+"S-2206 - Alteração de Contrato de Trabalho/Relação Estatutária";evtAltContratual.csv
+"S-2210 - Comunicação de Acidente de Trabalho";evtCAT.csv
+"S-2220 - Monitoramento da Saúde do Trabalhador";evtMonit.csv
+"S-2230 - Afastamento Temporário";evtAfastTemp.csv
+"S-2231 - Cessão/Exercício em Outro Órgão";evtCessao.csv
+"S-2240 - Condições Ambientais do Trabalho - Agentes Nocivos";evtExpRisco.csv
+"S-2298 - Reintegração/Outros Provimentos";evtReintegr.csv
+"S-2299 - Desligamento";evtDeslig.csv
+"S-2300 - Trabalhador Sem Vínculo de Emprego/Estatutário - Início";evtTSVInicio.csv
+"S-2306 - Trabalhador Sem Vínculo de Emprego/Estatutário - Alteração Contratual";evtTSVAltContr.csv
+"S-2399 - Trabalhador Sem Vínculo de Emprego/Estatutário - Término";evtTSVTermino.csv
+"S-2400 - Cadastro de Beneficiário - Entes Públicos - Início";evtCdBenefIn.csv
+"S-2405 - Cadastro de Beneficiário - Entes Públicos - Alteração";evtCdBenefAlt.csv
+"S-2410 - Cadastro de Benefício - Entes Públicos - Início";evtCdBenIn.csv
+"S-2416 - Cadastro de Benefício - Entes Públicos - Alteração";evtCdBenAlt.csv
+"S-2418 - Reativação de Benefício - Entes Públicos";evtReativBen.csv
+"S-2420 - Cadastro de Benefício - Entes Públicos - Término";evtCdBenTerm.csv
+"S-2500 - Processo Trabalhista";evtProcTrab.csv
+"S-2501 - Informações de Tributos Decorrentes de Processo Trabalhista";evtContProc.csv
+"S-3000 - Exclusão de Eventos";evtExclusao.csv
+"S-3500 - Exclusão de Eventos - Processo Trabalhista";evtExcProcTrab.csv
+"S-5001 - Informações das Contribuições Sociais por Trabalhador";evtBasesTrab.csv
+"S-5002 - Imposto de Renda Retido na Fonte por Trabalhador";evtIrrfBenef.csv
+"S-5003 - Informações do FGTS por Trabalhador";evtBasesFGTS.csv
+"S-5011 - Informações das Contribuições Sociais Consolidadas por Contribuinte";evtCS.csv
+"S-5012 - Imposto de Renda Retido na Fonte Consolidado por Contribuinte";evtIrrf.csv
+"S-5013 - Informações do FGTS Consolidadas por Contribuinte";evtFGTS.csv
+"S-5501 - Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista";evtTribProcTrab.csv
+"S-8299 - Baixa Judicial do Vínculo";evtBaixa.csv

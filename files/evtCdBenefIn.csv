@@ -1,0 +1,121 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtCdBenefIn";"eSocial";"G";"-";"1";"-";"-";"Evento Cadastro de Beneficiário - Entes Públicos - Início.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVENTO_EXT_SEM_IMPACTO_FOPAG
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_VALIDA_CNPJ
+REGRA_VALIDA_TRABALHADOR_BASE_CPF"
+"3";"Id";"evtCdBenefIn";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtCdBenefIn";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtCdBenefIn";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000.
+Validação: A natureza jurídica relativa ao número de inscrição informado deve ser igual a 1XX-X, 201-1, 203-8 ou 307-7."
+"13";"beneficiario";"evtCdBenefIn";"G";"-";"1";"-";"-";"Grupo de informações do beneficiário."
+"14";"cpfBenef";"beneficiario";"E";"C";"1";"11";"-";"Informar o CPF do beneficiário.
+Validação: Não é possível existir dois eventos originais do mesmo órgão público declarante para o mesmo CPF do beneficiário."
+"15";"nmBenefic";"beneficiario";"E";"C";"1";"2-70";"-";"Informar o nome do beneficiário."
+"16";"dtNascto";"beneficiario";"E";"D";"1";"-";"-";"Preencher com a data de nascimento."
+"17";"dtInicio";"beneficiario";"E";"D";"1";"-";"-";"Preencher com a data de início do cadastro do beneficiário. Informar a data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial caso o beneficiário possua cadastro anterior a essa data.
+Validação: Deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial e igual ou anterior à data atual."
+"18";"sexo";"beneficiario";"E";"C";"0-1";"1";"-";"Sexo do beneficiário.
+Valores válidos:
+M - Masculino
+F - Feminino
+Validação: Informação obrigatória se dtInicio for posterior ao início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial."
+"19";"racaCor";"beneficiario";"E";"N";"1";"1";"-";"Raça e cor do beneficiário.
+Valores válidos:
+1 - Branca
+2 - Preta
+3 - Parda
+4 - Amarela
+5 - Indígena
+6 - Não informado"
+"20";"estCiv";"beneficiario";"E";"N";"0-1";"1";"-";"Estado civil do beneficiário.
+Valores válidos:
+1 - Solteiro
+2 - Casado
+3 - Divorciado
+4 - Separado
+5 - Viúvo"
+"21";"incFisMen";"beneficiario";"E";"C";"1";"1";"-";"Informar se o beneficiário é pessoa com doença incapacitante que isenta da contribuição previdenciária, total ou parcialmente, reconhecida administrativa ou judicialmente, na forma da lei.
+Valores válidos:
+S - Sim
+N - Não"
+"22";"dtIncFisMen";"beneficiario";"E";"D";"0-1";"-";"-";"Preencher com a data do reconhecimento da incapacidade.
+Validação: Informação obrigatória e exclusiva se incFisMen = [S]."
+"23";"endereco";"beneficiario";"CG";"-";"1";"-";"-";"Grupo de informações do endereço do beneficiário."
+"24";"brasil";"endereco";"G";"-";"0-1";"-";"-";"Endereço no Brasil."
+"25";"tpLograd";"brasil";"E";"C";"0-1";"1-4";"-";"Tipo de logradouro.
+Validação: Se informado, deve ser um código válido e existente na Tabela 20."
+"26";"dscLograd";"brasil";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"27";"nrLograd";"brasil";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"28";"complemento";"brasil";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"29";"bairro";"brasil";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"30";"cep";"brasil";"E";"C";"1";"8";"-";"Código de Endereçamento Postal - CEP.
+Validação: Deve ser preenchido apenas com números, com 8 (oito) posições."
+"31";"codMunic";"brasil";"E";"N";"1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Deve ser um código válido e existente na tabela do IBGE."
+"32";"uf";"brasil";"E";"C";"1";"2";"-";"Preencher com a sigla da Unidade da Federação - UF.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO"
+"33";"exterior";"endereco";"G";"-";"0-1";"-";"-";"Endereço no exterior."
+"34";"paisResid";"exterior";"E";"C";"1";"3";"-";"Preencher com o código do país.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"35";"dscLograd";"exterior";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"36";"nrLograd";"exterior";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"37";"complemento";"exterior";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"38";"bairro";"exterior";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"39";"nmCid";"exterior";"E";"C";"1";"2-50";"-";"Nome da cidade."
+"40";"codPostal";"exterior";"E";"C";"0-1";"4-12";"-";"Código de Endereçamento Postal."
+"41";"dependente";"beneficiario";"G";"-";"0-99";"-";"-";"Informações dos dependentes."
+"42";"tpDep";"dependente";"E";"C";"1";"2";"-";"Tipo de dependente.
+Validação: Deve ser um código válido e existente na Tabela 07."
+"43";"nmDep";"dependente";"E";"C";"1";"2-70";"-";"Nome do dependente."
+"44";"dtNascto";"dependente";"E";"D";"1";"-";"-";"Preencher com a data de nascimento.
+Validação: Deve ser maior ou igual que 01/01/1890 e menor ou igual à data atual."
+"45";"cpfDep";"dependente";"E";"C";"0-1";"11";"-";"Número de inscrição no CPF.
+Validação: Deve ser um número de CPF válido, observando o que segue:
+a) O preenchimento é obrigatório se depIRRF = [S];
+b) Não pode haver mais de um dependente com o mesmo número de CPF."
+"46";"sexoDep";"dependente";"E";"C";"0-1";"1";"-";"Sexo do dependente.
+Valores válidos:
+M - Masculino
+F - Feminino
+Validação: Informação obrigatória se dtInicio for posterior ao início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial."
+"47";"depIRRF";"dependente";"E";"C";"1";"1";"-";"Informar se é dependente do beneficiário para fins de dedução de seu rendimento tributável pelo Imposto de Renda.
+Valores válidos:
+S - Sim
+N - Não"
+"48";"incFisMen";"dependente";"E";"C";"1";"1";"-";"Informar se o dependente é pessoa com doença incapacitante, na forma da lei.
+Valores válidos:
+S - Sim
+N - Não"

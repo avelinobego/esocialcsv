@@ -1,0 +1,109 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTabLotacao";"eSocial";"G";"-";"1";"-";"-";"Evento Tabela de Lotações Tributárias.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_TABGERAL_ALTERACAO_PERIODO_CONFLITANTE
+REGRA_TABGERAL_EXISTE_REGISTRO_ALTERADO
+REGRA_TABGERAL_EXISTE_REGISTRO_EXCLUIDO
+REGRA_TABGERAL_INCLUSAO_PERIODO_CONFLITANTE
+REGRA_TABLOTACAO_VALIDA_FPASTERCEIROS
+REGRA_TAB_PERMITE_EXCLUSAO
+REGRA_VALIDA_DT_FUTURA"
+"3";"Id";"evtTabLotacao";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtTabLotacao";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"6";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"7";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"8";"ideEmpregador";"evtTabLotacao";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"9";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"10";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"11";"infoLotacao";"evtTabLotacao";"CG";"-";"1";"-";"-";"Identificação da operação (inclusão, alteração ou exclusão) e das informações da lotação."
+"12";"inclusao";"infoLotacao";"G";"-";"0-1";"-";"-";"Inclusão de novas informações."
+"13";"ideLotacao";"inclusao";"G";"-";"1";"-";"-";"Identificação da lotação e período de validade das informações."
+"14";"codLotacao";"ideLotacao";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária.
+Validação: O código atribuído não pode conter a expressão 'eSocial' nas 7 primeiras posições.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"15";"iniValid";"ideLotacao";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"16";"fimValid";"ideLotacao";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"17";"dadosLotacao";"inclusao";"G";"-";"1";"-";"-";"Detalhamento das informações da lotação."
+"18";"tpLotacao";"dadosLotacao";"E";"C";"1";"2";"-";"Preencher com o código correspondente ao tipo de lotação.
+Validação: Deve ser um código válido e existente na Tabela 10, bem como compatível com a classificação tributária indicada no evento S-1000, conforme Tabela 12."
+"19";"tpInsc";"dadosLotacao";"E";"N";"0-1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+4 - CNO
+Validação: O campo não deve ser preenchido se tpLotacao for igual a [01, 10, 21, 24, 90, 91]. Nos demais casos, observar conteúdo exigido para o campo dadosLotacao/nrInsc, conforme Tabela 10."
+"20";"nrInsc";"dadosLotacao";"E";"C";"0-1";"11, 12 ou 14";"-";"Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
+Validação: a) Deve ser preenchido de acordo com o conteúdo exigido, conforme especificado no campo dadosLotacao/tpInsc e na Tabela 10;
+b) Deve ser um identificador válido, constante das bases da RFB."
+"21";"fpasLotacao";"dadosLotacao";"G";"-";"1";"-";"-";"Informações de FPAS e Terceiros relativos à lotação tributária."
+"22";"fpas";"fpasLotacao";"E";"N";"1";"3";"-";"Preencher com o código relativo ao FPAS.
+Validação: Deve ser um código FPAS válido, conforme Tabela 04."
+"23";"codTercs";"fpasLotacao";"E";"C";"1";"4";"-";"Preencher com o código de Terceiros, já considerando a existência de eventuais convênios para recolhimento direto. Ex.: Se o contribuinte está enquadrado com FPAS [507], cujo código cheio de Terceiros é [0079], se possuir convênio com SENAI deve informar o código [0075].
+Validação: Se a classificação tributária em S-1000 for igual a [01, 02, 03, 04], informar [0000]. Nos demais casos, o código de Terceiros informado deve ser compatível com o código de FPAS informado, conforme Tabela 04."
+"24";"codTercsSusp";"fpasLotacao";"E";"C";"0-1";"4";"-";"Informar o código combinado dos Terceiros para os quais o recolhimento está suspenso em virtude de processos judiciais. Ex.: Se o contribuinte possui decisões de processos para suspensão de recolhimentos ao SESI (0008) e ao SEBRAE (0064), deve informar o código combinado das duas entidades, ou seja, [0072].
+Validação: Deve ser um código consistente com a Tabela 04.
+Deve haver pelo menos um processo em procJudTerceiro para cada código de Terceiro cujo recolhimento esteja suspenso."
+"25";"infoProcJudTerceiros";"fpasLotacao";"G";"-";"0-1";"-";"-";"Informações sobre a existência de processos judiciais, com sentença/decisão favorável ao contribuinte, relativos às contribuições destinadas a Outras Entidades e Fundos."
+"26";"procJudTerceiro";"infoProcJudTerceiros";"G";"-";"1-99";"-";"-";"Identificação do processo judicial."
+"27";"codTerc";"procJudTerceiro";"E";"C";"1";"4";"-";"Informar o código de Terceiro.
+Validação: Deve ser um código de Terceiro válido e compatível com o FPAS/Terceiros informado no grupo superior, conforme Tabela 04."
+"28";"nrProcJud";"procJudTerceiro";"E";"C";"1";"20";"-";"Informar um número de processo judicial cadastrado através do evento S-1070, cujo indMatProc seja igual a [1].
+Validação: Deve ser um número de processo judicial válido e existente na Tabela de Processos (S-1070), com indMatProc = [1]."
+"29";"codSusp";"procJudTerceiro";"E";"N";"1";"1-14";"-";"Código do indicativo da suspensão, atribuído pelo empregador em S-1070.
+Validação: A informação prestada deve estar de acordo com o que foi informado em S-1070."
+"30";"infoEmprParcial";"dadosLotacao";"G";"-";"0-1";"-";"-";"Informação complementar que apresenta identificação do contratante de obra de construção civil sob regime de empreitada parcial ou subempreitada."
+"31";"tpInscContrat";"infoEmprParcial";"E";"N";"1";"1";"-";"Tipo de inscrição do contratante.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"32";"nrInscContrat";"infoEmprParcial";"E";"C";"1";"11 ou 14";"-";"Número de inscrição (CNPJ/CPF) do contratante.
+Validação: Deve ser um número de CNPJ ou CPF válido, conforme definido em tpInscContrat."
+"33";"tpInscProp";"infoEmprParcial";"E";"N";"0-1";"1";"-";"Tipo de inscrição do proprietário do CNO.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+Validação: Preenchimento obrigatório e exclusivo quando o proprietário não for encontrado no CNO."
+"34";"nrInscProp";"infoEmprParcial";"E";"C";"0-1";"11 ou 14";"-";"Preencher com o número de inscrição (CNPJ/CPF) do proprietário do CNO.
+Validação: Preenchimento obrigatório e exclusivo se tpInscProp for informado. Deve ser um número de CNPJ ou CPF válido, conforme indicado em tpInscProp."
+"35";"dadosOpPort";"dadosLotacao";"G";"-";"0-1";"-";"-";"Informações do operador portuário."
+"36";"aliqRat";"dadosOpPort";"E";"N";"1";"1";"-";"Preencher com a alíquota definida na legislação vigente para a atividade (CNAE) preponderante.
+Valores válidos: 1, 2, 3"
+"37";"fap";"dadosOpPort";"E";"N";"1";"1-5";"4";"Fator Acidentário de Prevenção - FAP.
+Validação: Deve ser um número maior ou igual a 0,5000 e menor ou igual a 2,0000, de acordo com o estabelecido pelo órgão governamental competente."
+"38";"alteracao";"infoLotacao";"G";"-";"0-1";"-";"-";"Alteração das informações."
+"39";"ideLotacao";"alteracao";"G";"-";"1";"-";"-";"Identificação da lotação e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideLotacao"
+"40";"dadosLotacao";"alteracao";"G";"-";"1";"-";"-";"Detalhamento das informações da lotação."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > dadosLotacao"
+"41";"novaValidade";"alteracao";"G";"-";"0-1";"-";"-";"Informação preenchida exclusivamente em caso de alteração do período de validade das informações, apresentando o novo período de validade."
+"42";"iniValid";"novaValidade";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"43";"fimValid";"novaValidade";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"44";"exclusao";"infoLotacao";"G";"-";"0-1";"-";"-";"Exclusão das informações."
+"45";"ideLotacao";"exclusao";"G";"-";"1";"-";"-";"Identificação da lotação e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideLotacao"

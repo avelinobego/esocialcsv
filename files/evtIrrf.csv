@@ -1,0 +1,47 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtIrrf";"eSocial";"G";"-";"1";"-";"-";"Evento Imposto de Renda Retido na Fonte Consolidado por Contribuinte."
+"3";"Id";"evtIrrf";"A";"C";"1";"36";"-";"Identificação única do evento."
+"4";"ideEvento";"evtIrrf";"G";"-";"1";"-";"-";"Identificação do evento de retorno.
+Evento de origem: S-1299."
+"5";"perApur";"ideEvento";"E";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações."
+"6";"ideEmpregador";"evtIrrf";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"7";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"8";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"9";"infoIRRF";"evtIrrf";"G";"-";"1";"-";"-";"Informações relativas ao Imposto de Renda."
+"10";"nrRecArqBase";"infoIRRF";"E";"C";"1";"23";"-";"Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno ao empregador.
+Validação: Deve ser um recibo de entrega válido, correspondente ao arquivo que deu origem ao presente arquivo de retorno (S-1299)."
+"11";"indExistInfo";"infoIRRF";"E";"N";"1";"1";"-";"Indicativo de existência de valores de bases ou de tributos.
+Valores válidos:
+1 - Há informações de IRRF
+2 - Há movimento, porém não há informações de IRRF
+3 - Não há movimento no período informado em perApur"
+"12";"infoCRMen";"infoIRRF";"G";"-";"0-50";"-";"-";"Informações consolidadas do IRRF, por Código de Receita - CR mensal.
+Evento de origem: S-5002."
+"13";"CRMen";"infoCRMen";"E";"C";"1";"6";"-";"Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho.
+Valores válidos:
+056107 - IRRF mensal, 13° salário e férias sobre trabalho assalariado no país ou ausente no exterior a serviço do país, exceto se contratado por empregador doméstico ou por segurado especial sujeito a recolhimento unificado
+056108 - IRRF mensal e férias - Empregado doméstico
+056109 - IRRF 13° salário na rescisão de contrato de trabalho - Empregado doméstico
+056110 - IRRF - Empregado doméstico 13º salário
+056111 - IRRF - Empregado/Trabalhador rural - Segurado especial
+056112 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário
+056113 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário rescisório
+058806 - IRRF sobre rendimento do trabalho sem vínculo empregatício
+061001 - IRRF sobre rendimentos relativos a prestação de serviços de transporte rodoviário internacional de carga, pagos a transportador autônomo PF residente no Paraguai
+353301 - Proventos de aposentadoria, reserva, reforma ou pensão pagos por previdência pública
+356201 - IRRF sobre participação dos trabalhadores em lucros ou resultados - PLR
+188901 - Rendimentos Recebidos Acumuladamente - RRA"
+"14";"vrCRMen";"infoCRMen";"E";"N";"1";"1-14";"2";"Valor correspondente ao Código de Receita - CR indicado em CRMen."
+"15";"vrCRMenSusp";"infoCRMen";"E";"N";"0-1";"1-14";"2";"Valor com exigibilidade suspensa correspondente ao Código de Receita - CR indicado em CRMen."
+"16";"infoCRDia";"infoIRRF";"G";"-";"0-350";"-";"-";"Informações consolidadas do IRRF, por Código de Receita - CR diário.
+Evento de origem: S-5002."
+"17";"perApurDia";"infoCRDia";"E";"N";"1";"1-2";"-";"Período de apuração diário do Código de Receita - CR."
+"18";"CRDia";"infoCRDia";"E";"C";"1";"6";"-";"Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente no exterior para fins fiscais.
+Valores válidos:
+047301 - IRRF - Residentes no exterior, para fins fiscais"
+"19";"vrCRDia";"infoCRDia";"E";"N";"1";"1-14";"2";"Valor relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente, para fins fiscais, no exterior."
+"20";"vrCRDiaSusp";"infoCRDia";"E";"N";"0-1";"1-14";"2";"Valor que deixou de ser descontado do trabalhador relativo ao Imposto de Renda sobre rendimentos do trabalho pagos a residente, para fins fiscais, no exterior."

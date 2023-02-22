@@ -1,0 +1,73 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtCdBenAlt";"eSocial";"G";"-";"1";"-";"-";"Evento Cadastro de Benefício - Entes Públicos - Alteração.
+Regras de validação:
+REGRA_ALTERA_TIPO_BENEFICIO
+REGRA_BENEFICIO_ATIVO_NA_DTEVENTO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXTEMP_REATIVACAO
+REGRA_RETIFICA_MESMO_BENEFICIO"
+"3";"Id";"evtCdBenAlt";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtCdBenAlt";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtCdBenAlt";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideBeneficio";"evtCdBenAlt";"G";"-";"1";"-";"-";"Identificação do beneficiário e do benefício."
+"14";"cpfBenef";"ideBeneficio";"E";"C";"1";"11";"-";"Informar o CPF do beneficiário."
+"15";"nrBeneficio";"ideBeneficio";"E";"C";"1";"1-20";"-";"Número do benefício."
+"16";"infoBenAlteracao";"evtCdBenAlt";"G";"-";"1";"-";"-";"Informações do benefício - Alteração."
+"17";"dtAltBeneficio";"infoBenAlteracao";"E";"D";"1";"-";"-";"Data de alteração das informações relativas ao benefício.
+Validação: Deve ser igual ou anterior à data atual."
+"18";"dadosBeneficio";"infoBenAlteracao";"G";"-";"1";"-";"-";"Dados relativos ao benefício."
+"19";"tpBeneficio";"dadosBeneficio";"E";"C";"1";"4";"-";"Tipo de benefício.
+Validação: Deve ser um código válido e existente na Tabela 25. Se cadIni em S-2410 for igual a [N], não é permitido utilizar código do grupo [08] dessa tabela."
+"20";"tpPlanRP";"dadosBeneficio";"E";"N";"1";"1";"-";"Tipo de plano de segregação da massa.
+Valores válidos:
+0 - Sem segregação da massa
+1 - Fundo em capitalização
+2 - Fundo em repartição
+3 - Mantido pelo Tesouro"
+"21";"dsc";"dadosBeneficio";"E";"C";"0-1";"1-255";"-";"Descrição do instrumento ou situação que originou o pagamento do benefício.
+Validação: Preenchimento obrigatório se tpBeneficio = [0909, 1001, 1009]."
+"22";"indSuspensao";"dadosBeneficio";"E";"C";"1";"1";"-";"Indicativo de suspensão do benefício.
+Valores válidos:
+S - Sim
+N - Não"
+"23";"infoPenMorte";"dadosBeneficio";"G";"-";"0-1";"-";"-";"Informações relativas à pensão por morte."
+"24";"tpPenMorte";"infoPenMorte";"E";"N";"1";"1";"-";"Tipo de pensão por morte.
+Valores válidos:
+1 - Vitalícia
+2 - Temporária"
+"25";"suspensao";"dadosBeneficio";"G";"-";"0-1";"-";"-";"Informações referentes à suspensão do benefício."
+"26";"mtvSuspensao";"suspensao";"E";"C";"1";"2";"-";"Motivo da suspensão do benefício.
+Valores válidos:
+01 - Suspensão por não recadastramento
+99 - Outros motivos de suspensão"
+"27";"dscSuspensao";"suspensao";"E";"C";"0-1";"1-255";"-";"Descrição do motivo da suspensão do benefício.
+Validação: Preenchimento obrigatório e exclusivo se mtvSuspensao = [99]."

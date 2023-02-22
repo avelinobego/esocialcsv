@@ -1,0 +1,291 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtCS";"eSocial";"G";"-";"1";"-";"-";"Evento Informações das Contribuições Sociais Consolidadas por Contribuinte."
+"3";"Id";"evtCS";"A";"C";"1";"36";"-";"Identificação única do evento."
+"4";"ideEvento";"evtCS";"G";"-";"1";"-";"-";"Identificação do evento de retorno.
+Evento de origem: S-1299."
+"5";"indApuracao";"ideEvento";"E";"N";"1";"1";"-";"Indicativo de período de apuração.
+Valores válidos:
+1 - Mensal
+2 - Anual (13° salário)"
+"6";"perApur";"ideEvento";"E";"C";"1";"4 ou 7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações, se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2]."
+"7";"ideEmpregador";"evtCS";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"8";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"9";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"10";"infoCS";"evtCS";"G";"-";"1";"-";"-";"Informações relativas às contribuições sociais devidas à Previdência Social e a Outras Entidades e Fundos."
+"11";"nrRecArqBase";"infoCS";"E";"C";"1";"23";"-";"Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno ao empregador.
+Validação: Deve ser um recibo de entrega válido, correspondente ao arquivo que deu origem ao presente arquivo de retorno (S-1299)."
+"12";"indExistInfo";"infoCS";"E";"N";"1";"1";"-";"Indicativo de existência de valores de bases e de contribuições sociais.
+Valores válidos:
+1 - Há informações com apuração de contribuições sociais
+2 - Há movimento, porém sem apuração de contribuições sociais
+3 - Não há movimento no período informado em perApur"
+"13";"infoCPSeg";"infoCS";"G";"-";"0-1";"-";"-";"Informações de contribuição previdenciária do segurado."
+"14";"vrDescCP";"infoCPSeg";"E";"N";"1";"1-14";"2";"Valor total da contribuição descontada dos segurados.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [21]."
+"15";"vrCpSeg";"infoCPSeg";"E";"N";"1";"1-14";"2";"Valor total calculado relativo à contribuição dos segurados.
+Origem: campo vrCpSeg de S-5001."
+"16";"infoContrib";"infoCS";"G";"-";"1";"-";"-";"Informações gerais do contribuinte necessárias à apuração das contribuições sociais."
+"17";"classTrib";"infoContrib";"E";"C";"1";"2";"-";"Preencher com o código correspondente à classificação tributária do contribuinte, conforme Tabela 08.
+Evento de origem: S-1000."
+"18";"infoPJ";"infoContrib";"G";"-";"0-1";"-";"-";"Informações complementares, exclusivas da Pessoa Jurídica."
+"19";"indCoop";"infoPJ";"E";"N";"0-1";"1";"-";"Indicativo de cooperativa.
+Valores válidos:
+0 - Não é cooperativa
+1 - Cooperativa de trabalho
+2 - Cooperativa de produção
+3 - Outras cooperativas
+Evento de origem: S-1000."
+"20";"indConstr";"infoPJ";"E";"N";"1";"1";"-";"Indicativo de construtora.
+Valores válidos:
+0 - Não é construtora
+1 - Empresa construtora
+Evento de origem: S-1000."
+"21";"indSubstPatr";"infoPJ";"E";"N";"0-1";"1";"-";"Indicativo de substituição da contribuição previdenciária patronal.
+Valores válidos:
+1 - Integralmente substituída
+2 - Parcialmente substituída
+Origem: campo indSubstPatr de S-1280."
+"22";"percRedContrib";"infoPJ";"E";"N";"0-1";"1-5";"2";"Percentual de redução da contribuição prevista na Lei 12.546/2011.
+Evento de origem: S-1280."
+"23";"percTransf";"infoPJ";"E";"N";"0-1";"1";"-";"Percentual de contribuição social - Lei 11.096/2005.
+Valores válidos:
+1 - 0,2000
+2 - 0,4000
+3 - 0,6000
+4 - 0,8000
+5 - 1,0000
+Evento de origem: S-1280."
+"24";"indTribFolhaPisCofins";"infoPJ";"E";"C";"0-1";"1";"-";"Indicador de tributação sobre a folha de pagamento - PIS e COFINS.
+Valores válidos:
+S - Sim
+Evento de origem: S-1000."
+"25";"infoAtConc";"infoPJ";"G";"-";"0-1";"-";"-";"Informações prestadas por empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída e não substituída."
+"26";"fatorMes";"infoAtConc";"E";"N";"1";"1-5";"2";"Informe o fator a ser utilizado para cálculo da contribuição patronal do mês dos trabalhadores envolvidos na execução das atividades enquadradas no Anexo IV em conjunto com as dos Anexos I a III e V da Lei Complementar 123/2006.
+Evento de origem: S-1280."
+"27";"fator13";"infoAtConc";"E";"N";"1";"1-5";"2";"Informe o fator a ser utilizado para cálculo da contribuição patronal do décimo terceiro dos trabalhadores envolvidos na execução das atividades enquadradas no Anexo IV em conjunto com as dos Anexos I a III e V da Lei Complementar 123/2006.
+Evento de origem: S-1280."
+"28";"ideEstab";"infoCS";"G";"-";"0-N";"-";"-";"Informações de identificação do estabelecimento ou obra de construção civil."
+"29";"tpInsc";"ideEstab";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+3 - CAEPF
+4 - CNO"
+"30";"nrInsc";"ideEstab";"E";"C";"1";"11, 12 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstab/tpInsc.
+Evento de origem: S-1260, S-1270 ou S-5001."
+"31";"infoEstab";"ideEstab";"G";"-";"0-1";"-";"-";"Informações relativas a cada estabelecimento, necessárias à apuração das contribuições sociais."
+"32";"cnaePrep";"infoEstab";"E";"N";"1";"7";"-";"Preencher com o código CNAE, conforme informado em S-1005.
+Evento de origem: S-1005."
+"33";"cnpjResp";"infoEstab";"E";"C";"0-1";"14";"-";"Preencher com o CNPJ responsável pela inscrição no cadastro de obras da RFB.
+Evento de origem: S-1005."
+"34";"aliqRat";"infoEstab";"E";"N";"1";"1";"-";"Informar a alíquota RAT.
+Valores válidos: 1, 2, 3
+Validação: Deve corresponder à alíquota declarada no evento S-1005. Caso não haja informação, retornar a alíquota definida na legislação vigente para o código CNAE informado."
+"35";"fap";"infoEstab";"E";"N";"0-1";"1-5";"4";"Fator Acidentário de Prevenção - FAP.
+Validação: Informação obrigatória e exclusiva se ideEmpregador/tpInsc = [1]. Deve corresponder ao FAP estabelecido para a empresa pelo órgão governamental competente, exceto se:
+a) ideEstab/tpInsc = [4] e se não existir o campo cnpjResp; ou
+b) ideEstab/tpInsc = [1, 4] e se houver informação de procAdmJudFap em S-1005; ou
+c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ responsável pela inscrição no CNO não for encontrado na tabela FAP referente ao ano de perApur.
+Caso haja alguma exceção acima, retornar o FAP declarado no evento S-1005."
+"36";"aliqRatAjust";"infoEstab";"E";"N";"0-1";"1-5";"4";"Alíquota do RAT após ajuste pelo FAP.
+Validação: Informação obrigatória e exclusiva se ideEmpregador/tpInsc = [1]. Deve corresponder ao resultado da multiplicação dos campos infoEstab/aliqRat e infoEstab/fap."
+"37";"infoEstabRef";"infoEstab";"G";"-";"0-1";"-";"-";" Informações de RAT e FAP de referência, nos casos de processo administrativo ou judicial que altere a(s) alíquota(s)."
+"38";"aliqRat";"infoEstabRef";"E";"N";"1";"1";"-";"Retornar a alíquota RAT definida na legislação vigente.
+Valores válidos: 1, 2, 3
+Validação: Deve corresponder à alíquota definida na legislação vigente para o código CNAE informado em S-1005."
+"39";"fap";"infoEstabRef";"E";"N";"0-1";"1-5";"4";"Fator Acidentário de Prevenção - FAP estabelecido pelo órgão governamental competente.
+Validação: Informação obrigatória e exclusiva se ideEmpregador/tpInsc = [1]. Deve corresponder ao FAP estabelecido para a empresa pelo órgão governamental competente."
+"40";"aliqRatAjust";"infoEstabRef";"E";"N";"0-1";"1-5";"4";"Alíquota de referência - RAT após ajuste pelo FAP.
+Validação: Informação obrigatória e exclusiva se ideEmpregador/tpInsc = [1]. Deve corresponder ao resultado da multiplicação dos campos infoEstabRef/aliqRat e infoEstabRef/fap."
+"41";"infoComplObra";"infoEstab";"G";"-";"0-1";"-";"-";"Informações complementares relativas a obras de construção civil."
+"42";"indSubstPatrObra";"infoComplObra";"E";"N";"1";"1";"-";"Indicativo de substituição da contribuição patronal de obra de construção civil.
+Valores válidos:
+1 - Contribuição patronal substituída
+2 - Contribuição patronal não substituída
+Origem: campo indSubstPatrObra de S-1005."
+"43";"ideLotacao";"ideEstab";"G";"-";"0-N";"-";"-";"Identificação da lotação tributária."
+"44";"codLotacao";"ideLotacao";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária.
+Evento de origem: S-1270 ou S-5001."
+"45";"fpas";"ideLotacao";"E";"N";"1";"3";"-";"Preencher com o código relativo ao FPAS.
+Evento de origem: S-1020."
+"46";"codTercs";"ideLotacao";"E";"C";"1";"4";"-";"Preencher com o código de Terceiros, conforme Tabela 04.
+Evento de origem: S-1020."
+"47";"codTercsSusp";"ideLotacao";"E";"C";"0-1";"4";"-";"Informar o código combinado dos Terceiros para os quais o recolhimento está suspenso em virtude de processos judiciais.
+Evento de origem: S-1020."
+"48";"infoTercSusp";"ideLotacao";"G";"-";"0-15";"-";"-";"Informações de suspensão de contribuições destinadas a Outras Entidades e Fundos (Terceiros)."
+"49";"codTerc";"infoTercSusp";"E";"C";"1";"4";"-";"Informar o código de Terceiro.
+Origem: campo codTerc de S-1020."
+"50";"infoEmprParcial";"ideLotacao";"G";"-";"0-1";"-";"-";"Informação complementar que apresenta identificação do contratante e do proprietário de obra de construção civil contratada sob regime de empreitada parcial ou subempreitada.
+Evento de origem: S-1020."
+"51";"tpInscContrat";"infoEmprParcial";"E";"N";"1";"1";"-";"Tipo de inscrição do contratante.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"52";"nrInscContrat";"infoEmprParcial";"E";"C";"1";"11 ou 14";"-";"Número de inscrição (CNPJ/CPF) do contratante."
+"53";"tpInscProp";"infoEmprParcial";"E";"N";"1";"1";"-";"Tipo de inscrição do proprietário do CNO.
+Valores válidos:
+1 - CNPJ
+2 - CPF
+Validação: Retornar o tipo de inscrição do proprietário no CNO. Caso não tenha sido encontrado, retornar tpInscProp de S-1020. Se o tipo de inscrição do proprietário no CNO não for encontrado e se não houver informação de tpInscProp em S-1020, retornar tpInscContrat."
+"54";"nrInscProp";"infoEmprParcial";"E";"C";"1";"11 ou 14";"-";"Preencher com o número de inscrição (CNPJ/CPF) do proprietário do CNO.
+Validação: Retornar o número de inscrição do proprietário no CNO. Caso não tenha sido encontrado, retornar nrInscProp de S-1020. Se o número de inscrição do proprietário no CNO não for encontrado e se não houver informação de nrInscProp em S-1020, retornar nrInscContrat."
+"55";"cnoObra";"infoEmprParcial";"E";"C";"1";"12";"-";"Número do CNO da obra."
+"56";"dadosOpPort";"ideLotacao";"G";"-";"0-1";"-";"-";"Informações relativas ao operador portuário."
+"57";"cnpjOpPortuario";"dadosOpPort";"E";"C";"1";"14";"-";"Preencher com o CNPJ do operador portuário.
+Origem: campo dadosLotacao/nrInsc de S-1020."
+"58";"aliqRat";"dadosOpPort";"E";"N";"1";"1";"-";"Informar a alíquota RAT.
+Valores válidos: 1, 2, 3
+Origem: campo dadosOpPort/aliqRat de S-1020."
+"59";"fap";"dadosOpPort";"E";"N";"1";"1-5";"4";"Fator Acidentário de Prevenção - FAP.
+Origem: campo dadosOpPort/fap de S-1020."
+"60";"aliqRatAjust";"dadosOpPort";"E";"N";"1";"1-5";"4";"Alíquota do RAT após ajuste pelo FAP.
+Validação: Deve corresponder ao resultado da multiplicação dos campos dadosOpPort/aliqRat e dadosOpPort/fap."
+"61";"basesRemun";"ideLotacao";"G";"-";"0-99";"-";"-";"Bases de cálculo da contribuição previdenciária incidente sobre remunerações, por categoria."
+"62";"indIncid";"basesRemun";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de incidência para fins de apuração da contribuição previdenciária.
+Valores válidos:
+1 - Normal
+2 - Atividade concomitante
+9 - Substituída ou isenta
+Validação: a) Para empresas com classTrib = [01, 70, 80], todas as bases de cálculo devem ser totalizadas com indIncid = [9], EXCETO para classTrib = [01] E ideEstab/tpInsc = [4], que deve ser totalizada com indIncid = [1].
+b) Para empresas com classTrib = [03], considerar a informação prestada no campo indSimples do evento S-5001, conforme abaixo:
+- Se o indSimples em S-5001 = [1] (contrib. subst. integralmente), a base de cálculo do respectivo trabalhador deve ser totalizada com indIncid = [9];
+- Se o indSimples em S-5001 = [2] (contrib. não substituída), a base de cálculo do respectivo trabalhador deve ser totalizada com indIncid = [1] (normal);
+- Se o indSimples em S-5001 = [3] (ativ. concomitante), a base de cálculo do respectivo trabalhador deve ser totalizada com indIncid = [2].
+c) Para empresas com classTrib = [10] (sindicato de avulsos não portuários), as bases de cálculo dos trabalhadores avulsos da categoria [202] devem ser totalizadas com indIncid = [9].
+d) Para classTrib = [22] (segurado especial), as bases de cálculo dos trabalhadores devem ser totalizadas com indIncid = [9], EXCETO para a categoria [104] (empregado doméstico), que deve ser totalizada com indIncid = [1].
+e) Para contribuinte com classTrib = [99] e com indCoop = [1] (cooperativa de trabalho), as remunerações dos cooperados (categoria [731, 734]) cuja lotação esteja classificada com tpLotacao em S-1020 = [05, 06, 07] devem ser totalizadas com indIncid = [9]. Nos demais casos, indIncid = [1].
+f) Para contribuintes com classTrib = [11], as bases de cálculo dos trabalhadores devem ser totalizadas com indIncid = [9], EXCETO para as categorias de contribuinte individual, que devem ser totalizadas com indIncid = [1].
+g) Para tpLotacao em S-1020 = [91], todas as bases de cálculo devem ser totalizadas com indIncid = [9]."
+"63";"codCateg";"basesRemun";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador, conforme definido em S-5001."
+"64";"basesCp";"basesRemun";"G";"-";"1";"-";"-";"Valores correspondentes às bases, contribuições do segurado e deduções da contribuição previdenciária."
+"65";"vrBcCp00";"basesCp";"E";"N";"1";"1-14";"2";"Preencher com a base de cálculo da contribuição previdenciária sobre a remuneração.
+Origem: para codCateg diferente de [104]: somatório do campo valor de S-5001, quando tpValor em S-5001 = [11, 15]; para codCateg = [104]: somatório do campo valor de S-5001, quando tpValor em S-5001 = [11, 15], limitado ao teto do salário de contribuição.
+OBS.: A contribuição previdenciária patronal do empregador doméstico tem como base de cálculo o somatório do salário de contribuição de cada empregado."
+"66";"vrBcCp15";"basesCp";"E";"N";"1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 15 anos de contribuição.
+Origem: campo valor de S-5001, se tpValor em S-5001 = [12, 16]."
+"67";"vrBcCp20";"basesCp";"E";"N";"1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 20 anos de contribuição.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [13, 17]."
+"68";"vrBcCp25";"basesCp";"E";"N";"1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 25 anos de contribuição.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [14, 18]."
+"69";"vrSuspBcCp00";"basesCp";"E";"N";"1";"1-14";"2";"Valor da BC com incidência suspensa em decorrência de decisão judicial.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [91, 95]."
+"70";"vrSuspBcCp15";"basesCp";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 15 anos de trabalho, com incidência suspensa em decorrência de decisão judicial.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [92, 96]."
+"71";"vrSuspBcCp20";"basesCp";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador expectativa de aposentadoria especial aos 20 anos de trabalho, com incidência suspensa em decorrência de decisão judicial.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [93, 97]."
+"72";"vrSuspBcCp25";"basesCp";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 25 anos de trabalho, com incidência suspensa em decorrência de decisão judicial.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [94, 98]."
+"73";"vrBcCp00VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Preencher com a base de cálculo da contribuição previdenciária sobre a remuneração - Contrato Verde e Amarelo.
+Origem: somatório do campo valor de S-5001, quando tpValor em S-5001 = [41, 45]."
+"74";"vrBcCp15VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 15 anos de contribuição - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, se tpValor em S-5001 = [42, 46]."
+"75";"vrBcCp20VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 20 anos de contribuição - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [43, 47]."
+"76";"vrBcCp25VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 25 anos de contribuição - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [44, 48]."
+"77";"vrSuspBcCp00VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Valor da BC com incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [81, 85]."
+"78";"vrSuspBcCp15VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 15 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [82, 86]."
+"79";"vrSuspBcCp20VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador expectativa de aposentadoria especial aos 20 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [83, 87]."
+"80";"vrSuspBcCp25VA";"basesCp";"E";"N";"0-1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 25 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [84, 88]."
+"81";"vrDescSest";"basesCp";"E";"N";"1";"1-14";"2";"Valor total descontado do trabalhador para recolhimento ao SEST.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [22]."
+"82";"vrCalcSest";"basesCp";"E";"N";"1";"1-14";"2";"Valor calculado relativo à contribuição devida pelo trabalhador para recolhimento ao SEST.
+Origem: campo vrCsSegTerc de S-5001, quando calcTerc/tpCR em S-5001 = [121802], exceto se houver informação de processo judicial do trabalhador, quando deve ser utilizado o valor apurado em vrDescSest."
+"83";"vrDescSenat";"basesCp";"E";"N";"1";"1-14";"2";"Valor total descontado do trabalhador para recolhimento ao SENAT.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [23]."
+"84";"vrCalcSenat";"basesCp";"E";"N";"1";"1-14";"2";"Valor calculado relativo à contribuição devida pelo trabalhador para recolhimento ao SENAT.
+Origem: campo vrCsSegTerc de S-5001, quando calcTerc/tpCR em S-5001 = [122102], exceto se houver informação de processo judicial do trabalhador, quando deve ser utilizado o valor apurado em vrDescSenat."
+"85";"vrSalFam";"basesCp";"E";"N";"1";"1-14";"2";"Valor total do salário-família para a categoria indicada.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [31]."
+"86";"vrSalMat";"basesCp";"E";"N";"1";"1-14";"2";"Valor total do salário-maternidade para a categoria indicada.
+Origem: campo valor de S-5001, quando tpValor em S-5001 = [32]."
+"87";"basesAvNPort";"ideLotacao";"G";"-";"0-1";"-";"-";"Informações de bases de cálculo relativas à contratação de trabalhadores avulsos não portuários.
+Informações desse grupo conforme informado pelo contribuinte em S-1270."
+"88";"vrBcCp00";"basesAvNPort";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração dos trabalhadores avulsos não portuários.
+Origem: campo vrBcCp00 de S-1270."
+"89";"vrBcCp15";"basesAvNPort";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 15 anos de contribuição.
+Origem: campo vrBcCp15 de S-1270."
+"90";"vrBcCp20";"basesAvNPort";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 20 anos de contribuição.
+Origem: campo vrBcCp20 de S-1270."
+"91";"vrBcCp25";"basesAvNPort";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 25 anos de contribuição.
+Origem: campo vrBcCp25 de S-1270."
+"92";"vrBcCp13";"basesAvNPort";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre o 13° salário dos trabalhadores avulsos não portuários contratados.
+Origem: campo vrBcCp13 de S-1270."
+"93";"vrDescCP";"basesAvNPort";"E";"N";"1";"1-14";"2";"Preencher com o valor total da contribuição descontada dos trabalhadores avulsos não portuários.
+Origem: campo vrDescCP de S-1270."
+"94";"infoSubstPatrOpPort";"ideLotacao";"G";"-";"0-1";"-";"-";"Grupo preenchido exclusivamente pelo Órgão Gestor de Mão de Obra - OGMO (classTrib = [09]), relativamente a operador portuário enquadrado nos arts. 7º a 9º da Lei 12.546/2011."
+"95";"cnpjOpPortuario";"infoSubstPatrOpPort";"E";"C";"1";"14";"-";"Preencher com o CNPJ do operador portuário.
+Origem: campo dadosLotacao/nrInsc de S-1020 relativo a codLotacao em S-1280."
+"96";"basesAquis";"ideEstab";"G";"-";"0-6";"-";"-";"Informações de bases de cálculo relativas à aquisição de produção rural.
+Evento de origem: S-1250 (existente até a versão 2.5 do leiaute)."
+"97";"indAquis";"basesAquis";"E";"N";"1";"1";"-";"Indicativo da aquisição.
+Valores válidos:
+1 - Aquisição da produção de produtor rural pessoa física ou segurado especial em geral
+2 - Aquisição da produção de produtor rural pessoa física ou segurado especial em geral por entidade do PAA
+3 - Aquisição da produção de produtor rural pessoa jurídica por entidade do PAA
+4 - Aquisição da produção de produtor rural pessoa física ou segurado especial em geral - Produção isenta (Lei 13.606/2018)
+5 - Aquisição da produção de produtor rural pessoa física ou segurado especial em geral por entidade do PAA - Produção isenta (Lei 13.606/2018)
+6 - Aquisição da produção de produtor rural pessoa jurídica por entidade do PAA - Produção isenta (Lei 13.606/2018)
+Origem: campo {indAquis} de S-1250."
+"98";"vlrAquis";"basesAquis";"E";"N";"1";"1-14";"2";"Valor total da aquisição de produção rural de produtor rural.
+Origem: campo {vlrTotAquis} de S-1250."
+"99";"vrCPDescPR";"basesAquis";"E";"N";"1";"1-14";"2";"Preencher com o valor da contribuição previdenciária descontada pelo adquirente de produção de produtor rural - sub-rogação.
+Origem: somatório do campo {vrCpDescPR} de S-1250."
+"100";"vrCPNRet";"basesAquis";"E";"N";"1";"1-14";"2";"Valor da contribuição previdenciária que deixou de ser retida pelo declarante em decorrência de decisão/sentença judicial."
+"101";"vrRatNRet";"basesAquis";"E";"N";"1";"1-14";"2";"Valor da GILRAT, incidente sobre a aquisição de produção rural de produtor rural, cuja retenção deixou de ser efetuada em decorrência de decisão/sentença judicial."
+"102";"vrSenarNRet";"basesAquis";"E";"N";"1";"1-14";"2";"Valor da contribuição destinada ao SENAR, incidente sobre a aquisição de produção rural de produtor rural pessoa física/segurado especial, que deixou de ser retida em decorrência de decisão/sentença judicial."
+"103";"vrCPCalcPR";"basesAquis";"E";"N";"1";"1-14";"2";"Valor calculado relativo à contribuição previdenciária do produtor rural, de acordo com indAquis, conforme segue:
+a) indAquis = [1, 2]: vlrAquis x 1,2%;
+b) indAquis = [3]: vlrAquis x 1,7%;
+c) indAquis = [4, 5, 6]: 0 (zero)."
+"104";"vrRatDescPR";"basesAquis";"E";"N";"1";"1-14";"2";"Valor da contribuição destinada ao financiamento dos benefícios concedidos em razão do grau de incidência da incapacidade laborativa decorrente dos riscos ambientais do trabalho, incidente sobre a aquisição de produção rural de produtor rural."
+"105";"vrRatCalcPR";"basesAquis";"E";"N";"1";"1-14";"2";"Valor calculado relativo à contribuição GILRAT devida pelo produtor rural, de acordo com indAquis, conforme segue:
+a) indAquis = [1, 2, 3]: vlrAquis x 0,1%;
+b) indAquis = [4, 5, 6]: 0 (zero)."
+"106";"vrSenarDesc";"basesAquis";"E";"N";"1";"1-14";"2";"Valor da contribuição destinada ao SENAR, incidente sobre a aquisição de produção rural de produtor rural pessoa física/segurado especial.
+Origem: campo {vrSenarDesc} de S-1250."
+"107";"vrSenarCalc";"basesAquis";"E";"N";"1";"1-14";"2";"Valor calculado da contribuição devida pelo produtor rural ao SENAR, conforme segue:
+a) indAquis = [1, 2, 4, 5]: vlrAquis x 0,2%;
+b) indAquis = [3, 6]: 0 (zero).
+OBS.: No período de 04/2020 a 06/2020, a alíquota deve ser 0,1%."
+"108";"basesComerc";"ideEstab";"G";"-";"0-5";"-";"-";"Informações de bases de cálculo relativas à comercialização da produção rural da Pessoa Física.
+Informações desse grupo conforme informado pelo contribuinte em S-1260."
+"109";"indComerc";"basesComerc";"E";"N";"1";"1";"-";"Indicativo de comercialização.
+Valores válidos:
+2 - Comercialização da produção efetuada diretamente no varejo a consumidor final ou a outro produtor rural pessoa física por produtor rural pessoa física, inclusive por segurado especial, ou por pessoa física não produtor rural
+3 - Comercialização da produção por prod. rural PF/seg. especial - Vendas a PJ (exceto entidade inscrita no Programa de Aquisição de Alimentos - PAA) ou a intermediário PF
+7 - Comercialização da produção isenta de acordo com a Lei 13.606/2018 efetuada diretamente no varejo a consumidor final ou a outro produtor rural pessoa física por produtor rural pessoa física, inclusive por segurado especial, ou por pessoa física não produtor rural
+8 - Comercialização da produção da pessoa física/segurado especial para entidade inscrita no PAA
+9 - Comercialização da produção no mercado externo
+Origem: campo indComerc de S-1260."
+"110";"vrBcComPR";"basesComerc";"E";"N";"1";"1-14";"2";"Valor da base de cálculo da comercialização da produção rural do produtor rural PF/segurado especial a outra PF no varejo ou a outro produtor rural PF/segurado especial ou no mercado externo, conforme indComerc.
+Origem: campo vrTotCom de S-1260."
+"111";"vrCPSusp";"basesComerc";"E";"N";"0-1";"1-14";"2";"Valor da contribuição previdenciária com exigibilidade suspensa.
+Origem: campo vrCPSusp de S-1260."
+"112";"vrRatSusp";"basesComerc";"E";"N";"0-1";"1-14";"2";"Valor da contribuição para GILRAT com exigibilidade suspensa.
+Origem: campo vrRatSusp de S-1260."
+"113";"vrSenarSusp";"basesComerc";"E";"N";"0-1";"1-14";"2";"Valor da contribuição para o SENAR com exigibilidade suspensa.
+Origem: campo vrSenarSusp de S-1260."
+"114";"infoCREstab";"ideEstab";"G";"-";"0-99";"-";"-";"Informações das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, consolidadas por estabelecimento e por Código de Receita - CR."
+"115";"tpCR";"infoCREstab";"E";"N";"1";"6";"-";"Código de Receita - CR relativo a contribuições sociais devidas à Previdência Social e a Outras Entidades e Fundos (Terceiros), conforme legislação em vigor na competência.
+Validação: Deve ser um código válido, compatível com a classificação tributária do contribuinte e com as informações prestadas nos demais eventos."
+"116";"vrCR";"infoCREstab";"E";"N";"1";"1-14";"2";"Valor correspondente ao CR apurado.
+Validação: Deve ser apurado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."
+"117";"vrSuspCR";"infoCREstab";"E";"N";"0-1";"1-14";"2";"Valor suspenso correspondente ao CR apurado.
+Validação: Deve ser apurado de acordo com as informações de processos judiciais e administrativos."
+"118";"infoCRContrib";"infoCS";"G";"-";"0-99";"-";"-";"Informações consolidadas das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, por Código de Receita - CR."
+"119";"tpCR";"infoCRContrib";"E";"N";"1";"6";"-";"Código de Receita - CR relativo a contribuições sociais devidas à Previdência Social e a Outras Entidades e Fundos (Terceiros), conforme legislação em vigor na competência.
+Validação: Deve ser um código válido, compatível com a classificação tributária do contribuinte e com as informações prestadas nos demais eventos."
+"120";"vrCR";"infoCRContrib";"E";"N";"1";"1-14";"2";"Valor correspondente ao CR apurado.
+Validação: Deve ser apurado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."
+"121";"vrCRSusp";"infoCRContrib";"E";"N";"0-1";"1-14";"2";"Valor do tributo com exigibilidade suspensa."

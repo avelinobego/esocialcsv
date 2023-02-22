@@ -1,0 +1,199 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtCAT";"eSocial";"G";"-";"1";"-";"-";"Evento Comunicação de Acidente de Trabalho.
+Regras de validação:
+REGRA_EMPREGADO_DOMESTICO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVENTO_EXT_SEM_IMPACTO_FOPAG
+REGRA_EVENTO_POSTERIOR_CAT_OBITO
+REGRA_EXCLUI_EVENTO_CAT
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXTEMP_REINTEGRACAO
+REGRA_GERAL_VALIDA_DADOS_TABCONTRIB
+REGRA_MESMO_PROCEMI
+REGRA_RETIFICA_DT_ACIDENTE
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_TSV_ATIVO_NA_DTEVENTO
+REGRA_VINCULO_ATIVO_NA_DTEVENTO"
+"3";"Id";"evtCAT";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtCAT";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtCAT";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideVinculo";"evtCAT";"G";"-";"1";"-";"-";"Informações de identificação do trabalhador e do vínculo."
+"14";"cpfTrab";"ideVinculo";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"matricula";"ideVinculo";"E";"C";"0-1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.
+Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2190, S-2200 ou S-2300 do respectivo contrato. Não preencher no caso de Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE sem informação de matrícula no evento S-2300."
+"16";"codCateg";"ideVinculo";"E";"N";"0-1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Informar somente no caso de TSVE sem informação de matrícula no evento S-2300.
+Validação: Informação obrigatória e exclusiva se não houver preenchimento de matricula. Se informado, deve ser um código válido e existente na Tabela 01."
+"17";"cat";"evtCAT";"G";"-";"1";"-";"-";"Comunicação de Acidente de Trabalho - CAT."
+"18";"dtAcid";"cat";"E";"D";"1";"-";"-";"Data do acidente.
+Validação: Deve ser uma data válida, igual ou anterior à data atual e igual ou posterior à data de admissão do trabalhador e à data de início da obrigatoriedade deste evento para o empregador no eSocial.
+Se tpCat = [2, 3], deve ser informado valor igual ao preenchido no evento de CAT anterior, quando informado em nrRecCatOrig."
+"19";"tpAcid";"cat";"E";"N";"1";"1";"-";"Tipo de acidente de trabalho.
+Valores válidos:
+1 - Típico
+2 - Doença
+3 - Trajeto"
+"20";"hrAcid";"cat";"E";"C";"0-1";"4";"-";"Hora do acidente, no formato HHMM.
+Validação: Preenchimento obrigatório se tpAcid = [1] ou se (tpAcid = [3] e dtAcid >= [2022-01-26]). Não informar se tpAcid = [2]. Se preenchida, deve estar no intervalo entre [0000] e [2359], criticando inclusive a segunda parte do número, que indica os minutos, que deve ser menor ou igual a 59.
+Se tpCat = [2, 3], deve ser informado valor igual ao preenchido no evento de CAT anterior, quando informado em nrRecCatOrig."
+"21";"hrsTrabAntesAcid";"cat";"E";"C";"0-1";"4";"-";"Horas trabalhadas antes da ocorrência do acidente, no formato HHMM.
+Validação: Preenchimento obrigatório se tpAcid = [1] ou se (tpAcid = [3] e dtAcid >= [2022-07-20]). Não informar se tpAcid = [2]. Se preenchida, deve estar no intervalo entre [0000] e [9959], criticando inclusive a segunda parte do número, que indica os minutos, que deve ser menor ou igual a 59."
+"22";"tpCat";"cat";"E";"N";"1";"1";"-";"Tipo de CAT.
+Valores válidos:
+1 - Inicial
+2 - Reabertura
+3 - Comunicação de óbito"
+"23";"indCatObito";"cat";"E";"C";"1";"1";"-";"Houve óbito?
+Valores válidos:
+S - Sim
+N - Não
+Validação: Se o tpCat for igual a [3], o campo deverá sempre ser preenchido com [S]. Se o tpCat for igual a [2], o campo deverá sempre ser preenchido com [N]."
+"24";"dtObito";"cat";"E";"D";"0-1";"-";"-";"Data do óbito.
+Validação: Deve ser uma data válida, igual ou posterior a dtAcid e igual ou anterior à data atual.
+Preenchimento obrigatório e exclusivo se indCatObito = [S]."
+"25";"indComunPolicia";"cat";"E";"C";"1";"1";"-";"Houve comunicação à autoridade policial?
+Valores válidos:
+S - Sim
+N - Não"
+"26";"codSitGeradora";"cat";"E";"N";"1";"9";"-";"Preencher com o código da situação geradora do acidente ou da doença profissional.
+Validação: Deve ser um código válido e existente na Tabela 15."
+"27";"iniciatCAT";"cat";"E";"N";"1";"1";"-";"Iniciativa da CAT.
+Valores válidos:
+1 - Empregador
+2 - Ordem judicial
+3 - Determinação de órgão fiscalizador"
+"28";"obsCAT";"cat";"E";"C";"0-1";"1-999";"-";"Observação."
+"29";"ultDiaTrab";"cat";"E";"D";"0-1";"-";"-";"Último dia trabalhado.
+Validação: Preenchimento obrigatório se dtAcid >= [2023-01-16]). Se informada, deve ser uma data igual ou anterior à data atual e igual ou posterior à data de admissão do trabalhador.
+Se tpCat = [2], deve ser informada data posterior à data preenchida no evento de CAT anterior, quando informada em nrRecCatOrig."
+"30";"houveAfast";"cat";"E";"C";"0-1";"1";"-";"Houve afastamento?
+Valores válidos:
+S - Sim
+N - Não
+Validação: Preenchimento obrigatório se dtAcid >= [2023-01-16])."
+"31";"localAcidente";"cat";"G";"-";"1";"-";"-";"Local do acidente."
+"32";"tpLocal";"localAcidente";"E";"N";"1";"1";"-";"Tipo de local do acidente.
+Valores válidos:
+1 - Estabelecimento do empregador no Brasil
+2 - Estabelecimento do empregador no exterior
+3 - Estabelecimento de terceiros onde o empregador presta serviços
+4 - Via pública
+5 - Área rural
+6 - Embarcação
+9 - Outros"
+"33";"dscLocal";"localAcidente";"E";"C";"0-1";"1-255";"-";"Especificação do local do acidente (pátio, rampa de acesso, posto de trabalho, etc.)."
+"34";"tpLograd";"localAcidente";"E";"C";"0-1";"1-4";"-";"Tipo de logradouro.
+Validação: Se informado, deve ser um código válido e existente na Tabela 20."
+"35";"dscLograd";"localAcidente";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"36";"nrLograd";"localAcidente";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"37";"complemento";"localAcidente";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"38";"bairro";"localAcidente";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"39";"cep";"localAcidente";"E";"C";"0-1";"8";"-";"Código de Endereçamento Postal - CEP.
+Validação: Preenchimento obrigatório se tpLocal = [1, 3, 5]. Não preencher se tpLocal = [2].
+Se preenchido, deve ser informado apenas com números, com 8 (oito) posições."
+"40";"codMunic";"localAcidente";"E";"N";"0-1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Preenchimento obrigatório se tpLocal = [1, 3, 4, 5]. Não preencher se tpLocal = [2].
+Se informado, deve ser um código válido e existente na tabela do IBGE."
+"41";"uf";"localAcidente";"E";"C";"0-1";"2";"-";"Preencher com a sigla da Unidade da Federação - UF.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Validação: Preenchimento obrigatório se tpLocal = [1, 3, 4, 5]. Não preencher se tpLocal = [2]."
+"42";"pais";"localAcidente";"E";"C";"0-1";"3";"-";"Preencher com o código do país.
+Validação: Deve ser um código de país válido e existente na Tabela 06.
+Preenchimento obrigatório se tpLocal = [2]. Não preencher nos demais casos."
+"43";"codPostal";"localAcidente";"E";"C";"0-1";"4-12";"-";"Código de Endereçamento Postal.
+Validação: Preenchimento obrigatório se tpLocal = [2]. Não preencher nos demais casos."
+"44";"ideLocalAcid";"localAcidente";"G";"-";"0-1";"-";"-";"Identificação do local onde ocorreu o acidente ou do estabelecimento ao qual o trabalhador avulso está vinculado."
+"45";"tpInsc";"ideLocalAcid";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+3 - CAEPF
+4 - CNO"
+"46";"nrInsc";"ideLocalAcid";"E";"C";"1";"12 ou 14";"-";"Informar o número de inscrição do estabelecimento, de acordo com o tipo de inscrição indicado no campo ideLocalAcid/tpInsc. Se o acidente ou a doença ocupacional ocorreu em local onde o trabalhador presta serviços, deve ser um número de inscrição pertencente à contratante dos serviços.
+No caso de acidente de avulso com tpLocal diferente de [1, 3], informar o estabelecimento ao qual o trabalhador está vinculado.
+Validação: Deve ser compatível com o conteúdo do campo ideLocalAcid/tpInsc. Deve ser um identificador válido, constante das bases da RFB, e:
+a) Se tpLocal = [1] ou (se o código de categoria no RET for igual a [2XX] e tpLocal for diferente de [1, 3]), deve ser válido e existente na Tabela de Estabelecimentos (S-1005);
+b) Se tpLocal = [3], deve ser diferente dos estabelecimentos informados na Tabela S-1005 e, se ideLocalAcid/tpInsc = [1], diferente do CNPJ base indicado em S-1000."
+"47";"parteAtingida";"cat";"G";"-";"1";"-";"-";"Detalhamento da parte atingida pelo acidente de trabalho."
+"48";"codParteAting";"parteAtingida";"E";"N";"1";"9";"-";"Preencher com o código correspondente à parte atingida.
+Validação: Deve ser um código válido e existente na Tabela 13."
+"49";"lateralidade";"parteAtingida";"E";"N";"1";"1";"-";"Lateralidade da(s) parte(s) atingida(s).
+Nos casos de órgãos bilaterais, ou seja, que se situam dos lados do corpo, assinalar o lado (direito ou esquerdo). Ex.: Caso o órgão atingido seja perna, apontar qual foi a atingida (perna direita, perna esquerda ou ambas). Se o órgão atingido é único (como, por exemplo, a cabeça), assinalar este campo como não aplicável.
+Valores válidos:
+0 - Não aplicável
+1 - Esquerda
+2 - Direita
+3 - Ambas"
+"50";"agenteCausador";"cat";"G";"-";"1";"-";"-";"Detalhamento do agente causador do acidente de trabalho."
+"51";"codAgntCausador";"agenteCausador";"E";"N";"1";"9";"-";"Preencher com o código correspondente ao agente causador do acidente.
+Validação: Deve ser um código válido e existente na Tabela 14 ou na Tabela 15."
+"52";"atestado";"cat";"G";"-";"1";"-";"-";"Atestado médico."
+"53";"dtAtendimento";"atestado";"E";"D";"1";"-";"-";"Data do atendimento.
+Validação: Deve ser uma data igual ou posterior a dtAcid e igual ou anterior à data atual."
+"54";"hrAtendimento";"atestado";"E";"C";"1";"4";"-";"Hora do atendimento, no formato HHMM.
+Validação: Deve estar no intervalo entre [0000] e [2359], criticando inclusive a segunda parte do número, que indica os minutos, que deve ser menor ou igual a 59."
+"55";"indInternacao";"atestado";"E";"C";"1";"1";"-";"Indicativo de internação.
+Valores válidos:
+S - Sim
+N - Não"
+"56";"durTrat";"atestado";"E";"N";"1";"1-4";"-";"Duração estimada do tratamento, em dias."
+"57";"indAfast";"atestado";"E";"C";"1";"1";"-";"Indicativo de afastamento do trabalho durante o tratamento.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Se o campo indCatObito for igual a [S], o campo deve sempre ser preenchido com [N]."
+"58";"dscLesao";"atestado";"E";"N";"1";"9";"-";"Preencher com a descrição da natureza da lesão.
+Validação: Deve ser um código válido e existente na Tabela 17."
+"59";"dscCompLesao";"atestado";"E";"C";"0-1";"1-200";"-";"Descrição complementar da lesão."
+"60";"diagProvavel";"atestado";"E";"C";"0-1";"1-100";"-";"Diagnóstico provável."
+"61";"codCID";"atestado";"E";"C";"1";"3-4";"-";"Informar o código da tabela de Classificação Internacional de Doenças - CID.
+Validação: Deve ser preenchido com caracteres alfanuméricos, conforme opções constantes na tabela CID."
+"62";"observacao";"atestado";"E";"C";"0-1";"1-255";"-";"Observação."
+"63";"emitente";"atestado";"G";"-";"1";"-";"-";"Médico/Dentista que emitiu o atestado."
+"64";"nmEmit";"emitente";"E";"C";"1";"2-70";"-";"Nome do médico/dentista que emitiu o atestado."
+"65";"ideOC";"emitente";"E";"N";"1";"1";"-";"Órgão de classe.
+Valores válidos:
+1 - Conselho Regional de Medicina - CRM
+2 - Conselho Regional de Odontologia - CRO
+3 - Registro do Ministério da Saúde - RMS"
+"66";"nrOC";"emitente";"E";"C";"1";"1-14";"-";"Número de inscrição no órgão de classe ou Registro do Ministério da Saúde (RMS)."
+"67";"ufOC";"emitente";"E";"C";"0-1";"2";"-";"Sigla da UF do órgão de classe.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Validação: Preenchimento obrigatório se ideOC = [1, 2]."
+"68";"catOrigem";"cat";"G";"-";"0-1";"-";"-";"Grupo que indica a CAT anterior, no caso de CAT de reabertura ou de comunicação de óbito."
+"69";"nrRecCatOrig";"catOrigem";"E";"C";"1";"23";"-";"Informar o número do recibo da última CAT referente ao mesmo acidente/doença relacionada ao trabalho, nos casos:
+a) de CAT de reabertura;
+b) de óbito, quando houver CAT anterior.
+Validação: Deve corresponder ao número do recibo do arquivo relativo à última CAT informada anteriormente, pertencente ao mesmo contrato, desde que indCatObito da última CAT informada seja igual a [N]. O sistema não efetuará a conferência da informação se dtAcid for anterior a sucessaoVinc/dtTransf, transfDom/dtTransf ou dtAltCPF do evento S-2200, ou se dtAcid for anterior a dtAltCPF do evento S-2300.
+OBS.: Quando a data do acidente for anterior à data de obrigatoriedade do empregador ao envio deste evento, a CAT de reabertura e/ou de óbito não devem ser informadas ao eSocial, mantendo-se o procedimento realizado na emissão da CAT original."

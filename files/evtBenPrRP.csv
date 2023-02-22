@@ -1,0 +1,116 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtBenPrRP";"eSocial";"G";"-";"1";"-";"-";"Evento Benefícios - Entes Públicos.
+Regras de validação:
+REGRA_CONTROLE_DUPLICIDADE
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_GERAL_VALIDA_DADOS_TABCONTRIB
+REGRA_REMUN_ANUAL_DEZEMBRO
+REGRA_REMUN_BENEFICIO_EXISTENTE_RET
+REGRA_REMUN_IND_RETIFICACAO
+REGRA_REMUN_PERMITE_EXCLUSAO
+REGRA_RUBRICA_COMPATIVEL_DECTERCEIRO
+REGRA_VALIDA_EMPREGADOR
+REGRA_VALIDA_PERIODO_APURACAO"
+"3";"Id";"evtBenPrRP";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtBenPrRP";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"indApuracao";"ideEvento";"E";"N";"1";"1";"-";"Indicativo de período de apuração.
+Valores válidos:
+1 - Mensal
+2 - Anual (13° salário)"
+"8";"perApur";"ideEvento";"E";"C";"1";"4 ou 7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações, se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2].
+Validação: Deve ser um mês/ano ou ano válido, igual ou posterior ao início da obrigatoriedade dos eventos periódicos para o empregador."
+"9";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"10";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica"
+"11";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"12";"ideEmpregador";"evtBenPrRP";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"13";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"14";"nrInsc";"ideEmpregador";"E";"C";"1";"8 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"15";"ideBenef";"evtBenPrRP";"G";"-";"1";"-";"-";"Identificação do beneficiário."
+"16";"cpfBenef";"ideBenef";"E";"C";"1";"11";"-";"Informar o CPF do beneficiário.
+Validação: Deve ser um CPF válido."
+"17";"dmDev";"evtBenPrRP";"G";"-";"1-999";"-";"-";"Identificação de cada um dos demonstrativos de valores devidos ao beneficiário.
+Regra de validação:
+REGRA_DEMONSTRATIVO"
+"18";"ideDmDev";"dmDev";"E";"C";"1";"1-30";"-";"Identificador atribuído pelo órgão público para o demonstrativo de valores devidos ao beneficiário. O ente público pode preencher este campo utilizando-se de um identificador padrão para todos os beneficiários; no entanto, havendo mais de um demonstrativo relativo a uma mesma competência, devem ser utilizados identificadores diferentes para cada um dos demonstrativos.
+Validação: Deve ser um identificador único dentro do mesmo perApur para cada um dos demonstrativos do beneficiário.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"19";"nrBeneficio";"dmDev";"E";"C";"1";"1-20";"-";"Preencher com o número do benefício."
+"20";"indRRA";"dmDev";"E";"C";"0-1";"1";"-";"Indicativo de Rendimentos Recebidos Acumuladamente - RRA.
+Somente preencher este campo se for um demonstrativo de RRA.
+Valores válidos:
+S - Sim"
+"21";"infoRRA";"dmDev";"G";"-";"0-1";"-";"-";"Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA."
+"22";"tpProcRRA";"infoRRA";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial"
+"23";"nrProcRRA";"infoRRA";"E";"C";"0-1";"17, 20 ou 21";"-";"Informar o número do processo/requerimento administrativo/judicial.
+Validação: Informação obrigatória se tpProcRRA = [2] e opcional se tpProcRRA = [1]. Deve ser número de processo válido e:
+a) Se tpProcRRA = [1], deve possuir 17 (dezessete) ou 21 (vinte e um) algarismos;
+b) Se tpProcRRA = [2], deve possuir 20 (vinte) algarismos."
+"24";"descRRA";"infoRRA";"E";"C";"1";"1-50";"-";"Descrição dos Rendimentos Recebidos Acumuladamente - RRA."
+"25";"qtdMesesRRA";"infoRRA";"E";"N";"1";"1-4";"1";"Número de meses relativo aos Rendimentos Recebidos Acumuladamente - RRA."
+"26";"despProcJud";"infoRRA";"G";"-";"0-1";"-";"-";"Detalhamento das despesas com processo judicial."
+"27";"vlrDespCustas";"despProcJud";"E";"N";"1";"1-14";"2";"Preencher com o valor das despesas com custas judiciais."
+"28";"vlrDespAdvogados";"despProcJud";"E";"N";"1";"1-14";"2";"Preencher com o valor total das despesas com advogado(s)."
+"29";"ideAdv";"infoRRA";"G";"-";"0-99";"-";"-";"Identificação dos advogados."
+"30";"tpInsc";"ideAdv";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"31";"nrInsc";"ideAdv";"E";"C";"1";"11 ou 14";"-";"Informar o número de inscrição do advogado.
+Validação: Deve ser um número de inscrição válido, de acordo com o tipo de inscrição indicado no campo ideAdv/tpInsc, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.
+Se ideAdv/tpInsc = [1], deve possuir 14 (catorze) algarismos e, no caso de declarante pessoa jurídica, ser diferente do CNPJ base do empregador (exceto se ideEmpregador/nrInsc tiver 14 (catorze) algarismos).
+Se ideAdv/tpInsc = [2], deve possuir 11 (onze) algarismos e, no caso de declarante pessoa física, ser diferente do CPF do empregador."
+"32";"vlrAdv";"ideAdv";"E";"N";"0-1";"1-14";"2";"Valor da despesa com o advogado, se houver."
+"33";"infoPerApur";"dmDev";"G";"-";"0-1";"-";"-";"Informações relativas ao período de apuração."
+"34";"ideEstab";"infoPerApur";"G";"-";"1-500";"-";"-";"Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão."
+"35";"tpInsc";"ideEstab";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"36";"nrInsc";"ideEstab";"E";"C";"1";"14";"-";"Informar o número de inscrição da unidade do órgão público."
+"37";"itensRemun";"ideEstab";"G";"-";"1-200";"-";"-";"Rubricas que compõem o provento ou pensão do beneficiário."
+"38";"codRubr";"itensRemun";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador que identifica a rubrica em sua folha de pagamento."
+"39";"ideTabRubr";"itensRemun";"E";"C";"1";"1-8";"-";"Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr."
+"40";"qtdRubr";"itensRemun";"E";"N";"0-1";"1-12";"2";"Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.).
+Validação: Deve ser maior que 0 (zero)."
+"41";"fatorRubr";"itensRemun";"E";"N";"0-1";"1-5";"2";"Informar o fator, percentual, etc. da rubrica, quando necessário.
+Validação: Deve ser maior que 0 (zero)."
+"42";"vrRubr";"itensRemun";"E";"N";"1";"1-14";"2";"Valor total da rubrica.
+Validação: Deve ser maior que 0 (zero)."
+"43";"indApurIR";"itensRemun";"E";"N";"1";"1";"-";"Indicativo de tipo de apuração de IR.
+Valores válidos:
+0 - Normal (apuração sob a folha de pagamento declarada no eSocial)
+1 - Situação especial de apuração de IR"
+"44";"infoPerAnt";"dmDev";"G";"-";"0-1";"-";"-";"Grupo destinado às informações relativas a períodos anteriores. Somente preencher esse grupo se houver proventos ou pensões retroativos."
+"45";"idePeriodo";"infoPerAnt";"G";"-";"1-180";"-";"-";"Identificação do período ao qual se referem as diferenças de provento ou pensão."
+"46";"perRef";"idePeriodo";"E";"C";"1";"7";"-";"Informar o período ao qual se refere o complemento de provento ou pensão, no formato AAAA-MM.
+Validação: Deve ser igual ou anterior ao período de apuração informado em perApur.
+Deve ser informado no formato AAAA-MM."
+"47";"ideEstab";"idePeriodo";"G";"-";"1-500";"-";"-";"Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão."
+"...";"";"";"";"";"";"";"";"Ver: infoPerApur > ideEstab"

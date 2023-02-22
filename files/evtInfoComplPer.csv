@@ -1,0 +1,77 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtInfoComplPer";"eSocial";"G";"-";"1";"-";"-";"Evento Informações Complementares aos Eventos Periódicos.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVE_FOPAG_IND_RETIFICACAO
+REGRA_EVE_FOPAG_INFO_COMPAT_CLASSTRIB
+REGRA_EVE_FOPAG_PERMITE_EXCLUSAO
+REGRA_EVE_FOPAG_SIMPLIFICADO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_MESMO_PROCEMI
+REGRA_REMUN_ANUAL_DEZEMBRO
+REGRA_VALIDA_EMPREGADOR"
+"3";"Id";"evtInfoComplPer";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtInfoComplPer";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"indApuracao";"ideEvento";"E";"N";"1";"1";"-";"Indicativo de período de apuração.
+Valores válidos:
+1 - Mensal
+2 - Anual (13° salário)"
+"8";"perApur";"ideEvento";"E";"C";"1";"4 ou 7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações, se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2].
+Validação: Deve ser um mês/ano ou ano válido, igual ou posterior ao início da obrigatoriedade dos eventos periódicos para o empregador."
+"9";"indGuia";"ideEvento";"E";"N";"0-1";"1";"-";"Indicativo do tipo de guia.
+Valores válidos:
+1 - Documento de Arrecadação do eSocial - DAE"
+"10";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"11";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"12";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"13";"ideEmpregador";"evtInfoComplPer";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"14";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"15";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"16";"infoSubstPatr";"evtInfoComplPer";"G";"-";"0-1";"-";"-";"Grupo preenchido exclusivamente por empresa enquadrada nos arts. 7º a 9º da Lei 12.546/2011, conforme classificação tributária indicada no evento S-1000."
+"17";"indSubstPatr";"infoSubstPatr";"E";"N";"1";"1";"-";"Indicativo de substituição da contribuição previdenciária patronal.
+Valores válidos:
+1 - Integralmente substituída
+2 - Parcialmente substituída"
+"18";"percRedContrib";"infoSubstPatr";"E";"N";"1";"1-5";"2";"Percentual não substituído pela contribuição prevista na Lei 12.546/2011.
+Informar 0 (zero) se indSubstPatr = [1]. Caso contrário, preencher com o percentual correspondente à razão entre a receita de atividades não relacionadas nos arts. 7º e 8º da Lei 12.546/2011 e a receita bruta total.
+Validação: Se indSubstPatr = [1], informar 0 (zero)."
+"19";"infoSubstPatrOpPort";"evtInfoComplPer";"G";"-";"0-9999";"-";"-";"Grupo preenchido exclusivamente pelo Órgão Gestor de Mão de Obra - OGMO (classTrib em S-1000 = [09]), listando apenas seus códigos de lotação com operadores portuários enquadrados nos arts. 7º a 9º da Lei 12.546/2011."
+"20";"codLotacao";"infoSubstPatrOpPort";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária.
+Validação: Deve ser um código válido e existente na Tabela de Lotações Tributárias (S-1020), com tpLotacao = [08]."
+"21";"infoAtivConcom";"evtInfoComplPer";"G";"-";"0-1";"-";"-";"Grupo preenchido por empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída e não substituída."
+"22";"fatorMes";"infoAtivConcom";"E";"N";"1";"1-5";"2";"Informe o fator a ser utilizado para cálculo da contribuição patronal do mês dos trabalhadores envolvidos na execução das atividades enquadradas no Anexo IV em conjunto com as dos Anexos I a III e V da Lei Complementar 123/2006."
+"23";"fator13";"infoAtivConcom";"E";"N";"1";"1-5";"2";"Informe o fator a ser utilizado para cálculo da contribuição patronal do décimo terceiro dos trabalhadores envolvidos na execução das atividades enquadradas no Anexo IV em conjunto com as dos Anexos I a III e V da Lei Complementar 123/2006."
+"24";"infoPercTransf11096";"evtInfoComplPer";"G";"-";"0-1";"-";"-";"Grupo preenchido por entidade que tenha se transformado em sociedade de fins lucrativos nos termos e no prazo da Lei 11.096/2005."
+"25";"percTransf";"infoPercTransf11096";"E";"N";"1";"1";"-";"Informe o percentual de contribuição social devida em caso de transformação em sociedade de fins lucrativos - Lei 11.096/2005.
+Valores válidos:
+1 - 0,2000
+2 - 0,4000
+3 - 0,6000
+4 - 0,8000
+5 - 1,0000"

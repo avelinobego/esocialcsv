@@ -1,0 +1,198 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTSVTermino";"eSocial";"G";"-";"1";"-";"-";"Evento Trabalhador Sem Vínculo de Emprego/Estatutário - Término.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVENTO_POSTERIOR_CAT_OBITO
+REGRA_EVE_FOPAG_SIMPLIFICADO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_GERAL_VALIDA_DADOS_TABCONTRIB
+REGRA_MESMO_PROCEMI
+REGRA_MUDANCA_CPF
+REGRA_REMUN_IND_RETIFICACAO
+REGRA_REMUN_PERMITE_EXCLUSAO
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_RUBRICA_COMPATIVEL_CATEGORIA
+REGRA_TSV_ATIVO_NA_DTEVENTO
+REGRA_VALIDA_EMPREGADOR
+REGRA_VALIDA_PERIODO_APURACAO"
+"3";"Id";"evtTSVTermino";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtTSVTermino";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"indGuia";"ideEvento";"E";"N";"0-1";"1";"-";"Indicativo do tipo de guia.
+Valores válidos:
+1 - Documento de Arrecadação do eSocial - DAE"
+"8";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"9";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"10";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"11";"ideEmpregador";"evtTSVTermino";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"12";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"13";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"14";"ideTrabSemVinculo";"evtTSVTermino";"G";"-";"1";"-";"-";"Identificação do Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE."
+"15";"cpfTrab";"ideTrabSemVinculo";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"16";"matricula";"ideTrabSemVinculo";"E";"C";"0-1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa.
+Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2300 do respectivo contrato. Não preencher no caso de TSVE sem informação de matrícula no evento S-2300."
+"17";"codCateg";"ideTrabSemVinculo";"E";"N";"0-1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Informar somente no caso de TSVE sem informação de matrícula no evento S-2300.
+Validação: Informação obrigatória e exclusiva se não houver preenchimento de matricula. Se informado, deve ser um código válido e existente na Tabela 01."
+"18";"infoTSVTermino";"evtTSVTermino";"G";"-";"1";"-";"-";"TSVE - Término."
+"19";"dtTerm";"infoTSVTermino";"E";"D";"1";"-";"-";"Data do término.
+Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias."
+"20";"mtvDesligTSV";"infoTSVTermino";"E";"C";"0-1";"2";"-";"Motivo do término.
+Valores válidos:
+01 - Exoneração do diretor não empregado sem justa causa, por deliberação da assembleia, dos sócios cotistas ou da autoridade competente
+02 - Término de mandato do diretor não empregado que não tenha sido reconduzido ao cargo
+03 - Exoneração a pedido de diretor não empregado
+04 - Exoneração do diretor não empregado por culpa recíproca ou força maior
+05 - Morte do diretor não empregado
+06 - Exoneração do diretor não empregado por falência, encerramento ou supressão de parte da empresa
+07 - Mudança de CPF
+99 - Outros
+Validação: Informação obrigatória se o código de categoria no Registro de Eventos Trabalhistas - RET for igual a [721] ou se o grupo mudancaCPF estiver preenchido. Não preencher nas demais situações."
+"21";"pensAlim";"infoTSVTermino";"E";"N";"0-1";"1";"-";"Indicativo de pensão alimentícia para fins de retenção de FGTS.
+Valores válidos:
+0 - Não existe pensão alimentícia
+1 - Percentual de pensão alimentícia
+2 - Valor de pensão alimentícia
+3 - Percentual e valor de pensão alimentícia
+Validação: Informação obrigatória se o código de categoria no RET for igual a [201, 202, 721] e se dtTerm for posterior a 21/04/2019.
+Informação opcional se o código de categoria no RET for igual a [201, 202, 721] e se dtTerm for igual ou anterior a 21/04/2019.
+Não preencher nas demais situações."
+"22";"percAliment";"infoTSVTermino";"E";"N";"0-1";"1-5";"2";"Percentual a ser destinado a pensão alimentícia.
+Validação: Deve ser maior que 0 (zero) e menor ou igual a 100 (cem).
+Informação obrigatória e exclusiva se pensAlim = [1, 3]."
+"23";"vrAlim";"infoTSVTermino";"E";"N";"0-1";"1-14";"2";"Valor da pensão alimentícia.
+Validação: Deve ser maior que 0 (zero).
+Informação obrigatória e exclusiva se pensAlim = [2, 3]."
+"24";"nrProcTrab";"infoTSVTermino";"E";"C";"0-1";"20";"-";"Número que identifica o processo trabalhista, quando o término de TSVE se der por decisão judicial.
+Validação: Se preenchido, deve ser um processo judicial válido, com 20 (vinte) algarismos."
+"25";"mudancaCPF";"infoTSVTermino";"G";"-";"0-1";"-";"-";"Informação do novo CPF do trabalhador."
+"26";"novoCPF";"mudancaCPF";"E";"C";"1";"11";"-";"Preencher com o novo CPF do trabalhador.
+Validação: Deve ser um CPF válido e diferente do CPF do empregador e do antigo CPF do trabalhador."
+"27";"verbasResc";"infoTSVTermino";"G";"-";"0-1";"-";"-";"Grupo onde são prestadas as informações relativas às verbas rescisórias do diretor não empregado, com FGTS."
+"28";"dmDev";"verbasResc";"G";"-";"1-50";"-";"-";"Identificação de cada um dos demonstrativos de valores devidos ao trabalhador.
+Regra de validação:
+REGRA_DEMONSTRATIVO"
+"29";"ideDmDev";"dmDev";"E";"C";"1";"1-30";"-";"Identificador atribuído pela empresa para o demonstrativo de valores devidos ao trabalhador relativo a verbas rescisórias.
+Validação: Deve ser um identificador único dentro da mesma competência (mês/ano da data de término) para cada um dos demonstrativos do trabalhador.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"30";"indRRA";"dmDev";"E";"C";"0-1";"1";"-";"Indicativo de Rendimentos Recebidos Acumuladamente - RRA.
+Somente preencher este campo se for um demonstrativo de RRA.
+Valores válidos:
+S - Sim"
+"31";"infoRRA";"dmDev";"G";"-";"0-1";"-";"-";"Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA."
+"32";"tpProcRRA";"infoRRA";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial"
+"33";"nrProcRRA";"infoRRA";"E";"C";"0-1";"17, 20 ou 21";"-";"Informar o número do processo/requerimento administrativo/judicial.
+Validação: Informação obrigatória se tpProcRRA = [2] e opcional se tpProcRRA = [1]. Deve ser número de processo válido e:
+a) Se tpProcRRA = [1], deve possuir 17 (dezessete) ou 21 (vinte e um) algarismos;
+b) Se tpProcRRA = [2], deve possuir 20 (vinte) algarismos."
+"34";"descRRA";"infoRRA";"E";"C";"1";"1-50";"-";"Descrição dos Rendimentos Recebidos Acumuladamente - RRA."
+"35";"qtdMesesRRA";"infoRRA";"E";"N";"1";"1-4";"1";"Número de meses relativo aos Rendimentos Recebidos Acumuladamente - RRA."
+"36";"despProcJud";"infoRRA";"G";"-";"0-1";"-";"-";"Detalhamento das despesas com processo judicial."
+"37";"vlrDespCustas";"despProcJud";"E";"N";"1";"1-14";"2";"Preencher com o valor das despesas com custas judiciais."
+"38";"vlrDespAdvogados";"despProcJud";"E";"N";"1";"1-14";"2";"Preencher com o valor total das despesas com advogado(s)."
+"39";"ideAdv";"infoRRA";"G";"-";"0-99";"-";"-";"Identificação dos advogados."
+"40";"tpInsc";"ideAdv";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"41";"nrInsc";"ideAdv";"E";"C";"1";"11 ou 14";"-";"Informar o número de inscrição do advogado.
+Validação: Deve ser um número de inscrição válido, de acordo com o tipo de inscrição indicado no campo ideAdv/tpInsc, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.
+Se ideAdv/tpInsc = [1], deve possuir 14 (catorze) algarismos e, no caso de declarante pessoa jurídica, ser diferente do CNPJ base do empregador (exceto se ideEmpregador/nrInsc tiver 14 (catorze) algarismos).
+Se ideAdv/tpInsc = [2], deve possuir 11 (onze) algarismos e, no caso de declarante pessoa física, ser diferente do CPF do empregador."
+"42";"vlrAdv";"ideAdv";"E";"N";"0-1";"1-14";"2";"Valor da despesa com o advogado, se houver."
+"43";"ideEstabLot";"dmDev";"G";"-";"1-99";"-";"-";"Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração."
+"44";"tpInsc";"ideEstabLot";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição do estabelecimento, de acordo com as opções da Tabela 05.
+Valores válidos:
+1 - CNPJ
+4 - CNO"
+"45";"nrInsc";"ideEstabLot";"E";"C";"1";"12 ou 14";"-";"Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstabLot/tpInsc.
+Validação: A inscrição informada deve ser compatível com ideEstabLot/tpInsc."
+"46";"codLotacao";"ideEstabLot";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador para a lotação tributária."
+"47";"detVerbas";"ideEstabLot";"G";"-";"1-200";"-";"-";"Detalhamento das verbas rescisórias devidas ao trabalhador. Deve haver pelo menos uma rubrica de folha, mesmo que o valor líquido a ser pago ao trabalhador seja 0 (zero) em função de descontos."
+"48";"codRubr";"detVerbas";"E";"C";"1";"1-30";"-";"Informar o código atribuído pelo empregador que identifica a rubrica em sua folha de pagamento ou o código da rubrica constante da Tabela de Rubricas Padrão.
+Validação: Não pode ser utilizada rubrica:
+a) cujo codIncCP em S-1010 seja igual a [25, 26, 51];
+b) cuja natRubr em S-1010 seja igual a [1801, 9220], desde que mês/ano de dtTerm >= [2021-07]."
+"49";"ideTabRubr";"detVerbas";"E";"C";"1";"1-8";"-";"Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr."
+"50";"qtdRubr";"detVerbas";"E";"N";"0-1";"1-12";"2";"Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra, quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
+Validação: Deve ser maior que 0 (zero)."
+"51";"fatorRubr";"detVerbas";"E";"N";"0-1";"1-5";"2";"Informar o fator, percentual, etc. da rubrica, quando necessário. Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
+Validação: Deve ser maior que 0 (zero)."
+"52";"vrRubr";"detVerbas";"E";"N";"1";"1-14";"2";"Valor total da rubrica.
+Validação: Deve ser maior que 0 (zero)."
+"53";"indApurIR";"detVerbas";"E";"N";"0-1";"1";"-";"Indicativo de tipo de apuração de IR.
+Valores válidos:
+0 - Normal (apuração sob a folha de pagamento declarada no eSocial)
+1 - Situação especial de apuração de IR
+Validação: Informação obrigatória e exclusiva se mês/ano de dtTerm >= [2021-07]."
+"54";"infoSimples";"ideEstabLot";"G";"-";"0-1";"-";"-";"Informação relativa a empresas enquadradas no regime de tributação Simples Nacional."
+"55";"indSimples";"infoSimples";"E";"N";"1";"1";"-";"Indicador de contribuição substituída.
+Valores válidos:
+1 - Contribuição substituída integralmente
+2 - Contribuição não substituída
+3 - Contribuição não substituída concomitante com contribuição substituída"
+"56";"procJudTrab";"verbasResc";"G";"-";"0-99";"-";"-";"Informações sobre a existência de processos judiciais do trabalhador com decisão favorável quanto à não incidência de contribuições sociais e/ou Imposto de Renda."
+"57";"tpTrib";"procJudTrab";"E";"N";"1";"1";"-";"Abrangência da decisão.
+Valores válidos:
+1 - IRRF
+2 - Contribuições sociais do trabalhador"
+"58";"nrProcJud";"procJudTrab";"E";"C";"1";"20";"-";"Informar um número de processo judicial cadastrado através do evento S-1070, cujo indMatProc seja igual a [1].
+Validação: Deve ser um número de processo judicial válido e existente na Tabela de Processos (S-1070), com indMatProc = [1]."
+"59";"codSusp";"procJudTrab";"E";"N";"1";"1-14";"-";"Código do indicativo da suspensão, atribuído pelo empregador em S-1070.
+Validação: A informação prestada deve estar de acordo com o que foi informado em S-1070."
+"60";"infoMV";"verbasResc";"G";"-";"0-1";"-";"-";"Grupo preenchido exclusivamente em caso de trabalhador que possua outros vínculos/atividades nos quais já tenha ocorrido desconto de contribuição previdenciária."
+"61";"indMV";"infoMV";"E";"N";"1";"1";"-";"Indicador de desconto da contribuição previdenciária do trabalhador.
+Valores válidos:
+1 - O declarante aplica a(s) alíquota(s) de desconto do segurado sobre a remuneração por ele informada (o percentual da(s) alíquota(s) será(ão) obtido(s) considerando a remuneração total do trabalhador)
+2 - O declarante aplica a(s) alíquota(s) de desconto do segurado sobre a diferença entre o limite máximo do salário de contribuição e a remuneração de outra(s) empresa(s) para as quais o trabalhador informou que houve o desconto
+3 - O declarante não realiza desconto do segurado, uma vez que houve desconto sobre o limite máximo de salário de contribuição em outra(s) empresa(s)"
+"62";"remunOutrEmpr";"infoMV";"G";"-";"1-999";"-";"-";"Informações relativas ao trabalhador que possui vínculo empregatício com outra(s) empresa(s) e/ou que exerce outras atividades como contribuinte individual, detalhando as empresas que efetuaram (ou efetuarão) desconto da contribuição."
+"63";"tpInsc";"remunOutrEmpr";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"64";"nrInsc";"remunOutrEmpr";"E";"C";"1";"11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo remunOutrEmpr/tpInsc.
+Validação: a) Se remunOutrEmpr/tpInsc = [1], deve ser um CNPJ válido, diferente do CNPJ base indicado no evento de Informações do Empregador (S-1000) e dos estabelecimentos informados através do evento S-1005.
+b) Se remunOutrEmpr/tpInsc = [2], deve ser um CPF válido e diferente do CPF do trabalhador e ainda, caso o empregador seja pessoa física, diferente do CPF do empregador."
+"65";"codCateg";"remunOutrEmpr";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador na qual houve a remuneração.
+Validação: Deve ser um código válido e existente na Tabela 01."
+"66";"vlrRemunOE";"remunOutrEmpr";"E";"N";"1";"1-14";"2";"Preencher com o valor da remuneração recebida pelo trabalhador na outra empresa/atividade, sobre a qual houve desconto/recolhimento da contribuição do segurado.
+Validação: Deve ser maior que 0 (zero)."
+"67";"remunAposTerm";"infoTSVTermino";"G";"-";"0-1";"-";"-";"Informações sobre a "quarentena" remunerada de trabalhador desligado ou outra situação de término com data anterior.
+O grupo deve ser preenchido apenas no caso do trabalhador que recebe remuneração após o desligamento por estar impossibilitado de exercer atividade remunerada ou no caso de término reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial."
+"68";"indRemun";"remunAposTerm";"E";"N";"0-1";"1";"-";"Indicativo de situação de remuneração após o término.
+Valores válidos:
+1 - Quarentena
+2 - Término reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial
+Validação: Informação obrigatória se dtTerm >= [2023-01-16]."
+"69";"dtFimRemun";"remunAposTerm";"E";"D";"1";"-";"-";"Preencher com a data final da quarentena a que está sujeito o trabalhador. No caso de término reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial, informar o último dia trabalhado.
+Validação: Deve ser uma data posterior a dtTerm."

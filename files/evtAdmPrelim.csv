@@ -1,0 +1,88 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtAdmPrelim";"eSocial";"G";"-";"1";"-";"-";"Evento Registro Preliminar de Trabalhador.
+Regras de validação:
+REGRA_ADMISSAO_VALIDA_DT_ADM
+REGRA_ADMISSAO_VALIDA_DURACAO_CONTRATO
+REGRA_BLOQUEIA_USO_CPF_EMPREGADOR
+REGRA_COMPATIBILIDADE_CATEGORIA_CLASSTRIB
+REGRA_EMPREGADO_DOMESTICO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_MESMO_PROCEMI
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_VALIDA_ADMISSAO_PRELIMINAR
+REGRA_VALIDA_EMPREGADOR
+REGRA_VALIDA_MATRICULA"
+"3";"Id";"evtAdmPrelim";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtAdmPrelim";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+9 - Aplicativo governamental - Integração com a Junta Comercial
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtAdmPrelim";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"infoRegPrelim";"evtAdmPrelim";"G";"-";"1";"-";"-";"Informações do registro preliminar do trabalhador."
+"14";"cpfTrab";"infoRegPrelim";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"dtNascto";"infoRegPrelim";"E";"D";"1";"-";"-";"Preencher com a data de nascimento."
+"16";"dtAdm";"infoRegPrelim";"E";"D";"1";"-";"-";"Preencher com a data de admissão do trabalhador (ou data de início, no caso de Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE).
+Validação: Deve ser posterior à data de nascimento do trabalhador e igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador."
+"17";"matricula";"infoRegPrelim";"E";"C";"1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa.
+Validação: O valor informado não pode conter a expressão 'eSocial' nas 7 (sete) primeiras posições.
+Regra de validação:
+REGRA_CARACTERE_ESPECIAL"
+"18";"codCateg";"infoRegPrelim";"E";"N";"1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Validação: Deve ser um código de categoria sujeito ao Registro de Eventos Trabalhistas - RET de trabalhador não vinculado ao Regime Próprio de Previdência Social - RPPS, ou seja, "Empregado" ([1XX]), algumas categorias de "Agente Público" ([301, 302, 303, 304, 306, 307, 309, 310, 312]), "Avulso" ([2XX]), "Cessão" ([4XX]), algumas categorias de "Contribuinte Individual" ([721, 722, 723, 731, 734, 738, 761, 771]) ou de "Bolsista" ([901, 902])."
+"19";"natAtividade";"infoRegPrelim";"E";"N";"0-1";"1";"-";"Natureza da atividade.
+Valores válidos:
+1 - Trabalho urbano
+2 - Trabalho rural
+Validação: Preenchimento obrigatório se codCateg for relativo a "Empregado", "Agente Público", "Avulso" ou igual a [401, 731, 734, 738]. Não deve ser preenchido se codCateg = [721, 722, 771, 901].
+Se codCateg = [104], deve ser preenchido com [1]. Se codCateg = [102], deve ser preenchido com [2]."
+"20";"infoRegCTPS";"infoRegPrelim";"G";"-";"0-1";"-";"-";"Informações referentes ao registro eletrônico de empregados e à Carteira de Trabalho e Previdência Digital - CTPS Digital."
+"21";"CBOCargo";"infoRegCTPS";"E";"C";"1";"6";"-";"Informar a Classificação Brasileira de Ocupações - CBO relativa ao cargo.
+Validação: Deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições."
+"22";"vrSalFx";"infoRegCTPS";"E";"N";"1";"1-14";"2";"Salário base do trabalhador, correspondente à parte fixa da remuneração.
+Validação: Se undSalFixo for igual a [7], preencher com 0 (zero)."
+"23";"undSalFixo";"infoRegCTPS";"E";"N";"1";"1";"-";"Unidade de pagamento da parte fixa da remuneração.
+Valores válidos:
+1 - Por hora
+2 - Por dia
+3 - Por semana
+4 - Por quinzena
+5 - Por mês
+6 - Por tarefa
+7 - Não aplicável - Salário exclusivamente variável"
+"24";"tpContr";"infoRegCTPS";"E";"N";"1";"1";"-";"Tipo de contrato de trabalho.
+Valores válidos:
+1 - Prazo indeterminado
+2 - Prazo determinado, definido em dias
+3 - Prazo determinado, vinculado à ocorrência de um fato"
+"25";"dtTerm";"infoRegCTPS";"E";"D";"0-1";"-";"-";"Data do término do contrato por prazo determinado.
+Validação: O preenchimento é obrigatório se tpContr = [2]. Não informar se tpContr = [1]. Deve ser igual ou posterior à data de admissão."

@@ -1,0 +1,36 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTribProcTrab";"eSocial";"G";"-";"1";"-";"-";"Evento Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista."
+"3";"Id";"evtTribProcTrab";"A";"C";"1";"36";"-";"Identificação única do evento."
+"4";"ideEvento";"evtTribProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"nrRecArqBase";"ideEvento";"E";"C";"1";"23";"-";"Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno.
+Validação: Deve ser um recibo de entrega válido, correspondente ao arquivo que deu origem ao presente arquivo de retorno (S-2501 ou S-3500)."
+"6";"ideEmpregador";"evtTribProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do empregador ou do contribuinte que prestou a informação."
+"7";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição do empregador ou contribuinte que prestou a informação, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"8";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do empregador ou contribuinte que prestou a informação, de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"9";"ideProc";"evtTribProcTrab";"G";"-";"1";"-";"-";"Identificação do processo."
+"10";"nrProcTrab";"ideProc";"E";"C";"1";"15 ou 20";"-";"Número do processo trabalhista, da ata ou número de identificação da conciliação.
+Validação: a) Se o evento de origem for S-2501, retornar o campo nrProcTrab desse evento;
+b) Se o evento de origem for S-3500, retornar o campo nrProcTrab do evento S-2501 objeto da exclusão."
+"11";"perApur";"ideProc";"E";"C";"1";"7";"-";"Mês/ano em que é devida a obrigação de pagar a parcela prevista no acordo/sentença.
+Validação: a) Se o evento de origem for S-2501, retornar o campo perApurPgto desse evento;
+b) Se o evento de origem for S-3500, retornar o campo perApurPgto do evento S-2501 objeto da exclusão."
+"12";"infoTributos";"ideProc";"G";"-";"1-999";"-";"-";"Identificação do período e da base de cálculo dos tributos referentes ao processo trabalhista."
+"13";"perRef";"infoTributos";"E";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações.
+Validação: a) Se o evento de origem for S-2501, retornar o campo perRef desse evento;
+b) Se o evento de origem for S-3500, retornar o campo perRef do evento S-2501 objeto da exclusão."
+"14";"infoCRContrib";"infoTributos";"G";"-";"0-99";"-";"-";"Informações das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, consolidadas por perRef e por Código de Receita - CR."
+"15";"tpCR";"infoCRContrib";"E";"N";"1";"6";"-";"Código de Receita - CR relativo a contribuições sociais devidas à Previdência Social e a Outras Entidades e Fundos (Terceiros), conforme legislação em vigor na competência.
+Validação: Deve ser um código válido e existente na Tabela 29."
+"16";"vrCR";"infoCRContrib";"E";"N";"1";"1-14";"2";"Valor correspondente ao Código de Receita - CR.
+Validação: Deve ser apurado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."
+"17";"infoCRIRRF";"ideProc";"G";"-";"0-99";"-";"-";"Informações de Imposto de Renda Retido na Fonte, consolidadas por Código de Receita - CR."
+"18";"tpCR";"infoCRIRRF";"E";"N";"1";"6";"-";"Código de Receita - CR relativo a Imposto de Renda Retido na Fonte.
+Validação: Deve ser um código válido e existente na Tabela 29."
+"19";"vrCR";"infoCRIRRF";"E";"N";"1";"1-14";"2";"Valor correspondente ao Código de Receita - CR.
+Validação: Deve ser apurado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."

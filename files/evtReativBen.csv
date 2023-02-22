@@ -1,0 +1,49 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtReativBen";"eSocial";"G";"-";"1";"-";"-";"Evento Reativação de Benefício - Entes Públicos.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_EVENTO_BENEFICIO_TERMINO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXTEMP_REATIVACAO
+REGRA_REATIVACAO_EXCLUSAO_EVENTO
+REGRA_RETIFICA_MESMO_BENEFICIO
+REGRA_VALIDA_CNPJ"
+"3";"Id";"evtReativBen";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtReativBen";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtReativBen";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideBeneficio";"evtReativBen";"G";"-";"1";"-";"-";"Identificação do beneficiário e do benefício."
+"14";"cpfBenef";"ideBeneficio";"E";"C";"1";"11";"-";"Informar o CPF do beneficiário."
+"15";"nrBeneficio";"ideBeneficio";"E";"C";"1";"1-20";"-";"Número do benefício."
+"16";"infoReativ";"evtReativBen";"G";"-";"1";"-";"-";"Informações da reativação do benefício."
+"17";"dtEfetReativ";"infoReativ";"E";"D";"1";"-";"-";"Informar a data da efetiva reativação do benefício.
+Validação: Deve ser posterior à data de cessação do benefício e igual ou anterior à data atual."
+"18";"dtEfeito";"infoReativ";"E";"D";"1";"-";"-";"Data de início dos efeitos financeiros da reativação do benefício.
+Validação: Deve ser uma data igual ou anterior à data da efetiva reativação do benefício e posterior à data de sua cessação."

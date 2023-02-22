@@ -1,0 +1,114 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtTabProcesso";"eSocial";"G";"-";"1";"-";"-";"Evento Tabela de Processos Administrativos/Judiciais.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_PERMITE_ALT_EXCL_CODSUSP
+REGRA_TABGERAL_ALTERACAO_PERIODO_CONFLITANTE
+REGRA_TABGERAL_EXISTE_REGISTRO_ALTERADO
+REGRA_TABGERAL_EXISTE_REGISTRO_EXCLUIDO
+REGRA_TABGERAL_INCLUSAO_PERIODO_CONFLITANTE
+REGRA_TAB_PERMITE_EXCLUSAO
+REGRA_VALIDA_DT_FUTURA
+REGRA_VALIDA_PROCESSO"
+"3";"Id";"evtTabProcesso";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtTabProcesso";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"6";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"7";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"8";"ideEmpregador";"evtTabProcesso";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"9";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"10";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"11";"infoProcesso";"evtTabProcesso";"CG";"-";"1";"-";"-";"Informações do processo."
+"12";"inclusao";"infoProcesso";"G";"-";"0-1";"-";"-";"Inclusão de novas informações."
+"13";"ideProcesso";"inclusao";"G";"-";"1";"-";"-";"Identificação do processo e período de validade das informações."
+"14";"tpProc";"ideProcesso";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial
+4 - Processo FAP de exercício anterior a 2019"
+"15";"nrProc";"ideProcesso";"E";"C";"1";"16, 17, 20 ou 21";"-";"Informar o número do processo administrativo/judicial de acordo com o tipo informado em tpProc.
+Validação: Deve ser um número de processo válido e:
+a) Se tpProc = [1], deve possuir 17 (dezessete) ou 21 (vinte e um) algarismos;
+b) Se tpProc = [2], deve possuir 20 (vinte) algarismos;
+c) Se tpProc = [4], deve possuir 16 (dezesseis) algarismos."
+"16";"iniValid";"ideProcesso";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"17";"fimValid";"ideProcesso";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"18";"dadosProc";"inclusao";"G";"-";"1";"-";"-";"Dados do processo."
+"19";"indAutoria";"dadosProc";"E";"N";"0-1";"1";"-";"Indicativo da autoria da ação judicial.
+Valores válidos:
+1 - Próprio contribuinte
+2 - Outra entidade, empresa ou empregado
+Validação: Preenchimento obrigatório se tpProc = [2]."
+"20";"indMatProc";"dadosProc";"E";"N";"1";"1";"-";"Indicativo da matéria do processo.
+Valores válidos:
+1 - Exclusivamente tributária ou tributária e FGTS
+7 - Exclusivamente FGTS e/ou Contribuição Social Rescisória (Lei Complementar 110/2001)"
+"21";"observacao";"dadosProc";"E";"C";"0-1";"1-255";"-";"Observações relacionadas ao processo."
+"22";"dadosProcJud";"dadosProc";"G";"-";"0-1";"-";"-";"Informações complementares do processo judicial."
+"23";"ufVara";"dadosProcJud";"E";"C";"1";"2";"-";"Identificação da Unidade da Federação - UF da Seção Judiciária.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO"
+"24";"codMunic";"dadosProcJud";"E";"N";"1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Deve ser um código válido e existente na tabela do IBGE."
+"25";"idVara";"dadosProcJud";"E";"N";"1";"1-4";"-";"Código de identificação da Vara."
+"26";"infoSusp";"dadosProc";"G";"-";"0-99";"-";"-";"Informações de suspensão de exigibilidade de tributos em virtude de processo administrativo ou judicial."
+"27";"codSusp";"infoSusp";"E";"N";"1";"1-14";"-";"Código do indicativo da suspensão, atribuído pelo empregador."
+"28";"indSusp";"infoSusp";"E";"C";"1";"2";"-";"Indicativo de suspensão da exigibilidade.
+Valores válidos:
+01 - Liminar em mandado de segurança
+02 - Depósito judicial do montante integral
+03 - Depósito administrativo do montante integral
+04 - Antecipação de tutela
+05 - Liminar em medida cautelar
+08 - Sentença em mandado de segurança favorável ao contribuinte
+09 - Sentença em ação ordinária favorável ao contribuinte e confirmada pelo TRF
+10 - Acórdão do TRF favorável ao contribuinte
+11 - Acórdão do STJ em recurso especial favorável ao contribuinte
+12 - Acórdão do STF em recurso extraordinário favorável ao contribuinte
+13 - Sentença 1ª instância não transitada em julgado com efeito suspensivo
+14 - Contestação administrativa FAP
+90 - Decisão definitiva a favor do contribuinte
+92 - Sem suspensão da exigibilidade
+Validação: Se tpProc = [1], deve ser preenchido com [03, 14, 92].
+Se tpProc = [2], deve ser preenchido com [01, 02, 04, 05, 08, 09, 10, 11, 12, 13, 90, 92].
+Se tpProc = [4], deve ser preenchido com [14]."
+"29";"dtDecisao";"infoSusp";"E";"D";"1";"-";"-";"Data da decisão, sentença ou despacho administrativo."
+"30";"indDeposito";"infoSusp";"E";"C";"1";"1";"-";"Indicativo de depósito do montante integral.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Se indSusp = [90], preencher obrigatoriamente com [N].
+Se indSusp = [02, 03] preencher obrigatoriamente com [S]."
+"31";"alteracao";"infoProcesso";"G";"-";"0-1";"-";"-";"Alteração das informações."
+"32";"ideProcesso";"alteracao";"G";"-";"1";"-";"-";"Identificação do processo e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideProcesso"
+"33";"dadosProc";"alteracao";"G";"-";"1";"-";"-";"Dados do processo."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > dadosProc"
+"34";"novaValidade";"alteracao";"G";"-";"0-1";"-";"-";"Informação preenchida exclusivamente em caso de alteração do período de validade das informações, apresentando o novo período de validade."
+"35";"iniValid";"novaValidade";"E";"C";"1";"7";"-";"Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM.
+Validação: Deve ser uma data válida, igual ou posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM."
+"36";"fimValid";"novaValidade";"E";"C";"0-1";"7";"-";"Preencher com o mês e ano de término da validade das informações, se houver.
+Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a iniValid."
+"37";"exclusao";"infoProcesso";"G";"-";"0-1";"-";"-";"Exclusão das informações."
+"38";"ideProcesso";"exclusao";"G";"-";"1";"-";"-";"Identificação do processo e período de validade das informações."
+"...";"";"";"";"";"";"";"";"Ver: inclusao > ideProcesso"

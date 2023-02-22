@@ -1,0 +1,141 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtAfastTemp";"eSocial";"G";"-";"1";"-";"-";"Evento Afastamento Temporário.
+Regras de validação:
+REGRA_AFASTAMENTO
+REGRA_EMPREGADO_DOMESTICO
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVENTO_EXT_SEM_IMPACTO_FOPAG
+REGRA_EVENTO_POSTERIOR_CAT_OBITO
+REGRA_EXCLUI_EVENTO_AFASTAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXTEMP_DOMESTICO
+REGRA_EXTEMP_REINTEGRACAO
+REGRA_GERAL_VALIDA_DADOS_TABCONTRIB
+REGRA_MESMO_PROCEMI
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_TSV_ATIVO_NA_DTEVENTO
+REGRA_VINCULO_ATIVO_NA_DTEVENTO"
+"3";"Id";"evtAfastTemp";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtAfastTemp";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtAfastTemp";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideVinculo";"evtAfastTemp";"G";"-";"1";"-";"-";"Informações de identificação do trabalhador e do vínculo."
+"14";"cpfTrab";"ideVinculo";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"matricula";"ideVinculo";"E";"C";"0-1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.
+Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2200 ou S-2300 do respectivo contrato. Não preencher no caso de Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE sem informação de matrícula no evento S-2300."
+"16";"codCateg";"ideVinculo";"E";"N";"0-1";"3";"-";"Preencher com o código da categoria do trabalhador.
+Informar somente no caso de TSVE sem informação de matrícula no evento S-2300.
+Validação: Informação obrigatória e exclusiva se não houver preenchimento de matricula. Se informado, deve ser um código válido e existente na Tabela 01."
+"17";"infoAfastamento";"evtAfastTemp";"G";"-";"1";"-";"-";"Informações do afastamento temporário."
+"18";"iniAfastamento";"infoAfastamento";"G";"-";"0-1";"-";"-";"Informações de início do afastamento."
+"19";"dtIniAfast";"iniAfastamento";"E";"D";"1";"-";"-";"Data de início do afastamento.
+Validação: Deve-se obedecer às seguintes regras:
+a) Não pode ser posterior à data atual, exceto se:
+a1) codMotAfast = [15] (férias), situação em que pode ser até 60 dias posterior à data atual;
+a2) codMotAfast = [18], situação em que pode ser até 120 dias posterior à data atual;
+b) É necessário que o trabalhador esteja, antes da data de início do afastamento, em atividade, ou seja, não pode existir evento de afastamento anterior a dtIniAfast sem que este tenha sido encerrado."
+"20";"codMotAfast";"iniAfastamento";"E";"C";"1";"2";"-";"Preencher com o código do motivo de afastamento temporário.
+Validação: Deve ser um código válido e existente na Tabela 18, bem como compatível com o código de categoria do trabalhador, conforme Tabela 18. Se a natureza jurídica do declarante for Administração Pública (grupo [1]), não pode ser informado [14]."
+"21";"infoMesmoMtv";"iniAfastamento";"E";"C";"0-1";"1";"-";"Informar se o afastamento decorre da mesma doença que gerou o afastamento anterior (codMotAfast = [01, 03]), dentro de 60 dias.
+Valores válidos:
+S - Sim
+N - Não"
+"22";"tpAcidTransito";"iniAfastamento";"E";"N";"0-1";"1";"-";"Tipo de acidente de trânsito.
+Valores válidos:
+1 - Atropelamento
+2 - Colisão
+3 - Outros
+Validação: Somente pode ser preenchido se codMotAfast = [01, 03]."
+"23";"observacao";"iniAfastamento";"E";"C";"0-1";"1-255";"-";"Detalhar as informações sobre o afastamento do trabalhador, de maneira a explicitar os motivos do mesmo.
+Validação: O preenchimento é obrigatório se codMotAfast = [21]."
+"24";"perAquis";"iniAfastamento";"G";"-";"0-1";"-";"-";"Informações referentes ao período aquisitivo de férias."
+"25";"dtInicio";"perAquis";"E";"D";"1";"-";"-";"Data de início do período aquisitivo de férias.
+Validação: Deve observar o que segue:
+a) Se o código de categoria no Registro de Eventos Trabalhistas - RET for diferente de [304, 410], deve ser igual ou posterior a dtAdm;
+b) Se o código de categoria no RET for igual a [304], deve ser igual ou posterior a dtExercOrig;
+c) Se o código de categoria no RET for igual a [410], deve ser igual ou posterior a dtAdmCed."
+"26";"dtFim";"perAquis";"E";"D";"0-1";"-";"-";"Data de término do período aquisitivo de férias.
+É necessário informar o campo somente se o período aquisitivo for diferente de 1 ano.
+Validação: Se informada, deve ser uma data posterior a dtInicio."
+"27";"infoCessao";"iniAfastamento";"G";"-";"0-1";"-";"-";"Informações complementares - Cessão/Requisição de trabalhador."
+"28";"cnpjCess";"infoCessao";"E";"C";"1";"14";"-";"Preencher com o CNPJ do órgão/entidade para o qual o trabalhador foi cedido/requisitado.
+Validação: Deve ser um CNPJ diferente do CNPJ do empregador e diferente dos estabelecimentos informados através do evento S-1005.
+Regra de validação:
+REGRA_VALIDA_CNPJ"
+"29";"infOnus";"infoCessao";"E";"N";"1";"1";"-";"Ônus da cessão/requisição.
+Valores válidos:
+1 - Ônus do cedente
+2 - Ônus do cessionário
+3 - Ônus do cedente e cessionário"
+"30";"infoMandSind";"iniAfastamento";"G";"-";"0-1";"-";"-";"Informações complementares - Afastamento para exercício de mandato sindical."
+"31";"cnpjSind";"infoMandSind";"E";"C";"1";"14";"-";"CNPJ do sindicato no qual o trabalhador exercerá o mandato.
+Validação: Deve ser um CNPJ diferente do CNPJ base do empregador e diferente dos informados na Tabela de Estabelecimentos (S-1005).
+Regra de validação:
+REGRA_VALIDA_CNPJ"
+"32";"infOnusRemun";"infoMandSind";"E";"N";"1";"1";"-";"Ônus da remuneração.
+Valores válidos:
+1 - Apenas do empregador
+2 - Apenas do sindicato
+3 - Parte do empregador, sendo a diferença e/ou complementação salarial paga pelo sindicato"
+"33";"infoMandElet";"iniAfastamento";"G";"-";"0-1";"-";"-";"Informações complementares - Afastamento para exercício de mandato eletivo."
+"34";"cnpjMandElet";"infoMandElet";"E";"C";"1";"14";"-";"CNPJ do órgão no qual o trabalhador exercerá o mandato eletivo.
+Regra de validação:
+REGRA_VALIDA_CNPJ"
+"35";"indRemunCargo";"infoMandElet";"E";"C";"0-1";"1";"-";"Indicar se o servidor optou pela remuneração do cargo efetivo.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Informação obrigatória e exclusiva se o código de categoria no Registro de Eventos Trabalhistas - RET for igual a [301]."
+"36";"infoRetif";"infoAfastamento";"G";"-";"0-1";"-";"-";"Informações de retificação do afastamento temporário.
+Preenchimento obrigatório caso codMotAfast seja retificado de [01] para [03] ou de [03] para [01]."
+"37";"origRetif";"infoRetif";"E";"N";"1";"1";"-";"Origem da retificação.
+Valores válidos:
+1 - Por iniciativa do empregador
+2 - Revisão administrativa
+3 - Determinação judicial"
+"38";"tpProc";"infoRetif";"E";"N";"0-1";"1";"-";"Preencher com o código correspondente ao tipo de processo.
+Valores válidos:
+1 - Administrativo
+2 - Judicial
+3 - Número de Benefício - NB do INSS
+Validação: O preenchimento é obrigatório se origRetif = [2, 3]."
+"39";"nrProc";"infoRetif";"E";"C";"0-1";"10, 17, 20 ou 21";"-";"Informar o número do processo administrativo/judicial ou do benefício de acordo com o tipo informado em tpProc.
+Validação: O preenchimento é obrigatório se origRetif = [2, 3]. Deve ser um número de processo/benefício válido e:
+a) Se tpProc = [1], deve possuir 17 (dezessete) ou 21 (vinte e um) algarismos;
+b) Se tpProc = [2], deve possuir 20 (vinte) algarismos;
+c) Se tpProc = [3], deve possuir 10 (dez) algarismos."
+"40";"fimAfastamento";"infoAfastamento";"G";"-";"0-1";"-";"-";"Informação do término do afastamento.
+Regra de validação:
+REGRA_EXISTE_EVENTO_AFASTAMENTO"
+"41";"dtTermAfast";"fimAfastamento";"E";"D";"1";"-";"-";"Preencher com a data do término do afastamento do trabalhador.
+Validação: Deve ser igual ou posterior à data de início do afastamento do trabalhador e anterior a [9999-12-31]."

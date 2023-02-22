@@ -1,0 +1,44 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtExcProcTrab";"eSocial";"G";"-";"1";"-";"-";"Evento Exclusão de Eventos - Processo Trabalhista.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_VALIDA_EMPREGADOR"
+"3";"Id";"evtExcProcTrab";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtExcProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"6";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"7";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"8";"ideEmpregador";"evtExcProcTrab";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"9";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"10";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"11";"infoExclusao";"evtExcProcTrab";"G";"-";"1";"-";"-";"Grupo que identifica o evento objeto da exclusão."
+"12";"tpEvento";"infoExclusao";"E";"C";"1";"6";"-";"Preencher com o tipo de evento (S-2500 ou S-2501).
+Validação: Deve ser igual a [S-2500, S-2501]."
+"13";"nrRecEvt";"infoExclusao";"E";"C";"1";"23";"-";"Preencher com o número do recibo do evento que será excluído.
+Validação: O recibo deve ser relativo ao mesmo tipo de evento indicado em tpEvento."
+"14";"ideProcTrab";"infoExclusao";"G";"-";"1";"-";"-";"Identificação do processo, do trabalhador e do período a que se refere o evento que será excluído."
+"15";"nrProcTrab";"ideProcTrab";"E";"C";"1";"15 ou 20";"-";"Número do processo trabalhista, da ata ou número de identificação da conciliação.
+Validação: Deve ser o mesmo número do processo informado no evento objeto da exclusão."
+"16";"cpfTrab";"ideProcTrab";"E";"C";"0-1";"11";"-";"Preencher com o número do CPF do trabalhador.
+Validação: Preenchimento obrigatório e exclusivo se tpEvento = [S-2500]. Deve ser o mesmo CPF informado no evento S-2500 objeto da exclusão."
+"17";"perApurPgto";"ideProcTrab";"E";"C";"0-1";"7";"-";"Mês/ano em que é devida a obrigação de pagar a parcela prevista no acordo/sentença.
+Validação: Preenchimento obrigatório e exclusivo se tpEvento = [S-2501]. Deve ser o mesmo período informado no evento S-2501 objeto da exclusão."

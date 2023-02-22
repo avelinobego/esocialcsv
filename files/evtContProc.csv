@@ -1,0 +1,74 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtContProc";"eSocial";"G";"-";"1";"-";"-";"Evento Informações de Tributos Decorrentes de Processo Trabalhista.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_VALIDA_EMPREGADOR"
+"3";"Id";"evtContProc";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtContProc";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtContProc";"G";"-";"1";"-";"-";"Informações de identificação do empregador ou do contribuinte que está prestando a informação."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição do empregador ou contribuinte que está prestando a informação, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do empregador ou contribuinte que está prestando a informação, de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideProc";"evtContProc";"G";"-";"1";"-";"-";"Identificação do processo."
+"14";"nrProcTrab";"ideProc";"E";"C";"1";"15 ou 20";"-";"Número do processo trabalhista, da ata ou número de identificação da conciliação.
+Validação: Deve ser um número de processo válido e declarado no evento S-2500 para o(s) trabalhador(es) informado(s) em cpfTrab."
+"15";"perApurPgto";"ideProc";"E";"C";"1";"7";"-";"Mês/ano em que é devida a obrigação de pagar a parcela prevista no acordo/sentença.
+Validação: Deve ser um período igual ou posterior ao mês/ano de dtSent ou de dtCCP existente no evento S-2500 para o processo indicado em nrProcTrab.
+Deve ser informado no formato AAAA-MM."
+"16";"obs";"ideProc";"E";"C";"0-1";"1-999";"-";"Observação referente ao pagamento de parcela prevista no acordo/sentença."
+"17";"ideTrab";"evtContProc";"G";"-";"1-N";"-";"-";"Identificação do trabalhador."
+"18";"cpfTrab";"ideTrab";"A";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador.
+Validação: Deve ser um CPF válido e informado no evento S-2500."
+"19";"calcTrib";"ideTrab";"G";"-";"1-360";"-";"-";"Identificação do período e da base de cálculo dos tributos."
+"20";"perRef";"calcTrib";"A";"C";"1";"7";"-";"Informar o mês/ano (formato AAAA-MM) de referência das informações.
+Validação: Deve ser um período existente no evento S-2500 para o trabalhador indicado em cpfTrab e igual ou posterior a [2008-12]."
+"21";"vrBcCpMensal";"calcTrib";"A";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração mensal do trabalhador.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"22";"vrBcCp13";"calcTrib";"A";"N";"1";"1-14";"2";"Valor da base de cálculo da contribuição previdenciária sobre a remuneração do trabalhador referente ao 13º salário.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"23";"vrRendIRRF";"calcTrib";"A";"N";"1";"1-14";"2";"Valor do rendimento tributável do Imposto de Renda.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"24";"vrRendIRRF13";"calcTrib";"A";"N";"1";"1-14";"2";"Valor do rendimento tributável do Imposto de Renda referente ao 13º salário - Tributação exclusiva.
+Validação: Deve ser maior ou igual a 0 (zero)."
+"25";"infoCRContrib";"calcTrib";"G";"-";"0-99";"-";"-";"Informações das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, por Código de Receita - CR."
+"26";"tpCR";"infoCRContrib";"A";"N";"1";"6";"-";"Código de Receita - CR relativo a contribuições sociais devidas à Previdência Social e a Outras Entidades e Fundos (Terceiros), conforme legislação em vigor na competência.
+Validação: Deve ser um código válido e existente na Tabela 29."
+"27";"vrCR";"infoCRContrib";"A";"N";"1";"1-14";"2";"Valor correspondente ao Código de Receita - CR.
+Validação: Deve ser informado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."
+"28";"infoCRIRRF";"ideTrab";"G";"-";"0-99";"-";"-";"Informações de Imposto de Renda Retido na Fonte, por Código de Receita - CR."
+"29";"tpCR";"infoCRIRRF";"A";"N";"1";"6";"-";"Código de Receita - CR relativo a Imposto de Renda Retido na Fonte.
+Valores válidos:
+593656 - IRRF - Decisão da Justiça do Trabalho
+188951 - IRRF - RRA - Decisão da Justiça do Trabalho"
+"30";"vrCR";"infoCRIRRF";"A";"N";"1";"1-14";"2";"Valor correspondente ao Código de Receita - CR.
+Validação: Deve ser informado de acordo com a legislação em vigor na competência.
+Deve ser maior que 0 (zero)."

@@ -1,0 +1,197 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtAltCadastral";"eSocial";"G";"-";"1";"-";"-";"Evento Alteração de Dados Cadastrais do Trabalhador.
+Regras de validação:
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EVENTO_POSTERIOR_CAT_OBITO
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_EXISTE_TRABALHADOR
+REGRA_EXTEMP_DOMESTICO
+REGRA_EXTEMP_REINTEGRACAO
+REGRA_VALIDA_TRABALHADOR_BASE_CPF"
+"3";"Id";"evtAltCadastral";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtAltCadastral";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1-2";"-";"Processo de emissão do evento.
+Valores válidos:
+1 - Aplicativo do empregador
+2 - Aplicativo governamental - Simplificado Pessoa Física
+3 - Aplicativo governamental - Web Geral
+4 - Aplicativo governamental - Simplificado Pessoa Jurídica
+22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtAltCadastral";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideTrabalhador";"evtAltCadastral";"G";"-";"1";"-";"-";"Identificação do trabalhador."
+"14";"cpfTrab";"ideTrabalhador";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"alteracao";"evtAltCadastral";"G";"-";"1";"-";"-";"Alteração de dados cadastrais do trabalhador."
+"16";"dtAlteracao";"alteracao";"E";"D";"1";"-";"-";"Preencher com a data da alteração das informações.
+Validação: Não pode ser posterior a 180 (cento e oitenta) dias da data atual."
+"17";"dadosTrabalhador";"alteracao";"G";"-";"1";"-";"-";"Informações pessoais do trabalhador."
+"18";"nmTrab";"dadosTrabalhador";"E";"C";"1";"2-70";"-";"Informar o nome do trabalhador."
+"19";"sexo";"dadosTrabalhador";"E";"C";"1";"1";"-";"Sexo do trabalhador.
+Valores válidos:
+M - Masculino
+F - Feminino"
+"20";"racaCor";"dadosTrabalhador";"E";"N";"1";"1";"-";"Raça e cor do trabalhador.
+Valores válidos:
+1 - Branca
+2 - Preta
+3 - Parda
+4 - Amarela
+5 - Indígena
+6 - Não informado"
+"21";"estCiv";"dadosTrabalhador";"E";"N";"0-1";"1";"-";"Estado civil do trabalhador.
+Valores válidos:
+1 - Solteiro
+2 - Casado
+3 - Divorciado
+4 - Separado
+5 - Viúvo"
+"22";"grauInstr";"dadosTrabalhador";"E";"C";"1";"2";"-";"Grau de instrução do trabalhador.
+Valores válidos:
+01 - Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou
+02 - Até o 5º ano incompleto do ensino fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular
+03 - 5º ano completo do ensino fundamental
+04 - Do 6º ao 9º ano do ensino fundamental incompleto (antiga 5ª a 8ª série)
+05 - Ensino fundamental completo
+06 - Ensino médio incompleto
+07 - Ensino médio completo
+08 - Educação superior incompleta
+09 - Educação superior completa
+10 - Pós-graduação completa
+11 - Mestrado completo
+12 - Doutorado completo"
+"23";"nmSoc";"dadosTrabalhador";"E";"C";"0-1";"2-70";"-";"Nome social para travesti ou transexual."
+"24";"paisNac";"dadosTrabalhador";"E";"C";"1";"3";"-";"Preencher com o código do país de nacionalidade do trabalhador.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"25";"endereco";"dadosTrabalhador";"CG";"-";"0-1";"-";"-";"Grupo de informações do endereço do trabalhador."
+"26";"brasil";"endereco";"G";"-";"0-1";"-";"-";"Endereço no Brasil."
+"27";"tpLograd";"brasil";"E";"C";"0-1";"1-4";"-";"Tipo de logradouro.
+Validação: Se informado, deve ser um código válido e existente na Tabela 20."
+"28";"dscLograd";"brasil";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"29";"nrLograd";"brasil";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"30";"complemento";"brasil";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"31";"bairro";"brasil";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"32";"cep";"brasil";"E";"C";"1";"8";"-";"Código de Endereçamento Postal - CEP.
+Validação: Deve ser preenchido apenas com números, com 8 (oito) posições."
+"33";"codMunic";"brasil";"E";"N";"1";"7";"-";"Preencher com o código do município, conforme tabela do IBGE.
+Validação: Deve ser um código válido e existente na tabela do IBGE."
+"34";"uf";"brasil";"E";"C";"1";"2";"-";"Preencher com a sigla da Unidade da Federação - UF.
+Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO"
+"35";"exterior";"endereco";"G";"-";"0-1";"-";"-";"Endereço no exterior."
+"36";"paisResid";"exterior";"E";"C";"1";"3";"-";"Preencher com o código do país.
+Validação: Deve ser um código válido e existente na Tabela 06."
+"37";"dscLograd";"exterior";"E";"C";"1";"1-100";"-";"Descrição do logradouro."
+"38";"nrLograd";"exterior";"E";"C";"1";"1-10";"-";"Número do logradouro.
+Se não houver número a ser informado, preencher com "S/N"."
+"39";"complemento";"exterior";"E";"C";"0-1";"1-30";"-";"Complemento do logradouro."
+"40";"bairro";"exterior";"E";"C";"0-1";"1-90";"-";"Nome do bairro/distrito."
+"41";"nmCid";"exterior";"E";"C";"1";"2-50";"-";"Nome da cidade."
+"42";"codPostal";"exterior";"E";"C";"0-1";"4-12";"-";"Código de Endereçamento Postal."
+"43";"trabImig";"dadosTrabalhador";"G";"-";"0-1";"-";"-";"Informações do trabalhador imigrante."
+"44";"tmpResid";"trabImig";"E";"N";"0-1";"1";"-";"Tempo de residência do trabalhador imigrante.
+Valores válidos:
+1 - Prazo indeterminado
+2 - Prazo determinado
+Validação: Preenchimento obrigatório quando houver trabalhador com (dtAdm ou dtExercicio ou dtInicio) no Registro de Eventos Trabalhistas - RET >= [2021-07-19]."
+"45";"condIng";"trabImig";"E";"N";"1";"1";"-";"Condição de ingresso do trabalhador imigrante.
+Valores válidos:
+1 - Refugiado
+2 - Solicitante de refúgio
+3 - Permanência no Brasil em razão de reunião familiar
+4 - Beneficiado pelo acordo entre países do Mercosul
+5 - Dependente de agente diplomático e/ou consular de países que mantêm acordo de reciprocidade para o exercício de atividade remunerada no Brasil
+6 - Beneficiado pelo Tratado de Amizade, Cooperação e Consulta entre a República Federativa do Brasil e a República Portuguesa
+7 - Outra condição
+Validação: Se tmpResid = [1], não pode ser informado [2, 5]. Se tmpResid = [2], não pode ser informado [1]."
+"46";"infoDeficiencia";"dadosTrabalhador";"G";"-";"0-1";"-";"-";"Pessoa com deficiência."
+"47";"defFisica";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência física.
+Valores válidos:
+S - Sim
+N - Não"
+"48";"defVisual";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência visual.
+Valores válidos:
+S - Sim
+N - Não"
+"49";"defAuditiva";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência auditiva.
+Valores válidos:
+S - Sim
+N - Não"
+"50";"defMental";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência mental.
+Valores válidos:
+S - Sim
+N - Não"
+"51";"defIntelectual";"infoDeficiencia";"E";"C";"1";"1";"-";"Deficiência intelectual.
+Valores válidos:
+S - Sim
+N - Não"
+"52";"reabReadap";"infoDeficiencia";"E";"C";"1";"1";"-";"Informar se o trabalhador é reabilitado (empregado) ou readaptado (servidor público/militar).
+Reabilitado: estando o empregado incapacitado parcial ou totalmente para o trabalho, cumpriu programa de reabilitação profissional no INSS, recebendo certificado e sendo proporcionados os meios indicados para participar do mercado de trabalho.
+Readaptado: o servidor está investido em cargo de atribuições e responsabilidades compatíveis com a limitação que tenha sofrido em sua capacidade física ou mental verificada em inspeção médica.
+Valores válidos:
+S - Sim
+N - Não"
+"53";"infoCota";"infoDeficiencia";"E";"C";"0-1";"1";"-";"Informar se o trabalhador deve ser contabilizado no preenchimento de cota de pessoas com deficiência habilitadas ou de beneficiários reabilitados.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Preenchimento obrigatório e exclusivo quando houver trabalhador cadastrado no evento S-2200 com tpRegTrab = [1] e ativo em dtAlteracao. Somente pode ser informado [S] se pelo menos um dos campos a seguir estiver preenchido com [S]: defFisica, defVisual, defAuditiva, defMental, defIntelectual e reabReadap.
+Esta validação não deve ser realizada quando se tratar de evento enviado em versão do leiaute anterior a S-1.0."
+"54";"observacao";"infoDeficiencia";"E";"C";"0-1";"1-255";"-";"Observação."
+"55";"dependente";"dadosTrabalhador";"G";"-";"0-99";"-";"-";"Informações dos dependentes."
+"56";"tpDep";"dependente";"E";"C";"1";"2";"-";"Tipo de dependente.
+Validação: Deve ser um código válido e existente na Tabela 07."
+"57";"nmDep";"dependente";"E";"C";"1";"2-70";"-";"Nome do dependente."
+"58";"dtNascto";"dependente";"E";"D";"1";"-";"-";"Preencher com a data de nascimento.
+Validação: Deve ser maior ou igual que 01/01/1890 e menor ou igual à data atual."
+"59";"cpfDep";"dependente";"E";"C";"0-1";"11";"-";"Número de inscrição no CPF.
+Validação: Deve ser um número de CPF válido, observando o que segue:
+a) O preenchimento é obrigatório se depIRRF = [S];
+b) Em arquivo de empregador Pessoa Física, deve ser diferente do CPF informado em ideEmpregador;
+c) Não pode haver mais de um dependente com o mesmo número de CPF."
+"60";"sexoDep";"dependente";"E";"C";"0-1";"1";"-";"Sexo do dependente.
+Valores válidos:
+M - Masculino
+F - Feminino
+Validação: Preenchimento obrigatório e exclusivo quando houver trabalhador cadastrado no evento S-2200, ativo em dtAlteracao e com {tpRegPrev} = [2] no RET.
+Esta validação não deve ser realizada quando se tratar de recepção de evento extemporâneo."
+"61";"depIRRF";"dependente";"E";"C";"1";"1";"-";"Informar se é dependente do trabalhador para fins de dedução de seu rendimento tributável pelo Imposto de Renda.
+Valores válidos:
+S - Sim
+N - Não"
+"62";"depSF";"dependente";"E";"C";"1";"1";"-";"Informar se é dependente para fins de recebimento do benefício de salário-família.
+Valores válidos:
+S - Sim
+N - Não"
+"63";"incTrab";"dependente";"E";"C";"0-1";"1";"-";"Informar se o dependente tem incapacidade física ou mental para o trabalho.
+Valores válidos:
+S - Sim
+N - Não
+Validação: Preenchimento obrigatório se o trabalhador estiver cadastrado no evento S-2200, ativo em dtAlteracao e com {tpRegPrev} diferente de [4] no RET. Não informar nos demais casos."
+"64";"contato";"dadosTrabalhador";"G";"-";"0-1";"-";"-";"Informações de contato."
+"65";"fonePrinc";"contato";"E";"C";"0-1";"8-13";"-";"Número de telefone do trabalhador, com DDD.
+Validação: Se preenchido, deve conter apenas números, com o mínimo de dez dígitos."
+"66";"emailPrinc";"contato";"E";"C";"0-1";"6-60";"-";"Endereço eletrônico.
+Validação: O e-mail deve ser possuir o caractere "@" e este não pode estar no início e no fim do e-mail. Deve possuir no mínimo um caractere "." depois do @ e não pode estar no início ou no final do e-mail."

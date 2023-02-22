@@ -1,0 +1,57 @@
+"#";"Grupo/Campo";"Grupo Pai";"Elem.";"Tipo";"Ocor.";"Tamanho";"Dec.";"Descrição"
+"1";"eSocial";"";"G";"-";"1";"-";"-";"eSocial"
+"2";"evtBaixa";"eSocial";"G";"-";"1";"-";"-";"Evento Baixa Judicial do Vínculo.
+Regras de validação:
+REGRA_BAIXA_JUDICIAL
+REGRA_BAIXA_TRABALHADOR_AFASTADO
+REGRA_DESLIG_EXCLUI_DESLIGAMENTO_REINTEG
+REGRA_DESLIG_EXCLUSAO_EVENTO
+REGRA_DESLIG_EXISTE_EVENTO_POSTERIOR
+REGRA_ENVIO_PROC_FECHAMENTO
+REGRA_EVENTOS_EXTEMP
+REGRA_EXISTE_INFO_EMPREGADOR
+REGRA_RETIFICA_MESMO_VINCULO
+REGRA_VINCULO_ATIVO_NA_DTEVENTO"
+"3";"Id";"evtBaixa";"A";"C";"1";"36";"-";"Identificação única do evento.
+Regra de validação:
+REGRA_VALIDA_ID_EVENTO"
+"4";"ideEvento";"evtBaixa";"G";"-";"1";"-";"-";"Informações de identificação do evento."
+"5";"indRetif";"ideEvento";"E";"N";"1";"1";"-";"Informe [1] para arquivo original ou [2] para arquivo de retificação.
+Valores válidos:
+1 - Original
+2 - Retificação"
+"6";"nrRecibo";"ideEvento";"E";"C";"0-1";"23";"-";"Preencher com o número do recibo do arquivo a ser retificado.
+Validação: O preenchimento é obrigatório se indRetif = [2].
+Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado."
+"7";"tpAmb";"ideEvento";"E";"N";"1";"1";"-";"Identificação do ambiente.
+Valores válidos:
+1 - Produção
+2 - Produção restrita
+7 - Validação (uso interno)
+8 - Teste (uso interno)
+9 - Desenvolvimento (uso interno)"
+"8";"procEmi";"ideEvento";"E";"N";"1";"1";"-";"Processo de emissão do evento.
+Valores válidos:
+8 - Aplicativo governamental para envio de eventos pelo Judiciário"
+"9";"verProc";"ideEvento";"E";"C";"1";"1-20";"-";"Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento."
+"10";"ideEmpregador";"evtBaixa";"G";"-";"1";"-";"-";"Informações de identificação do empregador."
+"11";"tpInsc";"ideEmpregador";"E";"N";"1";"1";"-";"Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+Valores válidos:
+1 - CNPJ
+2 - CPF"
+"12";"nrInsc";"ideEmpregador";"E";"C";"1";"8, 11 ou 14";"-";"Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000."
+"13";"ideVinculo";"evtBaixa";"G";"-";"1";"-";"-";"Informações de identificação do trabalhador e do vínculo."
+"14";"cpfTrab";"ideVinculo";"E";"C";"1";"11";"-";"Preencher com o número do CPF do trabalhador."
+"15";"matricula";"ideVinculo";"E";"C";"1";"1-30";"-";"Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.
+Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2190 ou S-2200 do respectivo vínculo trabalhista."
+"16";"infoBaixa";"evtBaixa";"G";"-";"1";"-";"-";"Informações relativas à baixa judicial do vínculo."
+"17";"mtvDeslig";"infoBaixa";"E";"C";"1";"2";"-";"Código de motivo do desligamento.
+Validação: Deve ser um código válido e existente na Tabela 19, bem como compatível com o código de categoria do trabalhador, conforme Tabela 19.
+Não podem ser informados motivos que não implicam rescisão do contrato de trabalho (igual a [11, 12, 13, 25, 28, 29, 30, 34, 36, 43, 44])."
+"18";"dtDeslig";"infoBaixa";"E";"D";"1";"-";"-";"Preencher com a data de desligamento do vínculo (último dia trabalhado).
+Validação: Deve ser uma data igual ou posterior a 24/09/2019 e igual ou anterior à data atual. No caso de empregado reintegrado e quando não se tratar de retificação do desligamento anterior à reintegração, também deve ser uma data igual ou posterior a dtEfetRetorno do evento S-2298."
+"19";"dtProjFimAPI";"infoBaixa";"E";"D";"0-1";"-";"-";"Data projetada para o término do aviso prévio indenizado.
+Validação: Se preenchida, deve ser uma data posterior a dtDeslig."
+"20";"nrProcTrab";"infoBaixa";"E";"C";"1";"20";"-";"Número que identifica o processo judicial onde a baixa do vínculo foi determinada.
+Validação: Deve ser um processo judicial válido, com 20 (vinte) algarismos."
+"21";"observacao";"infoBaixa";"E";"C";"0-1";"1-255";"-";"Observação relevante sobre o desligamento do trabalhador, que não esteja consignada em outros campos."
